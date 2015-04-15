@@ -1,3 +1,3 @@
 # PlayFrameworkTranslation
 
-This project is to translate play framework doc
+This project is translating play framework doc to korean.
