@@ -1,9 +1,9 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Installing Play
+# 플레이 설치하기
 
-## Prerequisites
+## 요구사항
 
-You need to have a JDK 1.8 (or later) installed on your machine (see [General Installation Tasks](#jdk-installation)).
+JDK 1.8(또는 그 이상)이 장비에 설치되어 있어야 한다.([General Installation Tasks](#jdk-installation))
 
 ## Install Activator
 
