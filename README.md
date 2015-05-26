@@ -4,6 +4,7 @@ This project is translating play framework doc to korean.
 
 # Word 
 
+- activator : 액티베이터
 - assets : 자산
 - application : 애플리케이션
 - business : 비즈니
