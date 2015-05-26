@@ -1,79 +1,79 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Creating a new application
+# 새로운 애플리케이션 생성하기
 
-## Create a new application with the activator command
+## activator 명령어로 새로운 애플리케이션 생성하기
 
-The `activator` command can be used to create a new Play application.  Activator allows you to select a template that your new application should be based off.  For vanilla Play projects, the names of these templates are `play-scala` for Scala based Play applications, and `play-java` for Java based Play applications.
+`activator` 명령어를 새로운 플레이 애플리케이션을 생성하는데 사용할 수 있다. 액티베이터로 새로운 애플리케이션의 기반이 되는 템플릿을 선택할 수 있다. 평범한 플레이 프로젝트를 위한 이 템플릿들의 이름은 스칼라 기반의 플레이 애플리케이션은 `play-scala`, 자바 기반의 플레이 애플리케이션은 `play-java`이다.
 
-> Note that choosing a template for either Scala or Java at this point does not imply that you can’t change language later. For example, you can create a new application using the default Java application template and start adding Scala code whenever you like.
+> 이 시점에 자바나 스칼라로 템플릿을 선택하는 것이 이후에 언어를 변경할 수 없다는 의미를 가지는 것은 아니다. 예를 들어 새로운 애플리케이션을 기본 자바 애플리케이션 템플릿을 사용하여 생성했더라도 언제든지 원할 때 스칼라 코드를 추가할 수 있다.
 
-To create a new vanilla Play Scala application, run:
+새로운 플레이 스칼라 애플리케이션을 생성하기 위해, 다음을 수행하라:
 
 ```bash
 $ activator new my-first-app play-scala
 ```
 
-To create a new vanilla Play Java application, run:
+새로운 플레이 자바 애플리케이션을 생성하기 위해, 다음을 수행하라:
 
 ```bash
 $ activator new my-first-app play-java
 ```
 
-In either case, you can replace `my-first-app` with whatever name you want your application to use.  Activator will use this as the directory name to create the application in.  You can change this name later if you choose.
+위에서 어느 경우에나 애플리케이션에 사용하고싶은 이름으로 `my-first-app`을 변경할 수 있다. 액티베이터는 이 이름을 생성한 애플리케이션의 디렉터리 이름으로 사용할 것이다. 만약에 원한다면 이후에 이 이름을 변경할 수 있다.
 
 [[images/activatorNew.png]]
 
-Once the application has been created you can use the `activator` command again to enter the [[Play console|PlayConsole]].
+
+이전에 애플리케이션을 생성했다면 `activator` 명령어를 [[플레이 콘솔|PlayConsole]]로 들어가는데 사용할 수 있다.
 
 ```bash
 $ cd my-first-app
 $ activator
 ```
 
-> If you wish to use other Activator templates, you can do this by running `activator new`.  This will prompt you for an application name, and then give you a chance to browse and select an appropriate template.
+> 다른 액티베이터 템플릿을 사용하고 싶으면, `activator new`를 수행할 수 있다. 이는 애플리케이션의 이름을 보여주고 적절한 템플릿을 선택하고 살펴볼 기회를 준다.
 
-## Create a new application with the Activator UI
+## 액티베이터 UI로 새로운 애플리케이션 생성하기
 
-New Play applications can also be created with the Activator UI.  To use the Activator UI, run:
+새로운 플레이 애플리케이션은 또한 액티베이터 UI로 생성할 수 있다. 액티베이터 UI를 사용하기 위해, 다음을 수행하라:
 
 ```bash
 $ activator ui
 ```
 
-You can read the documentation for using the Activator UI [here](https://typesafe.com/activator/docs).
+액티베이터 UI를 사용하기 위한 문서를 [여기](https://typesafe.com/activator/docs)에서 읽을 수 있다.
 
-## Create a new application without Activator
+## 액티베이터 없이 새로운 애플리케이션 생성하기
 
-It is also possible to create a new Play application without installing Activator, using sbt directly.
+또한 액티베이터를 설치하지 않고 sbt를 직접 사용하여 새로운 플레이 애플리케이션을 생성할 수 있다.
 
-> First install [sbt](http://www.scala-sbt.org/) if needed.
+> 우선 필요한 [sbt](http://www.scala-sbt.org/)를 설치하라.
 
-Create a new directory for your new application and configure your sbt build script with two additions.
+새로운 애플리케이션을 위해 새로운 디렉터리를 생성하고 sbt 빌드 스크립트에 2가지를 설정하자.
 
-In `project/plugins.sbt`, add:
+`project/plugins.sbt`에 다음과 같이 추가하라:
 
 ```scala
-// The Typesafe repository
+// Typesafe 저장소
 resolvers += "Typesafe repository" at "https://repo.typesafe.com/typesafe/releases/"
 
-// Use the Play sbt plugin for Play projects
+// 플레이 프로젝트를 위한 플레이 sbt 플러그인 사용
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "%PLAY_VERSION%")
 ```
 
-Be sure to replace `%PLAY_VERSION%` here by the exact version you want to use. If you want to use a snapshot version, you will have to specify this additional resolver:
-
+확실하게 하기 위해 `%PLAY_VERSION%`을 사용하고자 하는 정확한 버전으로 변경하라. 만약 스냅샷 버전을 사용하고 싶으면, 추가적인 리졸버를 명시해야 한다.
 ```
-// Typesafe snapshots
+// Typesafe 스냅샷
 resolvers += "Typesafe Snapshots" at "https://repo.typesafe.com/typesafe/snapshots/"
 ```
 
-To ensure the proper sbt version is used, make sure you have the following in `project/build.properties`:
+사용될 적절한 sbt 버전을 확정하기 위해, 다음처럼 `project/build.properties`에 명시하라:
 
 ```
 sbt.version=0.13.8
 ```
 
-In `build.sbt` for Java projects:
+자바 프로젝트를 위한 `build.sbt`:
 
 ```scala
 name := "my-first-app"
@@ -83,7 +83,7 @@ version := "1.0"
 lazy val root = (project in file(".")).enablePlugins(PlayJava)
 ```
 
-...or Scala projects:
+...또는 스칼라 프로젝트를 위한 `build.sbt`:
 
 ```scala
 name := "my-first-app"
@@ -93,11 +93,11 @@ version := "1.0.0-SNAPSHOT"
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 ```
 
-You can then launch the sbt console in this directory:
+이제 디렉터리에서 sbt 콘솔으로 프로젝트를 시작할 수 있다.
 
 ```bash
 $ cd my-first-app
 $ sbt
 ```
 
-sbt will load your project and fetch the dependencies.
+sbt는 프로젝트를 로드하고 의존성을 가져올 것이다.
