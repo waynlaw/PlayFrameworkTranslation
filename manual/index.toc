@@ -1,9 +1,9 @@
-Home:Home
-gettingStarted:Getting started
-working:Working with Play
-detailedTopics:Detailed topics
-experimental:Experimental libraries
-hacking:Hacking Play
-about:About Play
-releases:Play releases
-ModuleDirectory:Temporary module directory
+Home:홈으로
+gettingStarted:시작하기
+working:플레이로 작업하기
+detailedTopics:더 깊은 주제
+experimental:실험적인 라이브러리
+hacking:플레이 해킹하기
+about:플레이에 대하여
+releases:플레이 릴리즈
+ModuleDirectory:임시 모듈 디렉터리

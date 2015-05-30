@@ -114,7 +114,7 @@ dist
 
 ## 기본 SBT 레이아웃
 
-SBT나 메이븐을 이용하도록 기본적인 레이아웃을 사용할 수 있다. 이 레이아웃은 실험적인 것이며 이슈가 있을 수 있다. 이 레이아웃을 사용하기 위해 `disablePlugins(PlayLayoutPlugin)`을 사용하자.
+SBT나 메이븐을 이용하도록 기본적인 레이아웃을 사용할 수 있다. 이 레이아웃은 실험적인 것이며 이슈가 있을 수 있다. 이 레이아웃을 사용하기 위해 `disablePlugins(PlayLayoutPlugin)`을 사용하라.
 
 ```
 build.sbt                  → 애플리케이션 빌드 스크립트

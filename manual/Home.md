@@ -1,17 +1,17 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Play %PLAY_VERSION% documentation
+# 플레이 %PLAY_VERSION% 문서
 
-> Play is a high-productivity Java and Scala web application framework that integrates the components and APIs you need for modern web application development. 
+> 플레이는 웹 애플리케이션 개발에 필요한 API와 컴포넌트를 통합한 높은-생산성을 가져다 주는 자바와 스칼라로 작성할 수 있는 웹 애플리케이션 프레임워크이다.
 >
-> Play is based on a lightweight, stateless, web-friendly architecture and features predictable and minimal resource consumption (CPU, memory, threads) for highly-scalable applications thanks to its reactive model, based on Iteratee IO.
+> 플레이는 이터레이티 IO기반의 리액티브 모델 덕분에 가볍고, 상태를 유지하지 않으며, 웹에 친근한 구조와 예상할 수 있고 자원(CPU, 메모리, 스레드)을 적게 소비하는 것을 기반으로 하고 있다.
 
-- [[What's new in Play 2.4?|Highlights24]] / [[Play 2.4 Migration Guide|Migration24]]
-- [[What's new in Play 2.3?|Highlights23]] / [[Play 2.3 Migration Guide|Migration23]]
-- [[What's new in Play 2.2?|Highlights22]] / [[Play 2.2 Migration Guide|Migration22]]
-- [[What's new in Play 2.1?|Highlights21]] / [[Play 2.1 Migration Guide|Migration21]]
+- [[플레이 2.4의 새로운 기능은 무엇인가?|Highlights24]] / [[플레이 2.4 마이그레이션 가이드|Migration24]]
+- [[플레이 2.3의 새로운 기능은 무엇인가?|Highlights23]] / [[플레이 2.3 마이그레이션 가이드|Migration23]]
+- [[플레이 2.2의 새로운 기능은 무엇인가?|Highlights22]] / [[플레이 2.2 마이그레이션 가이드|Migration22]]
+- [[플레이 2.1의 새로운 기능은 무엇인가?|Highlights21]] / [[플레이 2.1 마이그레이션 가이드|Migration21]]
 
 @toc@
 
-## Modules and plugins
+## 모듈과 플러그 인
 
-[[Temporary modules directory|ModuleDirectory]]
+[[임시 모듈 디렉터리|ModuleDirectory]]

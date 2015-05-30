@@ -12,9 +12,15 @@
 
 추천 튜토리얼:
 
-* [Reactive Maps (Scala)](https://typesafe.com/activator/template/reactive-maps)
-* [Reactive Maps (Java 8)](https://typesafe.com/activator/template/reactive-maps-java)
-* [Super Slick Play (Scala)](https://typesafe.com/activator/template/play-slick)
-* [Play with Spring Data JPA (Java)](https://typesafe.com/activator/template/play-spring-data-jpa)
-* [AngularJS Play Mongo (Scala)](https://typesafe.com/activator/template/modern-web-template)
-* [Play Mongo Knockout (Scala)](https://typesafe.com/activator/template/play-mongo-knockout)
+## 스칼라
+
+* [Play Scala Intro](https://typesafe.com/activator/template/play-scala-intro): 플레이 스칼라로 간단한 CRUD 애플리케이션 생성에 대해 소개한다.
+* [Reactive Maps](https://typesafe.com/activator/template/reactive-maps): 이 템플릿과 튜토리얼은 scalable, resilient, responsive event driven 사용하여 어떻게 타입세이프 리엑티브 플랫폼을 구현할 수 있는지 살펴본다.
+* [AngularJS Play Mongo](https://typesafe.com/activator/template/modern-web-template): 이 애플리케이션은 커피스크립트로 작성된 AngularJS를 사용한 클라이언트 자바스크립트 앱과 플레이 프레임워크에서 제공된 몽고DB를 위한 논블록킹 스칼라 클라이언트인 리액티브 몽고의 퍼시스턴트 문서를 조합하여 어떻게 최신 웹 애플리케이션을 만들 수 있는지 살펴본다.
+* [Super Slick Play](https://typesafe.com/activator/template/play-slick): 이 템플릿은 데이터베이스 기반 웹 애플리케이션 개발 통합을 빠르게 할 수 있도록 플레이 프레임워크와 슬릭이 조합된 형태를 보여준다.
+
+## 자바
+
+* [Play Java Intro](https://typesafe.com/activator/template/play-java-intro-reactive-platform-15v01): 플레이 자바로 간단한 CRUD 애플리케이션 생성에 대해 소개한다.
+* [Reactive Maps in Java](https://typesafe.com/activator/template/reactive-maps-java): 이 템플릿과 튜토리얼은 scalable, resilient, responsive event driven 사용하여 어떻게 타입세이프 리엑티브 플랫폼을 구현할 수 있는지 살펴본다.
+* [Play with Spring Data JPA](https://typesafe.com/activator/template/play-spring-data-jpa): 이 플레이 예제는 [Spring Data JPA](https://projects.spring.io/spring-data-jpa/)를 사용한다.

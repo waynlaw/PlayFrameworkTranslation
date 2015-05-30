@@ -1,2 +1,2 @@
-!scalaGuide:Play for Scala developers
-!javaGuide:Play for Java developers
+!scalaGuide:스칼라 개발자를 위한 플레이
+!javaGuide:자바 개발자를 위한 플레이

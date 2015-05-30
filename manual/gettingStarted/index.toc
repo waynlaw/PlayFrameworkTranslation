@@ -1,7 +1,7 @@
-Installing:Installing Play
-NewApplication:Creating a new application
-Anatomy:Anatomy of a Play application
-Modules:Play Modules
-PlayConsole:Using the Play console
-IDE:Setting-up your preferred IDE
-Tutorials:Play Tutorials
+Installing:플레이 설치하기
+NewApplication:새로운 애플리케이션 생성하기
+Anatomy:플레이 애플리케이션의 구조
+Modules:플레이 모듈
+PlayConsole:플레이 콘솔 사용하기
+IDE:IDE에서 플레이를 개발하는 방법
+Tutorials:플레이 튜토리얼

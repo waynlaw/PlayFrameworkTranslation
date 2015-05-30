@@ -1,17 +1,17 @@
-# Play Modules
+# Play 모듈
 
-At its core, Play is a very lightweight HTTP server, providing mechanisms for serving HTTP requests, but not much else. Additional functionality in Play is provided through the use of Play modules.
+플레이는 HTTP 요청을 처리하기 위한 메커니즘을 제공하는 아주 가벼운 HTTP 서버이며, 그 이상도 이하도 아니다. 플레이에서 추가적인 기능은 플레이 모듈을 통해 제공된다.
 
-## What is a module?
+## 모듈이란 무엇인가?
 
-There is no strict definition in Play of what a module is or isn't - a module could be just a library that provides some helper methods to help you do something, or it could be a full framework providing complex functionality such as user management. Some modules are built in to Play, others are written and maintained by members of the Play community.
+플레이에서 어떤 것이 모듈이고 모듈이 아닌지에 대한 엄격한 정의는 없다. 모듈은 작업을 도와주는 몇몇 메소드를 제공하는 단순 라이브러리 일 수 있으며, 사용자 관리 처럼 복잡한 기능을 제공하는 완전한 프레임워크일 수도 있다. 어떤 모듈은 플레이에 이미 포함되어 있으며, 또 다른 것은 플레이 커뮤니티의 멤버들에 의해 생성되고 관리되고 있다.
 
-Some modules provide components - objects that represent resources, for example a database connection.  These objects may have a lifecycle and need to be started and stopped when the application starts and stops, and they may hold some state such as a cache. Play provides a variety of mechanisms for accessing and using these components. Components are not only provided by modules, they may be provided by the application themselves.
+몇몇 모듈은 데이터베이스 접속과 같은 자원을 대표하는 객체를 컴포넌트로 제공한다. 이 객체는 생명주기를 가지거나 애플리케이션의 시작과 종료시에 실행되거나 종료되어야 할 수있다. 그리고 캐시처럼 어떤 상태를 가질 수도 있다. 플레이는 이러한 컴포넌트에 접근하고 사용할 수 있는 다양한 메커니즘을 제공한다. 컴포넌트는 모듈로 제공되는 것 뿐만아니라 애플리케이션 자체로도 제공된다.
 
-## Accessing modules
+## 모듈에 접근하기
 
-One of the earliest decisions that you need to make when starting a new Play project is how you will access the components provided by modules. Components are accessed through the use of a dependency injection mechanism, where rather than having your components look up other components in the system, your components declare what other components they need, and the system injects those components into your components.
+새로운 플레이 프로젝트를 생성할 때 제일 먼저 모듈로 제공되는 컴포넌트에 어떻게 접근할지 결정해야 한다. 컴포넌트는 시스템의 다른 컴포넌트를 찾기 보다 의존성 주입 방식에 의해 접근되며, 당신의 컴포넌트는 필요로 하는 다른 컴포넌트를 선언하고 시스템은 해당 컴포넌트를 당신의 컴포넌트에 주입시킨다.
 
-At its core, Play is agnostic to any particular form of dependency injection, however out of the box Play provides and we recommend that you use [Guice](https://github.com/google/guice). The remainder of this documentation will assume that this is the decision that you have made, however there will be examples of how to integrate with other dependency injection mechanisms.
+이것의 핵심은 플레이는 의존성 주입의 어떤한 형태도 인지하지 못하기 때문에 플레이가 제공하는 것 이외에 [Guice](https://github.com/google/guice)를 사용하는 것을 추천한다. 이 문서의 나머지 부분은 Guice를 사용하기로 결정했다고 가정하고 있다. 하지만 다른 의존성 주입을 사용한 것과 어떻게 통합하는지에 대한 예제도 포함하고 있다.
 
-You can read more about dependency injection in [[Scala|ScalaDependencyInjection]] or [[Java|JavaDependencyInjection]].
+[[Scala|ScalaDependencyInjection]], [[Java|JavaDependencyInjection]]. 앞의 링크를 통해 의존성 주입에 대한 내용을 확인할 수 있다.

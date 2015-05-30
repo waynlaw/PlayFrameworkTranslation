@@ -37,7 +37,7 @@ devSettings := Map("play.akka.loglevel" -> "DEBUG")
 
 ### HTTP server settings in `application.conf`
 
-In `run` mode the HTTP server part of Play starts before the application has been compiled. This means that the HTTP server cannot access the `application.conf` file when it starts. If you want to override HTTP server settings while using the `run` command you cannot use the `application.conf` file. Instead, you need to either use system properties or the `devSettings` setting shown above. An example of a server setting is the HTTP port. Other server settings can be seen [[here|ProductionConfiguration#Server-configuration-options]].
+In `run` mode the HTTP server part of Play starts before the application has been compiled. This means that the HTTP server cannot access the `application.conf` file when it starts. If you want to override HTTP server settings while using the `run` command you cannot use the `application.conf` file. Instead, you need to either use system properties or the `devSettings` setting shown above. An example of a server setting is the HTTP port. Other server settings can be seen [[here|ProductionConfiguration]].
 
 ```
 > run -Dhttp.port=1234

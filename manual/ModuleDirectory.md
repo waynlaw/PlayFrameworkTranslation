@@ -1,5 +1,5 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Play Modules
+# 플레이 모듈
 
 > This is a temporary location for listing modules, until there will be a location to register them on the Play website.
 
