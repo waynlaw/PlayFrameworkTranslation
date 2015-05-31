@@ -1,2 +1,2 @@
-AkkaHttpServer:Akka HTTP server backend
-ReactiveStreamsIntegration:Reactive Streams integration
+AkkaHttpServer:아카 백엔드 HTTP 서버
+ReactiveStreamsIntegration:리액티브 스트림 통합

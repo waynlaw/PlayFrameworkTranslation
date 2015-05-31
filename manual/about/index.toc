@@ -1,2 +1,2 @@
-Philosophy:Play philosophy
-PlayUserGroups:Play user groups
+Philosophy:플레이 철학
+PlayUserGroups:플레이 사용자 그룹
