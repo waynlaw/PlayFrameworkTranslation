@@ -16,3 +16,4 @@ This project is translating play framework doc to korean.
 - routes : 라우트
 - resource : 자원
 - source : 소스
+- module : 모듈

@@ -3,13 +3,13 @@
 
 ## 요구사항
 
-JDK 1.8(또는 그 이상)이 장비에 설치되어 있어야 한다.([전반적인 설치 작업](#jdk-installation))
+JDK 1.8(또는 그 이상)이 장비에 설치되어 있어야 한다.([전반적인 설치 작업](#JDK-설치))
 
 ## 액티베이터 설치하기
 
-* 최신버전의 [Typesafe Activator](http://typesafe.com/activator)를 **다운로드**하라.
+* 최신 버전의 [Typesafe Activator](http://typesafe.com/activator)를 **다운로드**하라.
 * 원하는 위치에 파일의 압축을 **해제**하라.
-* 명령행 윈도우를 **실행** 하고 아래의 내용을 입력하라.
+* 명령행 윈도우를 **실행**하고 아래의 내용을 입력하라.
 
 ```
 cd activator*
@@ -23,7 +23,8 @@ activator ui
 ### 명령어 라인
 
 파일 시스템의 다른 곳에서 플레이를 사용하기 위해 다음을 수행하라:
-* **activator** 디렉터리를 패스에 추가하라 ([전반적인 설치 작업](#add-executables-to-path)을 살펴보자).
+
+* **activator** 디렉터리를 패스에 추가하라 ([전반적인 설치 작업](#실행-가능하도록-경로-추가)을 살펴보자).
 
 아주 간단하게 `play-java`기반의 `my-first-app` 템플릿을 생성할 수 있다:
 

@@ -19,7 +19,7 @@ $ activator new my-first-app play-scala
 $ activator new my-first-app play-java
 ```
 
-위에서 어느 경우에나 애플리케이션에 사용하고싶은 이름으로 `my-first-app`을 변경할 수 있다. 액티베이터는 이 이름을 생성한 애플리케이션의 디렉터리 이름으로 사용할 것이다. 만약에 원한다면 이후에 이 이름을 변경할 수 있다.
+위에서 어느 경우에나 애플리케이션에 사용하고 싶은 이름으로 `my-first-app`을 변경할 수 있다. 액티베이터는 이 이름을 생성한 애플리케이션의 디렉터리 이름으로 사용할 것이다. 만약에 원한다면 이후에 이 이름을 변경할 수 있다.
 
 [[images/activatorNew.png]]
 
