@@ -2,6 +2,10 @@
 
 This project is translating play framework doc to korean.
 
+# 일정
+
+* 일정 : 2015.06.01 ~ 2015.08.31 (; about three months)
+
 # Word 
 
 - activator : 액티베이터
