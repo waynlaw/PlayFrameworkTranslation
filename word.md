@@ -9,6 +9,7 @@
 - configuration : 환경설정
 - directory : 디렉터리
 - layout : 레이아웃
+- redirect : 리다이렉트
 - routes : 라우트
 - resource : 자원
 - source : 소스

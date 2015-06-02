@@ -2,6 +2,8 @@
 # Introducing Play 2
 
 Since 2007, we have been working on making Java web application development easier. Play started as an internal project at [Zenexity](http://www.zenexity.com) and was heavily influenced by our way of doing web projects: focusing on developer productivity, respecting web architecture, and using a fresh approach to packaging conventions from the start - breaking so-called JEE best practices where it made sense.
+2007년부터 자바 웹 애플리케이션 개발을 쉽게 하도록 만드는 작업을 시작했다. 플레이는 [Zenexity](http://www.zenexity.com)의 내부 프로젝트로 시작되었고 웹 프로젝트를 수행하는 방법으로 많은 영향을 끼치고 있었다: 개발자 생산성에 집중하고 웹 구조를 존중하며 
+
 
 In 2009, we decided to share these ideas with the community as an open source project. The immediate feedback was extremely positive and the project gained a lot of traction. Today - after two years of active development - Play has several versions, an active community of 4,000 people, with a growing number of applications running in production all over the globe.
 
