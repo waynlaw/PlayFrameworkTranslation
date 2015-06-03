@@ -16,3 +16,7 @@
 - module : 모듈
 - business intelligence : 비지니스 인텔리전스
 - instances : 인스턴스
+- third party : 써드파티
+- Appenders : Appenders
+- companion object : 짝 오브젝트 
+- factory method : 펙토리 메소드
