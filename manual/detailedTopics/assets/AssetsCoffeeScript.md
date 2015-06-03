@@ -1,19 +1,20 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
 # Using CoffeeScript
+# 커피스크립트 사용하기
 
-[CoffeeScript](http://coffeescript.org/) is a small and elegant language that compiles into JavaScript. It provides a nice syntax for writing JavaScript code.
+[CoffeeScript](http://coffeescript.org/)는 자바크스립트를 컴파일하는 작지만 우아한 언어이며, 자바스크립트를 작성하는데 멋진 문법을 제공한다.
 
-Compiled assets in Play must be defined in the `app/assets` directory. They are handled by the build process and CoffeeScript sources are compiled into standard JavaScript files. The generated JavaScript files are distributed as standard resources into the same `public/` folder as other unmanaged assets, meaning that there is no difference in the way you use them once compiled.
+플레이에서 컴파일할 자산은 `app/assets` 디렉터리에 저장되어야 한다. 이 디렉터리안에 파일들은 빌드중에 처리되며, 커피스크립트 소스는 표준 자바스크립트 파일로 컴파일된다. 생성된 자바스크립트 파일은 다른 관리되지 않는 자원 처럼 `public/` 폴더와 동일하게 보통의 리소스처럼 배포되며, 컴파일된 내역을 사용하는게 다른 자바스크립트와 별반 다르지 않음을 의미한다.
 
-For example a CoffeeScript source file `app/assets/javascripts/main.coffee` will be available as a standard JavaScript resource, at `public/javascripts/main.js`.
+예를 들어 커피스크립트 소스 파일 `app/assets/javascripts/main.coffee`은 보통의 자바스크립트 리소스 `public/javascripts/main.js`처럼 사용가능하다.
 
-CoffeeScript sources are compiled automatically during an `assets` command, or when you refresh any page in your browser while you are running in development mode. Any compilation errors will be displayed in your browser:
+커피스크립트 소스는 `assets` 명령으로 자동으로 컴파일되거나 개발 모드로 플레이를 실행중이라면 브라우저에서 페이지를 새로고침하면 컴파일된다. 컴파일 에러가 발생하면 브라우저에 다음과 같이 표시된다.
 
 [[images/coffeeError.png]]
 
-## Layout
+## 레이아웃
 
-Here is an example layout for using CoffeeScript in your projects:
+프로젝트에서 커피스크립트를 사용을 위한 레이아웃 예제를 살펴보자.
 
 ```
 app
@@ -22,18 +23,19 @@ app
        └ main.coffee   
 ```
 
-You can use the following syntax to use the compiled JavaScript file in your template:
+템플릿에서 컴파일된 자바스크립트 파일을 사용하기 위해 아래 문법을 사용할 수 있다.
 
 ```html
 <script src="@routes.Assets.at("javascripts/main.js")">
 ```
 
-## Enablement and Configuration
+## 환경설정
 
-CoffeeScript compilation is enabled by simply adding the plugin to your plugins.sbt file when using the `PlayJava` or `PlayScala` plugins:
+커피스크립트 컴파일은 `PlayJava`나 `PlayScala` 플러그인을 사용할 때 처럼 plugins.sbt 파일에 간단하게 플러그인을 추가해 활성화 할 수 있다.
 
 ```scala
 addSbtPlugin("com.typesafe.sbt" % "sbt-coffeescript" % "1.0.0")
 ```
 
-The plugin's default configuration is normally sufficient. However please refer to the [plugin's documentation](https://github.com/sbt/sbt-coffeescript#sbt-coffeescript) for information on how it may be configured.
+커피스크립트의 환경설정에 대해서 자세히 알고 싶다면 [플러그인 문서](https://github.com/sbt/sbt-coffeescript#sbt-coffeescript)를 참조하자.
+
