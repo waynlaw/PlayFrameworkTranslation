@@ -9,6 +9,7 @@
 - configuration : 환경설정
 - directory : 디렉터리
 - layout : 레이아웃
+- libraries : 라이브러리
 - redirect : 리다이렉트
 - routes : 라우트
 - resource : 자원
@@ -22,3 +23,7 @@
 - factory method : 펙토리 메소드
 - annotaion : 애노테이션
 - predefined : 기선언
+- play : 플레이
+- stylesheet : 스타일시트
+- public : 공용, 표준 (;To match our sentence, up to you)
+- public assets: 공용 자산
