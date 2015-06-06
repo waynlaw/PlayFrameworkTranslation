@@ -1,5 +1,4 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Using CoffeeScript
 # 커피스크립트 사용하기
 
 [CoffeeScript](http://coffeescript.org/)는 자바크스립트를 컴파일하는 작지만 우아한 언어이며, 자바스크립트를 작성하는데 멋진 문법을 제공한다.
