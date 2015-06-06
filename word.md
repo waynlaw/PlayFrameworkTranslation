@@ -20,3 +20,5 @@
 - Appenders : Appenders
 - companion object : 짝 오브젝트 
 - factory method : 펙토리 메소드
+- annotaion : 애노테이션
+- predefined : 기선언

@@ -12,11 +12,11 @@
 |:----|:---|:---|:---|
 | L |  | ./manual/about/Philosophy.md |  |
 | L |  | ./manual/about/PlayUserGroups.md |  |
-|  |  | ./manual/detailedTopics/assets/Assets.md |  |
-|  |  | ./manual/detailedTopics/assets/AssetsCoffeeScript.md |  |
-|  |  | ./manual/detailedTopics/assets/AssetsJSHint.md |  |
-|  |  | ./manual/detailedTopics/assets/AssetsLess.md |  |
-|  |  | ./manual/detailedTopics/assets/RequireJS-support.md |  |
+| L |  | ./manual/detailedTopics/assets/Assets.md |  |
+| L |  | ./manual/detailedTopics/assets/AssetsCoffeeScript.md |  |
+| L |  | ./manual/detailedTopics/assets/AssetsJSHint.md |  |
+| L |  | ./manual/detailedTopics/assets/AssetsLess.md |  |
+| L |  | ./manual/detailedTopics/assets/RequireJS-support.md |  |
 |  |  | ./manual/detailedTopics/build/AggregatingReverseRouters.md |  |
 |  |  | ./manual/detailedTopics/build/Build.md |  |
 |  |  | ./manual/detailedTopics/build/CompilationSpeed.md |  |

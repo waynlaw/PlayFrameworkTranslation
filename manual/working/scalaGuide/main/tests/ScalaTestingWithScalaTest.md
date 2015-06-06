@@ -1,25 +1,25 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Testing your application with ScalaTest
+# ScalaTest를 사용한 애플리케이션 테스트 하기
 
-Writing tests for your application can be an involved process. Play provides helpers and application stubs, and ScalaTest provides an integration library, [ScalaTest + Play](http://scalatest.org/plus/play), to make testing your application as easy as possible.
+애플리케이션을 위한 테스트를 작성하는 것 또한 관련있는 프로세스이다. 플레이는 테스트를 위한 대용 애플리케이션이나 도움을 주는 기능들 ScalaTest를 통합된 라이브러리로 제공한다. [ScalaTest + Play](http://scalatest.org/plus/play)가 애플리케이션 테스트를 쉽게 만들어준다.
 
-## Overview
+## 살펴보기
 
-The location for tests is in the "test" folder.  <!-- There are two sample test files created in the test folder which can be used as templates. -->
+테스트들은 "test"폴더 내에 존재한다.  <!-- 템플릿으로 사용할 수 있는 두개의 샘플 테스트 파일들이 테스트 폴더 내에 존재한다. -->
 
-You can run tests from the Play console.
+테스트들을 플레이 콘솔에서 실행할 수 있다.
 
-* To run all tests, run `test`.
-* To run only one test class, run `test-only` followed by the name of the class, i.e., `test-only my.namespace.MySpec`.
-* To run only the tests that have failed, run `test-quick`.
-* To run tests continually, run a command with a tilde in front, i.e. `~test-quick`.
-* To access test helpers such as `FakeApplication` in console, run `test:console`.
+* 모든 테스트를 실행하기 위해서는 `test`라고 입력한다.
+* 하나의 테스트 클래스를 실행하기 위해서는, `test-only` 명령과 함께, 테스트 하려는 클래스의 이름을 적는다. 예: `test-only my.namespace.MySpec`.
+* 실패한 테스트만을 실행하기 위해서는 `test-quick`라고 입력한다.
+* 테스트를 지속적으로 실행하기 위해서는 물결표시를 앞에 붙여준다. 예: `~test-quick`.
+* `FakeApplication`과 같이 테스트에 도움을 주는 기능을 콘솔에서 접근하기 위해서는, `test:console`를 입력한다.
 
-Testing in Play is based on SBT, and a full description is available in the [testing SBT](http://www.scala-sbt.org/0.13.0/docs/Detailed-Topics/Testing) chapter.
+플레이에서의 테스트는 SBT를 기반으로 되어있으며, 테스트에 대한 자세한 정보는 [SBT 테스트하기](http://www.scala-sbt.org/0.13.0/docs/Detailed-Topics/Testing) 에서 확인할 수 있다.
 
-## Using ScalaTest + Play
+## ScalaTest + Play 사용하기
 
-To use _ScalaTest + Play_, you'll need to add it to your build, by changing `build.sbt` like this:
+_ScalaTest + Play_를 사용하기 위해서는, `build.sbt` 파일을 변경하여, 빌드에 아래와 같이 추가할 필요가 있다.:
 
 ```scala
 libraryDependencies ++= Seq(
@@ -28,19 +28,19 @@ libraryDependencies ++= Seq(
 )
 ```
 
-You do not need to add ScalaTest to your build explicitly. The proper version of ScalaTest will be brought in automatically as a transitive dependency of _ScalaTest + Play_. You will, however, need to select a version of _ScalaTest + Play_ that matches your Play version. You can do so by checking the [Versions, Versions, Versions](http://www.scalatest.org/plus/play/versions) page for _ScalaTest + Play_.
+ScalaTest를 빌드에 명시적으로 추가할 필요는 없다. ScalaTest의 선호하는 버전이 _ScalaTest + Play_의 의존성에 의해 자동으로 받아질 것이다. 그러나 플레이의 버전에 맞춰 _ScalaTest + Play_의 버전을 선택하길 원한다면,  _ScalaTest + Play_의 [버전, 버전, 버전](http://www.scalatest.org/plus/play/versions)페이지에 나온 방법을 사용하여 할 수 있다.
 
-In [_ScalaTest + Play_](http://scalatest.org/plus/play), you define test classes by extending the [`PlaySpec`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.PlaySpec) trait. Here's an example:
+[_ScalaTest + Play_](http://scalatest.org/plus/play)에서는, [`PlaySpec`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.PlaySpec)트레잇을 확장해서 테스트 클래스를 정의할 수 있다. 예제는 아래와 같다.:
 
 @[scalatest-stackspec](code-scalatestplus-play/StackSpec.scala)
 
-You can alternatively [define your own base classes](http://scalatest.org/user_guide/defining_base_classes) instead of using `PlaySpec`.
+`PlaySpec`을 사용하는 대신에 [고유한 기반 클래스들을 정의하기](http://scalatest.org/user_guide/defining_base_classes)를 사용할 수 있다.
 
-You can run your tests with Play itself, or in IntelliJ IDEA (using the [Scala plugin](http://blog.jetbrains.com/scala/)) or in Eclipse (using the [Scala IDE](http://scala-ide.org/) and the [ScalaTest Eclipse plugin](http://scalatest.org/user_guide/using_scalatest_with_eclipse)).  Please see the [[IDE page|IDE]] for more details.
+플레이 자체를 사용하여 테스트 클래스들을 바로 실행할 수 있다. 또는 IntelliJ IDEA ([Scala 플러그인 사용하기](http://blog.jetbrains.com/scala/)) 나, Eclipse ([Scala IDE](http://scala-ide.org/)와 [ScalaTest Eclipse plugin](http://scalatest.org/user_guide/using_scalatest_with_eclipse)사용하기)를 사용해서 실행할 수 있다. [[IDE page|IDE]]에서 더 상세한 정보를 얻을 수 있다.
 
 ### Matchers
 
-`PlaySpec` mixes in ScalaTest's [`MustMatchers`](http://doc.scalatest.org/2.1.5/index.html#org.scalatest.MustMatchers), so you can write assertions using ScalaTest's matchers DSL:
+ScalaTest의 [`MustMatchers`](http://doc.scalatest.org/2.1.5/index.html#org.scalatest.MustMatchers)안에 `PlaySpec`이 포함되어 있다. ScalaTest의 Matcher DSL을 사용하여 검증하는 코드를 작성할 수 있다.:
 
 ```scala
 import play.api.test.Helpers._
@@ -48,25 +48,25 @@ import play.api.test.Helpers._
 "Hello world" must endWith ("world")
 ```
 
-For more information, see the documentation for [`MustMatchers`](http://doc.scalatest.org/2.1.5/index.html#org.scalatest.MustMatchers).
+[`MustMatchers`](http://doc.scalatest.org/2.1.5/index.html#org.scalatest.MustMatchers)문서를 확인하여 보다 상세한 정보를 얻을 수 있다.
 
 ### Mockito
 
-You can use mocks to isolate unit tests against external dependencies.  For example, if your class depends on an external `DataService` class, you can feed appropriate data to your class without instantiating a `DataService` object.
+가짜 객체를 사용하여 외부의 의존성과 독립된 테스들을 만들 수 있다. 예를 들면, 만일 클래스가 `DataService` 클래스에 의존성을 가지고 있다면, `DataService` 객체를 생성하지 않고 적절한 데이터를 클래스에 제공할 수 있다.
 
-ScalaTest provides integration with [Mockito](https://code.google.com/p/mockito/) via its [`MockitoSugar`](http://doc.scalatest.org/2.1.5/index.html#org.scalatest.mock.MockitoSugar) trait.
+ScalaTest는 [Mockito](https://code.google.com/p/mockito/)와의 통합을 [`MockitoSugar`](http://doc.scalatest.org/2.1.5/index.html#org.scalatest.mock.MockitoSugar) 트레잇을 통해 제공한다.
 
-To use Mockito, mix `MockitoSugar` into your test class and then use the Mockito library to mock dependencies:
+Mockito를 사용하기 위해서는, `MockitoSugar`를 테스트 클레스 안에 섞어넣은 다음 가짜 의존성을 위해Mockito라이브러리를 사용해야 한다.:
 
 @[scalatest-mockito-dataservice](code-scalatestplus-play/ExampleMockitoSpec.scala)
 
 @[scalatest-mockitosugar](code-scalatestplus-play/ExampleMockitoSpec.scala)
 
-Mocking is especially useful for testing the public methods of classes.  Mocking objects and private methods is possible, but considerably harder.
+가짜 객체를 만드는 것은 클래스의 공개된 함수들을 테스트 하는데 특별히 유용하다. 가짜 객체로 공개되지 않은 함수들을 테스트 하는 것도 가능은 하지만, 몹시 힘들것이다.
 
-## Unit Testing Models
+## 유닛 테스트 모델들
 
-Play does not require models to use a particular database data access layer.  However, if the application uses Anorm or Slick, then frequently the Model will have a reference to database access internally.
+플레이는 특 데이터베이스에 접근하기 레이어 모델을 필요로 하지 않는다. 하지만 만일 애플리케이션이 Anorm 이나 Slick을 사용한다면, 내부적으로 모델이 데이터 베이스에 빈번하게 접근하게 될것이다.
 
 ```scala
 import anorm._
@@ -79,9 +79,9 @@ case class User(id: String, name: String, email: String) {
 }
 ```
 
-For unit testing, this approach can make mocking out the `roles` method tricky.
+유닛 테스트를 위해서, 이러한 접근은 `roles` 함수를 가상으로 까다롭게 만들도록 한다.
 
-A common approach is to keep the models isolated from the database and as much logic as possible, and abstract database access behind a repository layer.
+일반적인 접근 방법은 모델을 데이터베이스와 독립적으로 유지하며, 가능한 더 많은 기능을 넣을 수 있다. 그리고 추상화된 데이터 베이스 접근이 저장소 레이어를 통해 이루어진다.
 
 @[scalatest-models](code/models/User.scala)
 
@@ -98,34 +98,32 @@ class AnormUserRepository extends UserRepository {
 }
 ```
 
-and then access them through services:
+그리고 그것들을 서비스들을 통해 접근할 수 있다.:
 
 @[scalatest-userservice](code/services/UserService.scala)
 
-In this way, the `isAdmin` method can be tested by mocking out the `UserRepository` reference and passing it into the service:
+이 방법으로는, `UserRepository`를 가상으로 만들어 `isAdmin` 함수를 테스트할 수 있다. 그것을 접근하고 서비스를 통해 전달할 수도 있다.:
 
 @[scalatest-userservicespec](code-scalatestplus-play/UserServiceSpec.scala)
 
-## Unit Testing Controllers
+## 유닛 테스팅 컨트롤러들
 
-Controllers are defined as objects in Play, and so can be trickier to unit test.  In Play this can be alleviated by [[dependency injection|ScalaDependencyInjection]] using [`getControllerInstance`](api/scala/index.html#play.api.GlobalSettings@getControllerInstance).  Another way to finesse unit testing with a controller is to use a trait with an [explicitly typed self reference](http://www.naildrivin5.com/scalatour/wiki_pages/ExplcitlyTypedSelfReferences) to the controller:
+컨트롤러는 플레이의 오브젝트로 정의되어 있다. 그렇기 때문에 테스트하기가 까다롭다. 플레이에서는 [`getControllerInstance`](api/scala/index.html#play.api.GlobalSettings@getControllerInstance)를 통해서 [[의존성 주입|ScalaDependencyInjection]] 을 함으로써 문제를 완화할 수 있다. 컨트롤러를 테스트할 수 있는 다른 방법은 트레잇을 [명시적인 타입의 자신 접근](http://www.naildrivin5.com/scalatour/wiki_pages/ExplcitlyTypedSelfReferences)과 함께 컨트롤러에 사용함으로써 가능다.:
 
 @[scalatest-examplecontroller](code-scalatestplus-play/ExampleControllerSpec.scala)
 
-and then test the trait:
+그리고 트레잇을 테스트다.
 
 @[scalatest-examplecontrollerspec](code-scalatestplus-play/ExampleControllerSpec.scala)
 
-When testing POST requests with, for example, JSON bodies, you won't be able to
-use the pattern shown above (`apply(fakeRequest)`); instead you should use
-`call()` on the `testController`:
+JSON의 몸체와 같은 POST 요청을 테스트 하려면, 위에서와 같이 (`apply(fakeRequest)`)을 사용해서는 할 수 없다.; 대신 `testController`의 `call()`을 사용해야 다. :
 
 @[scalatest-examplepost](code-scalatestplus-play/ExamplePostSpec.scala)
 
-## Unit Testing EssentialAction
+## 유닛 테스트의 EssentialAction
 
-Testing [`Action`](api/scala/index.html#play.api.mvc.Action) or [`Filter`](api/scala/index.html#play.api.mvc.Filter) can require to test an an [`EssentialAction`](api/scala/index.html#play.api.mvc.EssentialAction) ([[more information about what an EssentialAction is|HttpApi]])
+[`Action`](api/scala/index.html#play.api.mvc.Action)이나 [`Filter`](api/scala/index.html#play.api.mvc.Filter)의 테스트는 [`EssentialAction`](api/scala/index.html#play.api.mvc.EssentialAction)테스트를 필요로 한다. ([[ EssentialAction에 대한 추가적인 정보|HttpApi]])
 
-For this, the test [`Helpers.call`](api/scala/index.html#play.api.test.Helpers@call) can be used like that:
+이것을 위해서는, [`Helpers.call`](api/scala/index.html#play.api.test.Helpers@call) 을 아래와 같이 사용하십시오.:
 
 @[scalatest-exampleessentialactionspec](code-scalatestplus-play/ExampleEssentialActionSpec.scala)
