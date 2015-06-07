@@ -1,24 +1,26 @@
 # Word 
 
 - activator : 액티베이터
-- assets : 자산
+- annotaion : 애노테이션
+- Appenders : Appenders
 - application : 애플리케이션
+- assets : 자산
 - business : 비즈니
+- business intelligence : 비지니스 인텔리전스
 - classpath : 클래스패스
+- companion object : 짝 오브젝트 
 - component : 구성요소
 - configuration : 환경설정
+- context : 컨텍스
+- controller : 컨트롤러
 - directory : 디렉터리
-- layout : 레이아웃
-- redirect : 리다이렉트
-- routes : 라우트
-- resource : 자원
-- source : 소스
-- module : 모듈
-- business intelligence : 비지니스 인텔리전스
-- instances : 인스턴스
-- third party : 써드파티
-- Appenders : Appenders
-- companion object : 짝 오브젝트 
 - factory method : 펙토리 메소드
-- annotaion : 애노테이션
+- instances : 인스턴스
+- layout : 레이아웃
+- module : 모듈
 - predefined : 기선언
+- redirect : 리다이렉트
+- resource : 자원
+- routes : 라우트
+- source : 소스
+- third party : 써드파티
