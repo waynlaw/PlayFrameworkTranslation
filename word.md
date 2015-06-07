@@ -27,3 +27,4 @@
 - stylesheet : 스타일시트
 - public : 공용, 표준 (;To match our sentence, up to you)
 - public assets: 공용 자산
+- Unix : 유닉스
