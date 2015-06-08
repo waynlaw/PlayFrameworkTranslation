@@ -49,7 +49,7 @@ _ScalaTest + Play_가 `OneAppPerSuite`와 `OneAppPerTest` 모두를 제공하기
 
 ## 웹 브라우저와 함께 테스트 하기
 
-_ScalaTest + Play_ 라이브러리를 ScalaTest의 [Selenium DSL](http://doc.scalatest.org/2.1.5/index.html#org.scalatest.selenium.WebBrowser)으로 만들면 플레이 애플리케이션을 웹 브라우져에서 테스트하기 쉽게 만들어 준다.
+_ScalaTest + Play_ 라이브러리를 ScalaTest의 [Selenium DSL](http://doc.scalatest.org/2.1.5/index.html#org.scalatest.selenium.WebBrowser)으로 만들면 플레이 애플리케이션을 웹 브라우저에서 테스트하기 쉽게 만들어 준다.
 
 테스트 클래스 내의 모든 테스트들을 동일한 웹 브라우저 객체를 가지고 테스트 하기 위해서는 [`OneBrowserPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.OneBrowserPerSuite)을 테스트 클래스내에 넣어야 한다. 또한 [`BrowserFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.BrowserFactory)트레이트을 넣으면 다음의 Selenium웹 드라이버중 하나를 제공해 줄 것이다. [`ChromeFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ChromeFactory), [`FirefoxFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.FirefoxFactory), [`HtmlUnitFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.HtmlUnitFactory), [`InternetExplorerFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.InternetExplorerFactory), [`SafariFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.SafariFactory).
 
@@ -59,31 +59,31 @@ _ScalaTest + Play_ 라이브러리를 ScalaTest의 [Selenium DSL](http://doc.sca
 
 @[scalafunctionaltest-onebrowserpersuite](code-scalatestplus-play/onebrowserpersuite/ExampleSpec.scala)
 
-만일 각각의 테스트가 새로운 브라우져 객체를 필요로 한다면, [`OneBrowserPerTest`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.OneBrowserPerSuite)를 사용하면 된다. `OneBrowserPerSuite`를 사용하는 것처럼 `ServerProvider` 와 `BrowserFactory`를 추가해야 할 것이다.
+만일 각각의 테스트가 새로운 브라우저 객체를 필요로 한다면, [`OneBrowserPerTest`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.OneBrowserPerSuite)를 사용하면 된다. `OneBrowserPerSuite`를 사용하는 것처럼 `ServerProvider` 와 `BrowserFactory`를 추가해야 할 것이다.
 
 @[scalafunctionaltest-onebrowserpertest](code-scalatestplus-play/onebrowserpertest/ExampleSpec.scala)
 
 만일 여러개의 테스트 클래스들이 하나의 동일한 브라우저 객체를 사용해야 한다면, [`OneBrowserPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.OneBrowserPerSuite)를 마스터 테스트 케이스에 넣고, [`ConfiguredBrowser`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ConfiguredBrowser)를 여러 내장된 테스트 들에 넣으면, 모든 테스트들이 동일한 웹 브라우저를 사용하게 될 것이다. 다음의 문서에 예가 나와있다. [`ConfiguredBrowser`트레이트을 위한 문서](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ConfiguredBrowser).
 
-## 동일한 테스트를 여러 브라우져들에서 실행하는 방법
+## 동일한 테스트를 여러 브라우저들에서 실행하는 방법
 
-만일 어플리케이션이 지원하는 모든 브라우져에서 올바르게 동작하는지를 확인하기 위해서, 테스트들을 여러 브라우져들에서 실행하길 원할 수 있다. 이런 경우에는 [`AllBrowsersPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.AllBrowsersPerSuite)이나 [`AllBrowsersPerTest`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.AllBrowsersPerTest)와 같은 트레이트을 사용할 수 있다.
-이런 트레이트들은 모두 `IndexedSeq[BrowserInfo]`형식의 `browsers`필드를 가지고 있으며, `BrowserInfo`를 받는 추상화된 `sharedTests` 함수를 가지고 있다. `browsers`필드는 테스트를 실행하기를 원하는 브라우져에 대해서 알려주는 기능을 한다. Chrome, Firefox, Internet Explorer, `HtmlUnit`그리고 Safari가 기본값이다. 기본값이 원하는 브라우져들과 맞지 않는 경우에는 `browsers`를 재정의 할 수 있다. 여러개의 브라우져에서 실행하기 원하는 테스트들은 `sharedTests` 함수에 정의할 수 있다. 각각의 테스트의 이름 끝에는 browser.name을 기재하여야 한다. (`sharedTests`에 넘겨진`BrowserInfo`에 있는 브라우져의 이름이 사용 가능하다.) `AllBrowsersPerSuite`를 사용하는 예제는 아래와 같다.
+만일 어플리케이션이 지원하는 모든 브라우저에서 올바르게 동작하는지를 확인하기 위해서, 테스트들을 여러 브라우저들에서 실행하길 원할 수 있다. 이런 경우에는 [`AllBrowsersPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.AllBrowsersPerSuite)이나 [`AllBrowsersPerTest`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.AllBrowsersPerTest)와 같은 트레이트을 사용할 수 있다.
+이런 트레이트들은 모두 `IndexedSeq[BrowserInfo]`형식의 `browsers`필드를 가지고 있으며, `BrowserInfo`를 받는 추상화된 `sharedTests` 함수를 가지고 있다. `browsers`필드는 테스트를 실행하기를 원하는 브라우저에 대해서 알려주는 기능을 한다. Chrome, Firefox, Internet Explorer, `HtmlUnit`그리고 Safari가 기본값이다. 기본값이 원하는 브라우저들과 맞지 않는 경우에는 `browsers`를 재정의 할 수 있다. 여러개의 브라우저에서 실행하기 원하는 테스트들은 `sharedTests` 함수에 정의할 수 있다. 각각의 테스트의 이름 끝에는 browser.name을 기재하여야 한다. (`sharedTests`에 넘겨진`BrowserInfo`에 있는 브라우저의 이름이 사용 가능하다.) `AllBrowsersPerSuite`를 사용하는 예제는 아래와 같다.
 
 
 @[scalafunctionaltest-allbrowserspersuite](code-scalatestplus-play/allbrowserspersuite/ExampleSpec.scala)
 
-`sharedTests`에 정의된 모든 테스트 들은 `browsers`필드에 나와있는 모든 브라우져들에서 동작한다. 그렇기 때문에 동작하는 시스템에 따라 오래걸릴 수 있다. 만일 동작하는 시스템에서 지원하지 않는 브라우져에 대한 테스트라면 자동으로 취소된다. 각각의 테스트가 고유한 이름을 가지고 있는지(이는 ScalaTest를 위해 필요하다.)를 확실하게 위해 수작업으로 `browser.name` 을 테스트 이름에 추가해야 한다. 만일 이렇게 하지 않고 둔다면, 중복된-테스트-이름-오류가 테스트들을 실행할 때 나타날 것이다.
+`sharedTests`에 정의된 모든 테스트 들은 `browsers`필드에 나와있는 모든 브라우저들에서 동작한다. 그렇기 때문에 동작하는 시스템에 따라 오래걸릴 수 있다. 만일 동작하는 시스템에서 지원하지 않는 브라우저에 대한 테스트라면 자동으로 취소된다. 각각의 테스트가 고유한 이름을 가지고 있는지(이는 ScalaTest를 위해 필요하다.)를 확실하게 위해 수작업으로 `browser.name` 을 테스트 이름에 추가해야 한다. 만일 이렇게 하지 않고 둔다면, 중복된-테스트-이름-오류가 테스트들을 실행할 때 나타날 것이다.
 
-[`AllBrowsersPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.AllBrowsersPerSuite) 는 각각의 타입의 브라우져 마다 하나씩 생성되며, `sharedTests`에 정의된 모든 테스트들이 그것을 사용할 것이다. 만일 각각의 테스트가 고유한 새 브라우져 인스턴스를 가지길 원한다면, [`AllBrowsersPerTest`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.AllBrowsersPerTest)를 사용해야 한다.:
+[`AllBrowsersPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.AllBrowsersPerSuite) 는 각각의 타입의 브라우저 마다 하나씩 생성되며, `sharedTests`에 정의된 모든 테스트들이 그것을 사용할 것이다. 만일 각각의 테스트가 고유한 새 브라우저 인스턴스를 가지길 원한다면, [`AllBrowsersPerTest`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.AllBrowsersPerTest)를 사용해야 한다.:
 
 @[scalafunctionaltest-allbrowserspertest](code-scalatestplus-play/allbrowserspertest/ExampleSpec.scala)
 
-`AllBrowsersPerSuite`와 `AllBrowsersPerTest` 모두가 사용할 수 없는 브라우져 형식에 대해서는 테스트를 취소할 것이며, 테스트 결과에는 취소되었다고 표시될 것이다. 출력을 깨끗하게 하기 위해서는 아래의 예제와 같이 `browsers`를 재정의 하여 이용할 수 없는 브라우져를 제거해야 할 것이다.
+`AllBrowsersPerSuite`와 `AllBrowsersPerTest` 모두가 사용할 수 없는 브라우저 형식에 대해서는 테스트를 취소할 것이며, 테스트 결과에는 취소되었다고 표시될 것이다. 출력을 깨끗하게 하기 위해서는 아래의 예제와 같이 `browsers`를 재정의 하여 이용할 수 없는 브라우저를 제거해야 할 것이다.
 
 @[scalafunctionaltest-allbrowserspersuite](code-scalatestplus-play/allbrowserspersuite/ExampleOverrideBrowsersSpec.scala)
 
-위의 테스트 클래스는 오직 Firefox와 Chrome에 대해서만 공유된 테스트들을 시도할 것이다.(그리고 사용할 수 없는 브라우져에 대해서는 자동으로 취소할 것이다.) 
+위의 테스트 클래스는 오직 Firefox와 Chrome에 대해서만 공유된 테스트들을 시도할 것이다.(그리고 사용할 수 없는 브라우저에 대해서는 자동으로 취소할 것이다.) 
 
 ## PlaySpec
 
