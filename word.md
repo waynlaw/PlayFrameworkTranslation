@@ -14,7 +14,7 @@
 - context : 컨텍스
 - controller : 컨트롤러
 - directory : 디렉터리
-- factory method : 펙토리 메소드
+- factory method : 팩토리 메소드
 - instances : 인스턴스
 - layout : 레이아웃
 - module : 모듈
