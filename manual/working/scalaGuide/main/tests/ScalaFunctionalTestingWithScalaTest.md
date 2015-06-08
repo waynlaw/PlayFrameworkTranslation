@@ -15,7 +15,7 @@ import org.scalatestplus.play._
 ## 가상 애플리케이션
 
 플레이는 종종 실행중인
-[`애플리케이션`](api/scala/index.html#play.api.Application) 을 컨텍스트로 필요로 한다. 보통 [`play.api.Play.current`](api/scala/index.html#play.api.Play$)에서 제공되는 것들의 경우이다.
+[`애플리케이션`](api/scala/index.html#play.api.Application) 을 컨텍스트로 필요로 한다. 보통 [`play.api.Play.current`](api/scala/index.html#play.api.Play$)에서 제공되는 경우이다.
 
 테스트들을 위한 환경을 제공하기 위해서, 플레이는 다른 `전역`객체나, 추가적인 설정, 다른 플러그인들과 함께 설정될 수 있는 [`FakeApplication`](api/scala/index.html#play.api.test.FakeApplication)클래스를 제공한다.
 
@@ -29,11 +29,11 @@ import org.scalatestplus.play._
 
 @[scalafunctionaltest-oneapppertest](code-scalatestplus-play/oneapppertest/ExampleSpec.scala)
 
-_ScalaTest + Play_가 `OneAppPerSuite`와 `OneAppPerTest` 모두를 제공하기 때문에, 공유하는 쪽을 선택하는 것이 테스트들을 가장 빠르게 수행되도록 만든다. 만일 애플리케이션 상태가 성공한 테스트들 간에 공유되길 원한다면, `OneAppPerSuite`을 사용할 수 있다. 그렇지 않고 각각의 테스트가 초기 상태를 필요로 한다면, `OneAppPerTest`나 `OneAppPerSuite` 모두를 사용할 수 있지만 각각의 테스트가 종료될 때 상태를 초기화 해주어야 한다. 만일 여러개의 테스트 들이 동일한 애플리케이션을 공유한다면 테스트들이 가장 빠르게 실행될 것이다. 이와 같은 경우에는 [`ConfiguredApp`을 위한 문서](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ConfiguredApp)의 예제와 같이 [`OneAppPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.OneAppPerSuite)내에 주요한 테스트를 두고, [`ConfiguredApp`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ConfiguredApp) 안에는 내부 테스트를 넣을 수 있다. 위에 나온 어떤 전략을 사용하더라도 테스트들이 가장 빠르게 실핼될 수 있을 것이다.
+_ScalaTest + Play_가 `OneAppPerSuite`와 `OneAppPerTest` 모두를 제공하기 때문에, 공유하는 쪽을 선택하는 것이 테스트들을 가장 빠르게 수행되도록 만든다. 만일 애플리케이션 상태가 성공한 테스트들 간에 공유되길 원한다면, `OneAppPerSuite`을 사용할 수 있다. 그렇지 않고 각각의 테스트가 초기 상태를 필요로 한다면, `OneAppPerTest`나 `OneAppPerSuite` 모두를 사용할 수 있지만 각각의 테스트가 종료될 때 상태를 초기화 해주어야 한다. 만일 여러개의 테스트 들이 동일한 애플리케이션을 공유한다면 테스트들이 가장 빠르게 실행될 것이다. 이와 같은 경우에는 [`ConfiguredApp`을 위한 문서](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ConfiguredApp)의 예제와 같이 [`OneAppPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.OneAppPerSuite)내에 주요한 테스트를 두고, [`ConfiguredApp`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ConfiguredApp) 안에는 내부 테스트를 넣을 수 있다. 위에 나온 어떤 전략을 사용하더라도 테스트들이 가장 빠르게 실행될 수 있을 것이다.
 
 ## 서버와 함께 테스트 하기
 
-가끔은 실제 HTTP를 이용하여 테스트하는 것을 원할때도 있을 것이다. 만일 테스트 클래스내의 모든 테스트들이 동일한 서버 객체를 재사용한다면, [`OneServerPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.OneServerPerSuite)(테스트를 위한 `FakeApplication`안에서도 제공될 것이다.) 안에 포함시킬 수 있다.
+가끔은 실제 HTTP를 이용하여 테스트를 진행해야 한다. 만일 테스트 클래스내의 모든 테스트들이 동일한 서버 객체를 재사용한다면, [`OneServerPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.OneServerPerSuite)(테스트를 위한 `FakeApplication`안에서도 제공될 것이다.) 안에 포함시킬 수 있다.
 
 @[scalafunctionaltest-oneserverpersuite](code-scalatestplus-play/oneserverpersuite/ExampleSpec.scala)
 
@@ -47,11 +47,11 @@ _ScalaTest + Play_가 `OneAppPerSuite`와 `OneAppPerTest` 모두를 제공하기
 
 마지막으로 여러개의 테스트 클래스들이 동일한 서버를 공유하도록 하면, `OneServerPerSuite`나 `OneServerPerTest`보다 더 나은 성능을 낼 수 있다. [`ConfiguredServer`를 위한 문서](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ConfiguredServer)의 예제와 같이 주요 테스트들을 [`OneServerPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.OneServerPerSuite)에 정의해 넣을 수 있으며, [`ConfiguredServer`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ConfiguredServer)에 내부적인 테스트들을 넣을 수 있다.
 
-## 웹 브라우져와 함께 테스트 하기
+## 웹 브라우저와 함께 테스트 하기
 
 _ScalaTest + Play_ 라이브러리를 ScalaTest의 [Selenium DSL](http://doc.scalatest.org/2.1.5/index.html#org.scalatest.selenium.WebBrowser)으로 만들면 플레이 애플리케이션을 웹 브라우져에서 테스트하기 쉽게 만들어 준다.
 
-테스트 클래스 내의 모든 테스트들을 동일한 웹 브라우져 객체를 가지고 테스트 하기 위해서는 [`OneBrowserPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.OneBrowserPerSuite)을 테스트 클래스내에 넣어야 한다. 또한 [`BrowserFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.BrowserFactory)트레이트을 넣으면 다음의 Selenium웹 드라이버중 하나를 제공해 줄 것이다. [`ChromeFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ChromeFactory), [`FirefoxFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.FirefoxFactory), [`HtmlUnitFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.HtmlUnitFactory), [`InternetExplorerFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.InternetExplorerFactory), [`SafariFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.SafariFactory).
+테스트 클래스 내의 모든 테스트들을 동일한 웹 브라우저 객체를 가지고 테스트 하기 위해서는 [`OneBrowserPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.OneBrowserPerSuite)을 테스트 클래스내에 넣어야 한다. 또한 [`BrowserFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.BrowserFactory)트레이트을 넣으면 다음의 Selenium웹 드라이버중 하나를 제공해 줄 것이다. [`ChromeFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ChromeFactory), [`FirefoxFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.FirefoxFactory), [`HtmlUnitFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.HtmlUnitFactory), [`InternetExplorerFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.InternetExplorerFactory), [`SafariFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.SafariFactory).
 
 만일 [`BrowserFactory`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.BrowserFactory) 또한 추가해 넣게 된다면, 다음중 하나를 제공해주는 [`ServerProvider`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ServerProvider)을 필요로 하게 될 것이다. [`OneServerPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.OneServerPerSuite), [`OneServerPerTest`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.OneServerPerTest), or [`ConfiguredServer`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ConfiguredServer).
 
@@ -63,7 +63,7 @@ _ScalaTest + Play_ 라이브러리를 ScalaTest의 [Selenium DSL](http://doc.sca
 
 @[scalafunctionaltest-onebrowserpertest](code-scalatestplus-play/onebrowserpertest/ExampleSpec.scala)
 
-만일 여러개의 테스트 클래스들이 하나의 동일한 브라우져 객체를 사용해야 한다면, [`OneBrowserPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.OneBrowserPerSuite)를 마스터 테스트 케이스에 넣고, [`ConfiguredBrowser`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ConfiguredBrowser)를 여러 내장된 테스트 들에 넣으면, 모든 테스트들이 동일한 웹 브라우져를 사용하게 될 것이다. 다음의 문서에 예가 나와있다. [`ConfiguredBrowser`트레이트을 위한 문서](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ConfiguredBrowser).
+만일 여러개의 테스트 클래스들이 하나의 동일한 브라우저 객체를 사용해야 한다면, [`OneBrowserPerSuite`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.OneBrowserPerSuite)를 마스터 테스트 케이스에 넣고, [`ConfiguredBrowser`](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ConfiguredBrowser)를 여러 내장된 테스트 들에 넣으면, 모든 테스트들이 동일한 웹 브라우저를 사용하게 될 것이다. 다음의 문서에 예가 나와있다. [`ConfiguredBrowser`트레이트을 위한 문서](http://doc.scalatest.org/plus-play/1.0.0/index.html#org.scalatestplus.play.ConfiguredBrowser).
 
 ## 동일한 테스트를 여러 브라우져들에서 실행하는 방법
 
