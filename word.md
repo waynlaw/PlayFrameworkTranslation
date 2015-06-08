@@ -5,10 +5,10 @@
 - Appenders : Appenders
 - application : 애플리케이션
 - assets : 자산
-- business : 비즈니
+- business : 비즈니스
 - business intelligence : 비지니스 인텔리전스
 - classpath : 클래스패스
-- companion object : 짝 오브젝트 
+- companion object : 컴패니언 오브젝트 
 - component : 구성요소
 - configuration : 환경설정
 - context : 컨텍스
