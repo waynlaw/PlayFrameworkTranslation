@@ -20,3 +20,6 @@
 - Appenders : Appenders
 - companion object : 짝 오브젝트 
 - factory method : 펙토리 메소드
+- built-in : 내장형
+- incoming : 들어오는 
+- static : 스테틱

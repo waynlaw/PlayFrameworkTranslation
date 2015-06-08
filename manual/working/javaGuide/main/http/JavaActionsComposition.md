@@ -1,11 +1,11 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
 # Action composition
 
-This chapter introduces several ways to define generic action functionality.
+이번 챕터에서는 일반적인 action 기능을 정의하는 몇가지 방법에 대해 소개한다.
 
-## Reminder about actions
+## action에서 기억해야 하는 것
 
-Previously, we said that an action is a Java method that returns a `play.mvc.Result` value. Actually, Play manages internally actions as functions. Because Java doesn't yet support first class functions, an action provided by the Java API is an instance of [`play.mvc.Action`](api/java/play/mvc/Action.html):
+이전에 말했듯이 action은 `play.mvc.Result`을 리턴하는 Java 메소드이다. 사실 Play는 내부적으로 function처럼 action을 관리한다. 왜냐하면 Java는 first class functions을 지원하지 않기 때문이다. 사실 Java API에서 제공하는 단일 action은 [`play.mvc.Action`](api/java/play/mvc/Action.html)의 인스턴스이다:
 
 ```java
 public abstract class Action {
@@ -13,43 +13,43 @@ public abstract class Action {
 }
 ```
 
-Play builds a root action for you that just calls the proper action method. This allows for more complicated action composition.
+Play는 root action을 빌드하여, 정해진 action method를 호출 할 수 있게 해준다. 이러한 과정을 통해 더욱 복잡한 action 조합이 가능하다.
 
-## Composing actions
+## action 조합하기
 
-Here is the definition of the `VerboseAction`:
+`VerboseAction`에 대한 정의:
 
 @[verbose-action](code/javaguide/http/JavaActionsComposition.java)
 
-You can compose the code provided by the action method with another `play.mvc.Action`, using the `@With` annotation:
+`play.mvc.Action`가 제공하는 action 메소드를 통해 code 조합을 할 수 있다. `@With` 애노테이션을 사용한다:
 
 @[verbose-index](code/javaguide/http/JavaActionsComposition.java)
 
-At one point you need to delegate to the wrapped action using `delegate.call(...)`.
+`delegate.call(...)`를 사용하여 wrapped(한번 감싸진) action에 위임을 해야 할 때가 있을 수도 있다.
 
-You also mix several actions by using custom action annotations:
+custom action 애노테이션을 이용하면 몇몇 action을 조합할 수도 있다:
 
 @[authenticated-cached-index](code/javaguide/http/JavaActionsComposition.java)
 
-> **Note:**  ```play.mvc.Security.Authenticated``` and ```play.cache.Cached``` annotations and the corresponding predefined Actions are shipped with Play. See the relevant API documentation for more information.
+> **Note:**  ```play.mvc.Security.Authenticated``` 와 ```play.cache.Cached``` 애노테이션 그리고 이에 상응하는 기선언 된 Action들이 Play와 함께 제공 된다. 더 자세한 정보는 관련된 API 문서를 참고하자.
 
-## Defining custom action annotations
+## custom action annotation 정의하기
 
-You can also mark action composition with your own annotation, which must itself be annotated using `@With`:
+자신의 애노테이션을 이용해 action 조합을 표기할 수도 있다. 이 경우 반드시 자기자신을 `@With` 애노테이션을 이용해 표기해야 한다:
 
 @[verbose-annotation](code/javaguide/http/JavaActionsComposition.java)
 
-Your `Action` definition retrieves the annotation as configuration:
+`Action` definition 에서는 애노테이션을 설정으로 검색하게 된다:
 
 @[verbose-annotation-action](code/javaguide/http/JavaActionsComposition.java)
 
-You can then use your new annotation with an action method:
+이제 action 메소드를 이용해여 새로운 애노테이션을 사용할 수 있다:
 
 @[verbose-annotation-index](code/javaguide/http/JavaActionsComposition.java)
 
 ## Annotating controllers
 
-You can also put any action composition annotation directly on the `Controller` class. In this case it will be applied to all action methods defined by this controller.
+`Controller` 클래스에 직접적으로 action 조합 애노테이션을 삽입할 수도 있다. 이 경우 아래의 컨트롤러가 정의한 모든 액션 메소드에 애노테이션이 적용되게 된다.
 
 ```java
 @Authenticated
@@ -60,12 +60,12 @@ public class Admin extends Controller {
 }
 ```
 
-## Passing objects from action to controller
+## action에서 controller로 object 전달하기
 
-You can pass an object from an action to a controller by utilizing the context args map.
+ontext args map을 이용하여 action에서 controller로 object을 전달할 수 있다.
 
 @[pass-arg-action](code/javaguide/http/JavaActionsComposition.java)
 
-Then in an action you can get the arg like this:
+그리고 이 액션에서 아래와 같은 arge를 얻어올 수 있다:
 
 @[pass-arg-action-index](code/javaguide/http/JavaActionsComposition.java)
