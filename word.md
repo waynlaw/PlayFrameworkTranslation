@@ -24,3 +24,4 @@
 - routes : 라우트
 - source : 소스
 - third party : 써드파티
+- trait : 트레이트
