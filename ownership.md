@@ -10,21 +10,21 @@
 
 | Owner | Status | filename | ... | 
 |:----|:---|:---|:---|
-| L |  | ./manual/about/Philosophy.md |  |
-| L |  | ./manual/about/PlayUserGroups.md |  |
+| L | F | ./manual/about/Philosophy.md |  |
+| L | F | ./manual/about/PlayUserGroups.md |  |
 | L |  | ./manual/detailedTopics/assets/Assets.md |  |
-| L |  | ./manual/detailedTopics/assets/AssetsCoffeeScript.md |  |
-| L |  | ./manual/detailedTopics/assets/AssetsJSHint.md |  |
-| L |  | ./manual/detailedTopics/assets/AssetsLess.md |  |
-| L |  | ./manual/detailedTopics/assets/RequireJS-support.md |  |
-|  |  | ./manual/detailedTopics/build/AggregatingReverseRouters.md |  |
-|  |  | ./manual/detailedTopics/build/Build.md |  |
-|  |  | ./manual/detailedTopics/build/CompilationSpeed.md |  |
-|  |  | ./manual/detailedTopics/build/SBTCookbook.md |  |
-|  |  | ./manual/detailedTopics/build/SBTDebugging.md |  |
-|  |  | ./manual/detailedTopics/build/SBTDependencies.md |  |
-|  |  | ./manual/detailedTopics/build/SBTSettings.md |  |
-|  |  | ./manual/detailedTopics/build/SBTSubProjects.md |  |
+| L | F | ./manual/detailedTopics/assets/AssetsCoffeeScript.md |  |
+| L | F | ./manual/detailedTopics/assets/AssetsJSHint.md |  |
+| L | F | ./manual/detailedTopics/assets/AssetsLess.md |  |
+| L | F | ./manual/detailedTopics/assets/RequireJS-support.md |  |
+| L |  | ./manual/detailedTopics/build/AggregatingReverseRouters.md |  |
+| L |  | ./manual/detailedTopics/build/Build.md |  |
+| L |  | ./manual/detailedTopics/build/CompilationSpeed.md |  |
+| L |  | ./manual/detailedTopics/build/SBTCookbook.md |  |
+| L |  | ./manual/detailedTopics/build/SBTDebugging.md |  |
+| L |  | ./manual/detailedTopics/build/SBTDependencies.md |  |
+| L |  | ./manual/detailedTopics/build/SBTSettings.md |  |
+| L |  | ./manual/detailedTopics/build/SBTSubProjects.md |  |
 |  |  | ./manual/detailedTopics/configuration/ApplicationSecret.md |  |
 |  |  | ./manual/detailedTopics/configuration/Configuration.md |  |
 |  |  | ./manual/detailedTopics/configuration/filters/CorsFilter.md |  |
