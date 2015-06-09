@@ -66,7 +66,7 @@ Mockito를 사용하기 위해서는, `MockitoSugar`를 테스트 클레스 안�
 
 ## 유닛 테스트 모델들
 
-플레이는 특 데이터베이스에 접근하기 레이어 모델을 필요로 하지 않는다. 하지만 만일 애플리케이션이 Anorm 이나 Slick을 사용한다면, 내부적으로 모델이 데이터 베이스에 빈번하게 접근하게 될것이다.
+플레이는 특별한 데이터베이스에 접근하기위해서 레이어 모델을 필요로 하지 않는다. 하지만 만일 애플리케이션이 Anorm 이나 Slick을 사용한다면, 내부적으로 모델이 데이터 베이스에 빈번하게 접근하게 될것이다.
 
 ```scala
 import anorm._
@@ -106,13 +106,13 @@ class AnormUserRepository extends UserRepository {
 
 @[scalatest-userservicespec](code-scalatestplus-play/UserServiceSpec.scala)
 
-## 유닛 테스팅 컨트롤러들
+## 컨트롤러들을 유닛 테스트 하기
 
-컨트롤러는 플레이의 오브젝트로 정의되어 있다. 그렇기 때문에 테스트하기가 까다롭다. 플레이에서는 [`getControllerInstance`](api/scala/index.html#play.api.GlobalSettings@getControllerInstance)를 통해서 [[의존성 주입|ScalaDependencyInjection]] 을 함으로써 문제를 완화할 수 있다. 컨트롤러를 테스트할 수 있는 다른 방법은 트레잇을 [명시적인 타입의 자신 접근](http://www.naildrivin5.com/scalatour/wiki_pages/ExplcitlyTypedSelfReferences)과 함께 컨트롤러에 사용함으로써 가능다.:
+컨트롤러는 플레이의 오브젝트로 정의되어 있다. 그렇기 때문에 테스트하기가 까다로울 수 있다. 플레이에서는 [`getControllerInstance`](api/scala/index.html#play.api.GlobalSettings@getControllerInstance)를 통해서 [[의존성 주입|ScalaDependencyInjection]] 을 함으로써 문제를 완화할 수 있다. 컨트롤러를 테스트할 수 있는 다른 방법은 트레잇을 [명시적인 타입의 자신 접근](http://www.naildrivin5.com/scalatour/wiki_pages/ExplcitlyTypedSelfReferences)과 함께 컨트롤러에 사용함으로써 가능하다.:
 
 @[scalatest-examplecontroller](code-scalatestplus-play/ExampleControllerSpec.scala)
 
-그리고 트레잇을 테스트다.
+그리고 트레잇을 테스트한다.
 
 @[scalatest-examplecontrollerspec](code-scalatestplus-play/ExampleControllerSpec.scala)
 
@@ -124,6 +124,6 @@ JSON의 몸체와 같은 POST 요청을 테스트 하려면, 위에서와 같이
 
 [`Action`](api/scala/index.html#play.api.mvc.Action)이나 [`Filter`](api/scala/index.html#play.api.mvc.Filter)의 테스트는 [`EssentialAction`](api/scala/index.html#play.api.mvc.EssentialAction)테스트를 필요로 한다. ([[ EssentialAction에 대한 추가적인 정보|HttpApi]])
 
-이것을 위해서는, [`Helpers.call`](api/scala/index.html#play.api.test.Helpers@call) 을 아래와 같이 사용하십시오.:
+이것을 위해서는, [`Helpers.call`](api/scala/index.html#play.api.test.Helpers@call) 을 아래와 같이 사용해야 한다.:
 
 @[scalatest-exampleessentialactionspec](code-scalatestplus-play/ExampleEssentialActionSpec.scala)
