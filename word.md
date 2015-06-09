@@ -1,30 +1,33 @@
 # Word 
 
 - activator : 액티베이터
-- assets : 자산
+- annotaion : 애노테이션
+- Appenders : Appenders
 - application : 애플리케이션
-- business : 비즈니
+- assets : 자산
+- business : 비즈니스
+- business intelligence : 비지니스 인텔리전스
 - classpath : 클래스패스
+- companion object : 컴패니언 오브젝트 
 - component : 구성요소
 - configuration : 환경설정
+- context : 컨텍스
+- controller : 컨트롤러
 - directory : 디렉터리
+- factory method : 팩토리 메소드
+- instances : 인스턴스
 - layout : 레이아웃
 - libraries : 라이브러리
-- redirect : 리다이렉트
-- routes : 라우트
-- resource : 자원
-- source : 소스
 - module : 모듈
-- business intelligence : 비지니스 인텔리전스
-- instances : 인스턴스
-- third party : 써드파티
-- Appenders : Appenders
-- companion object : 짝 오브젝트 
-- factory method : 펙토리 메소드
-- annotaion : 애노테이션
 - predefined : 기선언
+- redirect : 리다이렉트
+- resource : 자원
+- routes : 라우트
+- source : 소스
+- third party : 써드파티
 - play : 플레이
 - stylesheet : 스타일시트
 - public : 공용, 표준 (;To match our sentence, up to you)
 - public assets: 공용 자산
 - Unix : 유닉스
+- trait : 트레이트
