@@ -1,5 +1,5 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Action composition
+# Actions 조합하기
 
 이번 챕터에서는 일반적인 action 기능을 정의하는 몇가지 방법에 대해 소개한다.
 

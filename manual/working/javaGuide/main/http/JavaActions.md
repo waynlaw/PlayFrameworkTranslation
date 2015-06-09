@@ -1,7 +1,7 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Actions, Controllers and Results
+# Actions, Controllers 와 Results
 
-## Action은 무엇인가?
+## Actions은 무엇인가?
 
 Play 애플리케이션 받은 대부분의 request는 `Action` 이 처리한다. 
 
@@ -13,7 +13,7 @@ action은 web 클라이언트에게 전송할 HTTP response를 대표하는 `pla
 
 ## Controllers 
 
-controller는 약간의 action 메소드를 묶어놓은 `play.mvc.Controller`를 상속한 것에 지나지 않는다.
+controller는 약간의 action 메소드를 묶어놓은 `play.mvc.Controller`를 상속한 클래스 이다.
 
 @[full-controller](code/javaguide/http/full/Application.java)
 

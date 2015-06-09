@@ -1,5 +1,5 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Body parsers
+# Body 파서
 
 ## What is a body parser?
 
