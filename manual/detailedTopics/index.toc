@@ -1,6 +1,6 @@
-build:The build system
-assets:Working with public assets
-configuration:Configuration
-database:Databases
-evolutions:Managing database evolutions
-production:Deploying your application
+build:빌드 시스템
+assets:공통 자산으로 작업하기
+configuration:환경설정
+database:데이터베이스
+evolutions:데이터베이스 이볼루션 관리하기
+production:애플리케이션 배포하기
