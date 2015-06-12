@@ -107,7 +107,7 @@
 |  |  | ./manual/working/javaGuide/main/http/JavaErrorHandling.md |  |
 |  |  | ./manual/working/javaGuide/main/http/JavaResponse.md |  |
 | S | F | ./manual/working/javaGuide/main/http/JavaRouting.md |  |
-|  |  | ./manual/working/javaGuide/main/http/JavaSessionFlash.md |  |
+| S | F | ./manual/working/javaGuide/main/http/JavaSessionFlash.md |  |
 |  |  | ./manual/working/javaGuide/main/i18n/JavaI18N.md |  |
 |  |  | ./manual/working/javaGuide/main/json/JavaJsonActions.md |  |
 |  |  | ./manual/working/javaGuide/main/logging/JavaLogging.md |  |

@@ -14,33 +14,34 @@ Session과 Flash 데이터가 서버에 저장되어 있다는 것이 아니라,
 
 ## Session에 데이터 저장하기
 
-As the Session is just a Cookie, it is also just an HTTP header, but Play provides a helper method to store a session value:
+Session은 사실 그냥 쿠키이다. 또다른 종류의 HTTP 헤더일 뿐이지만 Play는 session 값을 저장할 수 있도록 헬퍼 메소드를 제공한다:
 
 @[store-session](code/javaguide/http/JavaSessionFlash.java)
 
-The same way, you can remove any value from the incoming session:
+같은 방법으로 incoming session에서 어떤 값이라도 제거할 수 있다:
 
 @[remove-from-session](code/javaguide/http/JavaSessionFlash.java)
 
-## Reading a Session value
+## Session 값 읽기
 
-You can retrieve the incoming Session from the HTTP request:
+HTTP 요청에서 incoming Session세션을 읽어올 수 있다:
 
 @[read-session](code/javaguide/http/JavaSessionFlash.java)
 
-## Discarding the whole session
+## session을 통째로 버리기
 
-If you want to discard the whole session, there is special operation:
+session을 통째로 버리고 싶다면, 특별한 방법이 있다:
 
 @[discard-whole-session](code/javaguide/http/JavaSessionFlash.java)
 
-## Flash scope
+## Flash 스코프
 
-The Flash scope works exactly like the Session, but with two differences:
+Flash 스코프는 Session과 비슷하게 동작하지만, 2가지 다른 점이 있다:
 
-- data are kept for only one request
-- the Flash cookie is not signed, making it possible for the user to modify it.
+- 데이터가 단일 요청까지만 유지된다
+- Flash 쿠키는 인증된 상태가 아니기 (not signed) 때문에 유저가 수정하는 것이 가능하다.
 
+> **중요:** flash 스코프는 간단한 비 Ajax 애플리케이션에서 성공/에러 메시지를 전
 > **Important:** The flash scope should only be used to transport success/error messages on simple non-Ajax applications. As the data are just kept for the next request and because there are no guarantees to ensure the request order in a complex Web application, the Flash scope is subject to race conditions.
 
 So for example, after saving an item, you might want to redirect the user back to the index page, and you might want to display an error on the index page saying that the save was successful.  In the save action, you would add the success message to the flash scope:
