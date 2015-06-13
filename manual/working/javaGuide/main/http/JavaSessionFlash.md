@@ -10,7 +10,6 @@ Session과 Flash 데이터가 서버에 저장되어 있다는 것이 아니라,
 쿠키는 secret key로 암호화 되어 이다. 그래서 클라이언트는 쿠키 정보를 수정할 수 없다(수정하는 경우 사용이 불가능해 질 것이다). Play 세션은 캐시를 사용하도록 설계되지 않았다. 특정 세션과 관계있는 데이터를 캐시해야 하는 경우, Play 내장 cache mechanism을 이용하거나, 타깃 유저의 (캐시 하고자 하는) 데이터와 매핑된 유일한 ID값을 저장하는 용도로 세션을 사용할 수 있다. 
 
 > session에는 별다른 시간제한이 없다. 세션은 유저가 웹 브라우저를 껐을 때 만료된다. 애플리케이션에서 시간 제한을 추가하고 싶은 경우, 애플리케이션에서 필요할 때마다 유저 Session에서 timestamp를 저장하고, 이것을 사용하면 된다. (e.g. 최대 session 기간, 최소 비활성화 기간, 등)
-> There is no technical timeout for the session, which expires when the user closes the web browser. If you need a functional timeout for a specific application, just store a timestamp into the user Session and use it however your application needs (e.g. for a maximum session duration, maximum inactivity duration, etc.).
 
 ## Session에 데이터 저장하기
 
@@ -41,17 +40,17 @@ Flash 스코프는 Session과 비슷하게 동작하지만, 2가지 다른 점�
 - 데이터가 단일 요청까지만 유지된다
 - Flash 쿠키는 인증된 상태가 아니기 (not signed) 때문에 유저가 수정하는 것이 가능하다.
 
-> **중요:** flash 스코프는 간단한 비 Ajax 애플리케이션에서 성공/에러 메시지를 전
-> **Important:** The flash scope should only be used to transport success/error messages on simple non-Ajax applications. As the data are just kept for the next request and because there are no guarantees to ensure the request order in a complex Web application, the Flash scope is subject to race conditions.
+> **중요:** flash 스코프는 간단한 비 Ajax 애플리케이션에서 성공/에러 메시지를 전달하는 용도로만 사용해야 한다. 데이터가 다음 요청까지만 유효하기 때문이다. 또한 복잡한 웹 애플리케이션 에서 요청 순서를 보장해주지 않기 때문이기도 한다. Flash 스코프는 경쟁 조건에 따라 순서가 좌우될 수 있다.
 
-So for example, after saving an item, you might want to redirect the user back to the index page, and you might want to display an error on the index page saying that the save was successful.  In the save action, you would add the success message to the flash scope:
+예를 들어, 아이템을 저장한 이후, 유저를 인덱스 페이지로 돌려보내고 싶을 것이다. 그리고 성공적으로 저장이 되었다는 것을 출력하는 인덱스 페이지에서 에러를 표기하고 싶을 수도 있다.
+이런 저장 과정에서 성공메시지를 flash 스코프에 추가할 수 있다: 
 
 @[store-flash](code/javaguide/http/JavaSessionFlash.java)
 
-Then in the index action, you could check if the success message exists in the flash scope, and if so, render it:
+그리고나서 인덱스 페이지에선 flash 스코프에서 성공 메시지가 존재하는지 확인할 수 있다. 만들어 보자:
 
 @[read-flash](code/javaguide/http/JavaSessionFlash.java)
 
-A flash value is also automatically available in Twirl templates. For example:
+flash 값은 Twirl 템플릿에서 자동 사용이 가능하다. 예를 들어:
 
 @[flash-template](code/javaguide/http/views/index.scala.html)

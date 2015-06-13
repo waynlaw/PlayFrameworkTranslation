@@ -102,10 +102,10 @@
 |  |  | ./manual/working/javaGuide/main/global/JavaInterceptors.md |  |
 | S | F | ./manual/working/javaGuide/main/http/JavaActions.md |  |
 | S | F | ./manual/working/javaGuide/main/http/JavaActionsComposition.md |  |
-|  |  | ./manual/working/javaGuide/main/http/JavaBodyParsers.md |  |
-|  |  | ./manual/working/javaGuide/main/http/JavaContentNegotiation.md |  |
+| S | F | ./manual/working/javaGuide/main/http/JavaBodyParsers.md |  |
+| S | F | ./manual/working/javaGuide/main/http/JavaContentNegotiation.md |  |
 |  |  | ./manual/working/javaGuide/main/http/JavaErrorHandling.md |  |
-|  |  | ./manual/working/javaGuide/main/http/JavaResponse.md |  |
+| S | F | ./manual/working/javaGuide/main/http/JavaResponse.md |  |
 | S | F | ./manual/working/javaGuide/main/http/JavaRouting.md |  |
 | S | F | ./manual/working/javaGuide/main/http/JavaSessionFlash.md |  |
 |  |  | ./manual/working/javaGuide/main/i18n/JavaI18N.md |  |
