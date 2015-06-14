@@ -22,6 +22,7 @@
 - predefined : 기선언
 - redirect : 리다이렉트
 - resource : 자원
+- reverse routing : 리버스 라우팅
 - routes : 라우트
 - source : 소스
 - third party : 써드파티
