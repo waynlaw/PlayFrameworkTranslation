@@ -3,7 +3,7 @@
 
 ## Actions은 무엇인가?
 
-Play 애플리케이션 받은 대부분의 request는 `Action` 이 처리한다. 
+플레이 애플리케이션 받은 대부분의 request는 `Action` 이 처리한다. 
 
 단일 action은 기본적으로 request 파라미터를 처리하는 Java 메소드이다. 그리고 클라이언트에게 전송될 결과를 생성한다.
 

@@ -5,9 +5,9 @@
 
 HTTP 요청은 (최소한 POST, PUT 요청을 해야 하는 경우) body를 포함하고 있다. 이 body는  Content-Type 헤더에서 특정 포멧으로 설정이 가능하다. **body 파서**는 이 요청의 body를 Java 값으로 변환해준다.
 
-> **주의:** `BodyParser`구현체를 Java를 사용해서 재정의 할 수 없다. 왜냐하면 Play의 `BodyParser`는 `Iteratee[Array[Byte], A]`를 사용하여 body content를 추가하는 과정을 제어하는데, 반드시 Scala로 구현이 되어야 하기 때문이다.
+> **주의:** `BodyParser`구현체를 Java를 사용해서 재정의 할 수 없다. 왜냐하면 플레이의 `BodyParser`는 `Iteratee[Array[Byte], A]`를 사용하여 body content를 추가하는 과정을 제어하는데, 반드시 Scala로 구현이 되어야 하기 때문이다.
 
-> 하지만 Play의 `BodyParser`는 대부분 사용 케이스에 적합한 기능을 제공한다(Json, Xml, Text 파싱, 파일 업로드). Java에서 확장해 쓰고 싶다면 기본 파서를 재 사용하는 것도 가능하다. 예를 들어 텍스트 파서를 기본으로 RDF 파서를 만들 수도 있을 것이다.
+> 하지만 플레이의 `BodyParser`는 대부분 사용 케이스에 적합한 기능을 제공한다(Json, Xml, Text 파싱, 파일 업로드). Java에서 확장해 쓰고 싶다면 기본 파서를 재 사용하는 것도 가능하다. 예를 들어 텍스트 파서를 기본으로 RDF 파서를 만들 수도 있을 것이다.
 
 ## `BodyParser` Java API
 
@@ -31,7 +31,7 @@ Java API에서 제공하는 모든 body 파서들은 `play.mvc.Http.RequestBody`
 
 ## 기본 body 파서: AnyContent
 
-특별한 body 파서를 지정하지 않는 이상, Play는 `Content-Type` 헤더에서 적절한 content 타입을 추정하여 기본값으로 지정해 사용하게 된다:
+특별한 body 파서를 지정하지 않는 이상, 플레이는 `Content-Type` 헤더에서 적절한 content 타입을 추정하여 기본값으로 지정해 사용하게 된다:
 
 - **text/plain**: `String`, `asText()`를 통해 접근 가능
 - **application/json**: `JsonNode`, `asJson()`를 통해 접근 가능

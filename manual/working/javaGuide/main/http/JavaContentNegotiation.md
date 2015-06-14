@@ -6,7 +6,7 @@ Content 전략은 같은 자원(URI)을 다른 방법으로 표현할 수 있게
 
 ## 언어
 
-`play.mvc.Http.RequestHeader#acceptLanguages` 메서드를 사용하여 지원할 언어 리스트를 가져올 수 있다. 이 메소드는 `Accept-Language` 헤더에서 해당 정보를 가져와 quality 값에 따라 정렬을 해준다. Play는 HTTP 컨텍스트 요청의 `lang`값을 설정하기 위해 이 리스트를 사용한다. 따라서 자동으로 최적화된 언어를 사용할 수 있게 된다. (사용자 애플리케이션에서 지원할 수 있거나, 애플리케이션이 기본으로 사용하는 언어를 사용하게 된다.)
+`play.mvc.Http.RequestHeader#acceptLanguages` 메서드를 사용하여 지원할 언어 리스트를 가져올 수 있다. 이 메소드는 `Accept-Language` 헤더에서 해당 정보를 가져와 quality 값에 따라 정렬을 해준다. 플레이는 HTTP 컨텍스트 요청의 `lang`값을 설정하기 위해 이 리스트를 사용한다. 따라서 자동으로 최적화된 언어를 사용할 수 있게 된다. (사용자 애플리케이션에서 지원할 수 있거나, 애플리케이션이 기본으로 사용하는 언어를 사용하게 된다.)
 
 
 ## Content
