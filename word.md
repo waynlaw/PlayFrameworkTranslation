@@ -31,3 +31,4 @@
 - incoming : 들어오는 
 - static : 스테틱
 - trait : 트레이트
+- out of the box : 별도 설치 없이

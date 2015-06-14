@@ -104,7 +104,7 @@
 | S | F | ./manual/working/javaGuide/main/http/JavaActionsComposition.md |  |
 | S | F | ./manual/working/javaGuide/main/http/JavaBodyParsers.md |  |
 | S | F | ./manual/working/javaGuide/main/http/JavaContentNegotiation.md |  |
-|  |  | ./manual/working/javaGuide/main/http/JavaErrorHandling.md |  |
+| S | F | ./manual/working/javaGuide/main/http/JavaErrorHandling.md |  |
 | S | F | ./manual/working/javaGuide/main/http/JavaResponse.md |  |
 | S | F | ./manual/working/javaGuide/main/http/JavaRouting.md |  |
 | S | F | ./manual/working/javaGuide/main/http/JavaSessionFlash.md |  |
