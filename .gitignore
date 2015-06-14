@@ -2,3 +2,5 @@ target
 logs
 proejct/project
 project/target
+.project
+.gitignore

@@ -1,64 +1,64 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Introducing Play 2
+# 플레이 2 소개
 
-Since 2007, we have been working on making Java web application development easier. Play started as an internal project at [Zenexity](http://www.zenexity.com) and was heavily influenced by our way of doing web projects: focusing on developer productivity, respecting web architecture, and using a fresh approach to packaging conventions from the start - breaking so-called JEE best practices where it made sense.
-2007년부터 자바 웹 애플리케이션 개발을 쉽게 하도록 만드는 작업을 시작했다. 플레이는 [Zenexity](http://www.zenexity.com)의 내부 프로젝트로 시작되었고 웹 프로젝트를 수행하는 방법으로 많은 영향을 끼치고 있었다: 개발자 생산성에 집중하고 웹 구조를 존중하며 
+우리는 2007년부터 자바 웹 애플리케이션 개발을 쉽게 하도록 만드는 작업을 시작했다. 플레이는 [Zenexity](http://www.zenexity.com)의 내부 프로젝트로 시작되었고 웹 프로젝트를 수행하는 방법에 많은 영향을 끼치고 있었다:
+개발자 생산성에 초점을 맞추고, 웹 구조를 존중하며, 처음부터 새로운 패키지 컨벤션으로 접근했다. 또한 이른바 JEE의 모범 사례를 파괴하려고 했다.
 
+2009년 우리는 이 아이디어를 커뮤니티에 오픈소스 프로젝트로 공유하기로 결정했다. 즉각적인 피드백은 매우 긍정적이었으며, 프로젝트는 많은 영감을 얻을 수 있었다.
+적극적인 개발 2년 후 오늘날 플레이는 많은 버전업이 있었고 실 커뮤니티는 4000명 정도이며, 실 환경 애플리케이션의 수는 전세계적으로 증가하고 있다.
 
-In 2009, we decided to share these ideas with the community as an open source project. The immediate feedback was extremely positive and the project gained a lot of traction. Today - after two years of active development - Play has several versions, an active community of 4,000 people, with a growing number of applications running in production all over the globe.
+프로젝트를 전 세계에 공개하는 것은 확실히 더 많은 피드백을 받을 수 있었다. 그러나 새로운 사용 사례에 대해서 배우고 알게 되었고, 기능이 더 요구되거나 원래 설계하고 추정할 때 특별히 고려하지 않았던 버그들도 발견되었다. 오픈소스 프로젝트로 2년간 플레이로 작업하는 동안 이런 종류의 이슈를 수정했을 뿐만 아니라 더 광범위하게 지원하기 위해 새로운 기능을 통합했다. 프로젝트가 성장함에 따라 우리도 커뮤니티와 커뮤니티원의 경험들로 더 복잡하고 다양하게 플레이에 대해서 많은 것을 배우게 되었다.
 
-Opening a project to the world certainly means more feedback, but it also means discovering and learning about new use cases, requiring features and un-earthing bugs that we were not specifically considered in the original design and its assumptions. During the two years of work on Play as an open source project we have worked to fix this kind of issues, as well as to integrate new features to support a wider range of scenarios. As the project has grown, we have learned a lot from our community and from our own experience - using Play in more and more complex and varied projects.
+한편 그 동안에 웹과 기술은 계속 진화했다. 웹은 이제 모든 애플리케이션의 중심이 되었다. HTML, CSS 자바스크립트 기술은 서버 사이드 프레임 워크를 유지하는 것이 거의 불가능할 만큼 더 빠르게 진화하고 있다. 전체 웹 아키텍처는 실시간 처리를 향해 빠르게 이동하고 있고, 최근 프로젝트 프로파일의 새로운 요구 사항은 SQL은 더 이상 독점적인 데이터 저장소 기술이 아니라는 것이다. 프로그래밍 언어 단계에서 우리는 인기를 얻고 있는 스칼라를 포함하여 몇몇 JVM 언어에서 역사에 길이 남을 만한 변화를 목격하고 있다.
 
-Meanwhile, technology and the web have continued to evolve. The web has become the central point of all applications. HTML, CSS and JavaScript technologies have evolved quickly - making it almost impossible for a server-side framework to keep up. The whole web architecture is fast moving towards real-time processing, and the emerging requirements of today’s project profiles mean SQL no longer works as the exclusive datastore technology. At the programming language level we’ve witnessed some monumental changes with several JVM languages, including Scala, gaining popularity.
+이 것이 새로운 시대를 위한 새로운 웹 프레임워크, 플레이 2를 만들어가는 이유이다.
 
-That’s why we created Play 2, a new web framework for a new era.
+## 비동기 프로그래밍 개발하기
 
-## Built for asynchronous programming
+오늘날에 웹 프레임워크는 더 많은 실시간 병렬 데이터 처리를 통합하고 있고, 그래서 웹 프레임워크는 풀 비동기 HTTP 프로그래밍 모델을 지원할 필요가 있다. 플레이는 초기에 수 많은 짧은 요청을 처리하는 전형적인 웹 애플리케이션으로 설계되었다. 그러나 지금은 이벤트 모델이 롱-폴링과 웹 소켓, 코멧을 통한 지속적인 연결로 갈 수 있는 방법이 되었다.
 
-Today’s web applications are integrating more concurrent real-time data, so web frameworks need to support a full asynchronous HTTP programming model. Play was initially designed to handle classic web applications with many short-lived requests. But now, the event model is the way to go for persistent connections - through Comet, long-polling and WebSockets.
+플레이 2는 모든 요청을 잠재적으로 긴 수명을 가진다는 가정하에 처음부터 구조화한다. 그러나 이것이 전부는 아니다. 우리는 또한 스케쥴링하고 긴 작업을 수행할 강력한 방법이 필요했다. 액터-기반 모델은 의심할 바 없이 거대한 병렬 시스템을 처리하기 위한 최고의 모델이며, 자바와 스칼라로 작성할 수 있는 최고의 구현체는 아카(akka)이다. 그래서 플레이 2는 플레이 애플리케이션을 위한 네이티브 아카를 지원하고 고분산 시스템 작성을 가능하게 한다.
 
-Play 2 is architected from the start under the assumption that every request is potentially long-lived. But that’s not all: we also need a powerful way to schedule and run long-running tasks. The Actor-based model is unquestionably the best model today to handle highly concurrent systems, and the best implementation of that model available for both Java and Scala is Akka - so it’s going in. Play 2 provides native Akka support for Play applications, making it possible to write highly-distributed systems.
+## 타입 안정성에 중점을 두다
 
-## Focused on type safety
+플레이 애플리케이션을 작성하기 위해 정적 타입 프로그래밍 언어를 사용하는 것의 장점은 컴파일러가 코드의 일부를 확인할 수 있다는 점이다. 이는 개발을 수행하는 중에 빠르게 실수를 발견할 수 있는 유일한 방법은 아니지만 수 많은 개발자가 투입되어 있는 큰 프로젝트에서 여러가지로 쉽게 작업을 진행할 수 있다.
 
-One benefit of using a statically-typed programming language for writing Play applications is that the compiler can check parts of your code. This is not only useful for detecting mistakes early in the development process, but it also makes it a lot easier to work on large projects with a lot developers involved.
+플레이 2에서는 스칼라가 추가되어 컴파일러가 보장하는 아주 강력한 이득을 취할 수 있었지만 충분하지는 않았다. 플레이 1.x에서 템플릿 시스템은 그루비 언어를 기반으로하여 아주 다이나믹했지만 컴파일러는 개발자들을 위해 적절하게 동작할 수는 없었다. 결과적으로 템플릿에서 발생한 오류는 실행 중에만 발견되었고, 컨트롤러에는 검증을 위한 코드가 따라 붙게 되었다.
 
-Adding Scala to the mix for Play 2, we clearly benefit from even stronger compiler guarantees - but that’s not enough. In Play 1.x, the template system was dynamic, based on the Groovy language, and the compiler couldn’t do much for you. As a result, errors in templates could only be detected at run-time. The same goes for verification of glue code with controllers.
+우리는 플레이가 프로젝트의 코드를 컴파일 시에 미리 확인한다는 이 아이디어를 플레이 2.0의 기능으로 간절하게 추가하고 싶었다. 이것이 플레이 애플리케이션에 기본으로 스칼라-기반 템플릿 엔진을 사용하기로 결심한 이유다(심지어 프로그래밍 언어로 주로 자바를 사용하는 개발자를 위한 것이기도 하다). 그렇다고해서 플레이 2 템플릿을 작성하기 위해 스칼라 전문가가 되어야 하는 것은 아니며 플레이 1.x의 템플릿을 그루비로 작성할 때 알아야 할만큼 요구되는 것도 아니다.
 
-In version 2.0, we really wanted to push this idea of having Play check most of your code at compilation time further. This is why we decided to use the Scala-based template engine as the default for Play applications - even for developers using Java as the main programming language. This doesn’t mean that you have to become a Scala expert to write templates in Play 2, just as you were not really required to know Groovy to write templates in Play 1.x.
+템플릿에서 스칼라는 주로 관계가 있는 정보를 표현하기 위해 객체 그래프를 탐색하는데 사용되며, 문법은 자바와 매우 유사하다. 아무튼 더 나은 템플릿 추상화를 작성하기 위해 스칼라의 힘을 영접한다면 스칼라가 어떻게 이렇게 빠르고 함수형, 표현-중심적이며 템플릿 엔진에 완벽하게 어울리는지 발견할 수 있을 것이다.
 
-In templates, Scala is mainly used to navigate your object graph in order to display relevant information, with a syntax that is very close to Java’s. However, if you want to unleash the power of Scala to write advanced templates abstractions, you will quickly discover how Scala, being expression-oriented and functional, is a perfect fit for a template engine.
+그리고 템플릿 엔진을 위해 위의 장점만 있는 것이 아니다. 라우팅 시스템 역시 전부 타입을 확인할 수 있다. 플레이 2는 라우트의 명세를 확인하고 리버스 라우팅 부분을 포함하여 밀접하게 결합된 모든 것을 조회하고 확인한다.
 
-And that’s not only true for the template engine: the routing system is also fully type-checked. Play 2 checks your routes’ descriptions, and verifies that everything is consistent, including the reverse routing part.
+또 전체를 컴파일하게 되면 좋은 점은 템플릿과 라우트 파일을 재사용하고 패키지하기 쉽게 된다는 것이며, 또한 실행시에 이 부분에 대해서 상당한 성능 향상을 얻을 수 있다.
 
-A nice side effect of being fully compiled is that the templates and route files will be easier to package and reuse. You also get a significant performance gain on these parts at run-time.
+## 자바와 스칼라를 기본적으로 지원
 
-## Native support for Java and Scala
+플레이 프로젝트 초기에 우리는 플레이 애플리케이션을 위해 스칼라 프로그래밍 언어를 사용의 가능성을 개척하려고 했다. 초기에 이 작업은 외부 모듈로 소개되어 프레임워크에 영향이 가지 않고 자유롭게 실험 할 수 있었다.
 
-Early in the Play project’s history, we started exploring the possibility of using the Scala programming language for writing Play applications. We initially introduced this work as an external module, to be able to experiment freely without impacting the framework itself.
+당연히 자바-기반 프레임워크에 스칼라를 통합하는 것은 어려운 일은 아니었다. 자바와 스칼라의 융합을 고려하여 자바 대신 간단한 스칼라의 문법을 사용하여 빠르게 처음의 간단한 통합을 성취할 수 있다. 그러나 이는 언어를 사용하는 가장 바람직한 방법은 아니었다. 스칼라는 함수형 프로그래밍(functional programming)과 객체지향이 적절하게 섞여 있는 언어이다. 스칼라 언어의 강력한 힘을 이끌어내기 위해 프레임워크의 API를 재 구상할 필요가 있었다.
 
-Properly integrating Scala into a Java-based framework is not trivial. Considering Scala’s compatibility with Java, one can quickly achieve a first naive integration that simply uses Scala’s syntax instead of Java’s. This, however, is certainly not the optimal way of using the language. Scala is a mix of true object orientation with functional programming. Leveraging the full power of Scala requires rethinking most of the framework’s APIs.
+개별 모듈로 스칼라를 지원하는 것이 곧 한계에 도달했다. 플레이 1.x의 초기 설계는 리플렉션 API와 바이트 코드 조작에 아주 심하게 의존하고 있었고 플레이의 내부에 근본적인 부분을 다시 설계하지 않고서는 처리가 어렵게 되어있었다. 그 동안에 새로운 타입-세이프 템플릿 엔진과 획기적인 SQL 접근 컴포넌트인 Anorm처럼 스칼라 모듈을 위한 놀라운 컴포넌트들이 개발되었다. 이것이 플레이가 스칼라와 함께 힘을 발휘하고, 스칼라 지원이 개별 모듈에서 플레이2의 코어가 되도록 변경하게 된 이유이다. 플레이 2는 처음부터 전적으로 프로그래밍 언어로 스칼라 지원하도록 설계되었다.
 
-We quickly reached the limits of what we can do with Scala support as a separate module. Initial design choices we made in Play 1.x, relying heavily on Java reflection API and byte code manipulation, have made it harder to progress without completely rethinking some essential parts of Play’s internals. Meanwhile, we have created several awesome components for the Scala module, such as the new type-safe template engine and the brand new SQL access component Anorm. This is why we decided that, to fully unleash the power of Scala with Play, we would move Scala support from a separate module to the core of Play 2, which is designed from the beginning to natively support Scala as a programming language.
+반면에 자바는 플레이 2에서는 많은 지원을 받지 못하게 되었을까? 사실은 반대이다. 플레이2 빌드는 자바 개발자를 위해 개발 경험을 향상시킬 수 있는 기회를 제공한다. 자바 개발자는 자바 특성을 전부 염두에 둔 실제 자바 API를 사용할 수 있다.
 
-Java, on the other hand, is certainly not getting any less support from Play 2; quite the contrary. The Play 2 build provides us with an opportunity to enhance the development experience for Java developers. Java developers get a real Java API written with all the Java specificity in mind.
+## 강력한 빌드 시스템
 
-## Powerful build system
+우리는 플레이 프로젝트의 초기부터 플레이 애플리케이션을 컴파일하고 배포, 실행하는 새로운 방법을 선택했다. 처음에는 아주 난해한 것처럼 보였으나 라이브 컴파일을 하는동안 짧은 피드백 주기, 개발하는 동안에 소스 코드의 재로드, 새로운 패키지로 승격(promoting a fresh packaging approach), 표준 서블릿 API 대신 비동기 HTTP API를 제공하기 위해 중요한 것이었다. 그 결과로서 플레이가 표준 JEE 컨벤션을 따르도록 만드는 건 사실상 불가능하게 되었다.
 
-From the beginning of the Play project, we have chosen a fresh way to run, compile and deploy Play applications. It may have looked like an esoteric design at first, but it was crucial to providing an asynchronous HTTP API instead of the standard Servlet API, short feedback cycles through live compilation and reloading of source code during development, and promoting a fresh packaging approach. Consequently, it was difficult to make Play follow the standard JEE conventions.
+오늘날 컨테이너가 없는 배포라는 이 아이디어는 자바의 세계에서 점점 더 일반화 되어가고 있다. 이는 플레이 프레임워크가 엘라스틱 PaaS 플랫폼에서 자바 애플리케이션 배포의 미래를 고려하는 모델로 소개된 Heroku같은 플랫폼에서 기본적으로 실행할 수 있도록 된 설계상의 선택이다.
 
-Today, this idea of container-less deployment is increasingly accepted in the Java world. It’s a design choice that has allowed the Play framework to run natively on platforms like Heroku, which introduced a model that we consider the future of Java application deployment on elastic PaaS platforms.
+현존하는 자바 빌드 시스템은 이런 새로운 접근법을 지원하는데 충분히 유연하지 않다. 때문에 플레이 애플리케이션을 배포하고 실행하기 위한 올바른 도구를 제공하길 원했고, 플레이 1.x에서 빌드와 배포 테스크를 처리하는 파이썬 스크립트의 컬렉션을 생성하였다.
 
-Existing Java build systems, however, were not flexible enough to support this new approach. Since we wanted to provide straightforward tools to run and deploy Play applications, in Play 1.x we created a collection of Python scripts to handle build and deployment tasks.
+한편 빌드 프로세스를 사내 빌드 시스템으로 커스터마이징하고 통합이 필요한 더 큰 엔터프라이즈급 스칼라 프로젝트로 플레이를 사용하는 개발자들은 조금 손해를 보게 되었다. 플레이 1.x에서 제공한 파이썬 스크립트는 모든 기능을 제공하는 빌드 시스템이 아니었고 쉽게 커스터마이징 할 수도 없었다. 이것이 플레이 2를 위해 더 강력한 빌드시스템을 구축해야 하는 이유였다.
 
-Meanwhile, developers using Play for more enterprise-scale projects, which require build process customization and integration with their existing company build systems, were a bit lost. The Python scripts we provided with Play 1.x are in no way a fully-featured build system and are not easily customizable. That’s why we’ve decided to go for a more powerful build system for Play 2.
+우리는 플레이의 원래 컨벤션을 지원하는데 충분히 유연하고, 자바와 스칼라 프로젝트를 빌드할 수 있는 모던 빌드 도구가 필요했고, 우리는 sbt를 플레이 2에 통합하기로 결정했다. 그리고 본래 플레이 빌드의 간결함에 심취해있는 플레이 사용자에게 겁을 줄 수 없었다. 우리는 `play new`, `run`, `start`처럼 확장 모델의 상단에 이전 버전과 동일한 간결함을 활용하고 있고, 플레이 2는 대부분의 사용자에게 잘 동작하는 이미 설정된 빌드 스크립트를 함께 제공한다. 다른 한편으로는 애플리케이션을 빌드하고 배포하는 방법을 변경하고 싶다면 플레이 프로젝트는 표준 sbt 프로젝트이므로 sbt 프로젝트가 주는 모든 강력한 커스터마이징과 적용을 선사한다.
 
-Since we need a modern build tool, flexible enough to support Play original conventions and able to build Java and Scala projects, we have chosen to integrate sbt in Play 2. This, however, should not scare existing Play users who are happy with the simplicity of the original Play build. We are leveraging the same simple `play new`, `run`, `start` experience on top of an extensible model: Play 2 comes with a preconfigured build script that will just work for most users. On the other hand, if you need to change the way your application is built and deployed, the fact that a Play project is a standard sbt project gives you all the power you need to customize and adapt it.
+이는 외부의 메이븐 프로젝트와의 통합 환경, 프로젝트를 JAR 파일의 집합으로 불특정한 저장소로 간단하게 배포하거나 패키징하는 기능, 특히 라이브 컴파일 및 심지어 표준 자바나 스칼라 라이브러리 프로젝트같은 의존적인 프로젝트의 개발 시간의 재로드가 가능함을 의미한다.
 
-This also means better integration with Maven projects out of the box, the ability to package and publish your project as a simple set of JAR files to any repository, and especially live compiling and reloading at development time of any depended project, even for standard Java or Scala library projects.
+## 데이터저장소와 모델의 통합
 
-## Datastore and model integration
+‘데이터 저장소’는 더 이상 ‘SQL 데이터베이스’와 동의어가 아니며, 아마 과거에도 절대 그렇지 않았을 것이다. 수 많은 흥미로운 데이터 저장소 모델은 대중적이 되어가고 있으며, 여러가지 시나리오를 위해 다양한 속성을 제공한다. 이러한 사유로 플레이 같은 웹 프레임워크는 개발자가 어떤 종류의 데이터 스토어를 사용할지 추정하기가 어렵게 되었다. 단일 API로 이런 종류의 기술 전부를 추상화하는 것은 거의 불가능하기 때문에 플레이에 일반 모델의 개념은 더 이상 의미가 없어졌다.
 
-‘Data store’ is no longer synonymous with ‘SQL database’, and probably never was. A lot of interesting data storage models are becoming popular, providing different properties for different scenarios. For this reason it has become difficult for a web framework like Play to make bold assumptions regarding the kind of data store that developers will use. A generic model concept in Play no longer makes sense, since it is almost impossible to abstract over all these kinds of technologies with a single API.
-
-In Play 2, we wanted to make it really easy to use any data store driver, ORM, or any other database access library without any special integration with the web framework. We simply want to offer a minimal set of helpers to handle common technical issues, like managing the connection bounds. We also want, however, to maintain the full-stack aspect of Play framework by bundling default tools to access classical databases for users WHO don’t have specialized needs, and that’s why Play 2 comes with built-in relational database access libraries such as Ebean, JPA and Anorm.
+플레이 2에서는 실제로 웹 프레임워크에 어떤 특별한 통합과정 없이도 ORM이나 다른 데이터베이스 접근 라이브러리, 어떤 데이터 저장소 드라이버도 쉽게 사용할 수 있도록 만들고 싶었다. 우리는 간단하게 커넥션 바운드를 관리하는 것처럼 공통 기술적 이슈를 처리하기 위한 헬퍼의 최소 집합을 제공하고 싶었다. 또한 특별한 요구가 없는 사용자를 위한 클래식한 데이터베이스 접근을 위해 기본 툴을 기본적으로 플레이 프레임워크의 풀-스택 관점을 유지하길 원했다. 이것이 플레이 2가 Ebean, Anorm처럼 관계형 접근 라이브러리를 기본 내장하고 있는 이유이다.

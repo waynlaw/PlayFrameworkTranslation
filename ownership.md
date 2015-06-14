@@ -10,21 +10,21 @@
 
 | Owner | Status | filename | ... | 
 |:----|:---|:---|:---|
-| L |  | ./manual/about/Philosophy.md |  |
-| L |  | ./manual/about/PlayUserGroups.md |  |
+| L | F | ./manual/about/Philosophy.md |  |
+| L | F | ./manual/about/PlayUserGroups.md |  |
 | L |  | ./manual/detailedTopics/assets/Assets.md |  |
-| L |  | ./manual/detailedTopics/assets/AssetsCoffeeScript.md |  |
-| L |  | ./manual/detailedTopics/assets/AssetsJSHint.md |  |
-| L |  | ./manual/detailedTopics/assets/AssetsLess.md |  |
-| L |  | ./manual/detailedTopics/assets/RequireJS-support.md |  |
-|  |  | ./manual/detailedTopics/build/AggregatingReverseRouters.md |  |
-|  |  | ./manual/detailedTopics/build/Build.md |  |
-|  |  | ./manual/detailedTopics/build/CompilationSpeed.md |  |
-|  |  | ./manual/detailedTopics/build/SBTCookbook.md |  |
-|  |  | ./manual/detailedTopics/build/SBTDebugging.md |  |
-|  |  | ./manual/detailedTopics/build/SBTDependencies.md |  |
-|  |  | ./manual/detailedTopics/build/SBTSettings.md |  |
-|  |  | ./manual/detailedTopics/build/SBTSubProjects.md |  |
+| L | F | ./manual/detailedTopics/assets/AssetsCoffeeScript.md |  |
+| L | F | ./manual/detailedTopics/assets/AssetsJSHint.md |  |
+| L | F | ./manual/detailedTopics/assets/AssetsLess.md |  |
+| L | F | ./manual/detailedTopics/assets/RequireJS-support.md |  |
+| L |  | ./manual/detailedTopics/build/AggregatingReverseRouters.md |  |
+| L |  | ./manual/detailedTopics/build/Build.md |  |
+| L |  | ./manual/detailedTopics/build/CompilationSpeed.md |  |
+| L |  | ./manual/detailedTopics/build/SBTCookbook.md |  |
+| L |  | ./manual/detailedTopics/build/SBTDebugging.md |  |
+| L |  | ./manual/detailedTopics/build/SBTDependencies.md |  |
+| L |  | ./manual/detailedTopics/build/SBTSettings.md |  |
+| L |  | ./manual/detailedTopics/build/SBTSubProjects.md |  |
 |  |  | ./manual/detailedTopics/configuration/ApplicationSecret.md |  |
 |  |  | ./manual/detailedTopics/configuration/Configuration.md |  |
 |  |  | ./manual/detailedTopics/configuration/filters/CorsFilter.md |  |
@@ -162,14 +162,14 @@
 |  |  | ./manual/working/scalaGuide/main/logging/ScalaLogging.md |  |
 |  |  | ./manual/working/scalaGuide/main/sql/ScalaDatabase.md |  |
 |  |  | ./manual/working/scalaGuide/main/sql/ScalaDatabaseOthers.md |  |
-|  |  | ./manual/working/scalaGuide/main/tests/ScalaFunctionalTestingWithScalaTest.md |  |
-|  |  | ./manual/working/scalaGuide/main/tests/ScalaFunctionalTestingWithSpecs2.md |  |
+| W | F | ./manual/working/scalaGuide/main/tests/ScalaFunctionalTestingWithScalaTest.md |  |
+| W | F | ./manual/working/scalaGuide/main/tests/ScalaFunctionalTestingWithSpecs2.md |  |
 |  |  | ./manual/working/scalaGuide/main/tests/ScalaTestingWebServiceClients.md |  |
 |  |  | ./manual/working/scalaGuide/main/tests/ScalaTestingWithDatabases.md |  |
-|  |  | ./manual/working/scalaGuide/main/tests/ScalaTestingWithGuice.md |  |
-|  |  | ./manual/working/scalaGuide/main/tests/ScalaTestingWithScalaTest.md |  |
-|  |  | ./manual/working/scalaGuide/main/tests/ScalaTestingWithSpecs2.md |  |
-|  |  | ./manual/working/scalaGuide/main/tests/ScalaTestingYourApplication.md |  |
+| W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWithGuice.md |  |
+| W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWithScalaTest.md |  |
+| W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWithSpecs2.md |  |
+| W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingYourApplication.md |  |
 |  |  | ./manual/working/scalaGuide/main/upload/ScalaFileUpload.md |  |
 |  |  | ./manual/working/scalaGuide/main/ws/ScalaOAuth.md |  |
 |  |  | ./manual/working/scalaGuide/main/ws/ScalaOpenID.md |  |
