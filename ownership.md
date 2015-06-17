@@ -12,14 +12,14 @@
 |:----|:---|:---|:---|
 | L | F | ./manual/about/Philosophy.md |  |
 | L | F | ./manual/about/PlayUserGroups.md |  |
-| L |  | ./manual/detailedTopics/assets/Assets.md |  |
+| L | F | ./manual/detailedTopics/assets/Assets.md |  |
 | L | F | ./manual/detailedTopics/assets/AssetsCoffeeScript.md |  |
 | L | F | ./manual/detailedTopics/assets/AssetsJSHint.md |  |
 | L | F | ./manual/detailedTopics/assets/AssetsLess.md |  |
 | L | F | ./manual/detailedTopics/assets/RequireJS-support.md |  |
 | L |  | ./manual/detailedTopics/build/AggregatingReverseRouters.md |  |
 | L |  | ./manual/detailedTopics/build/Build.md |  |
-| L |  | ./manual/detailedTopics/build/CompilationSpeed.md |  |
+| L | F | ./manual/detailedTopics/build/CompilationSpeed.md |  |
 | L |  | ./manual/detailedTopics/build/SBTCookbook.md |  |
 | L |  | ./manual/detailedTopics/build/SBTDebugging.md |  |
 | L |  | ./manual/detailedTopics/build/SBTDependencies.md |  |
