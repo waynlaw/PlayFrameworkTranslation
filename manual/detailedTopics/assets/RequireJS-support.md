@@ -1,40 +1,41 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
 # RequireJS
 
-According to [RequireJS](http://requirejs.org/)' website 
+[RequireJS](http://requirejs.org/)의 웹 페이지의 설명을 보면
 
-> RequireJS is a JavaScript file and module loader. It is optimized for in-browser use, but it can be used in other JavaScript environments... Using a modular script loader like RequireJS will improve the speed and quality of your code.
+> RequireJS는 자바스크립 파일과 모듈 로더이며 브라우저에서 사용될 때 최적화를 해준다. 그러나 다른 자바스크립트 환경에서도 사용할 수 있다. RequireJS 같은 모듈 스크립트 로더를 사용하면 코드의 질을 높이고 빠르게 향상시킬 수 있다.
 
-What this means in practice is that one can use [RequireJS](http://requirejs.org/) to modularize your JavaScript. RequireJS achieves this by implementing a semi-standard API called [Asynchronous Module Definition](http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition) (other similar ideas include [CommonJS](http://www.commonjs.org/) ). Using AMD makes it is possible to resolve and load javascript modules on the _client side_ while allowing server side _optimization_. For server side optimization module dependencies may be minified and combined using [UglifyJS 2](https://github.com/mishoo/UglifyJS2#uglifyjs-2).
+이것이 실제로 의미하는 것은 자바스크립트를 모듈화하기 위해 [RequireJS](http://requirejs.org/) 사용할 수 있다는 것이다. RequireJS는 [비동기적 모듈 정의](http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition) (비슷한 아이디어가[CommonJS](http://www.commonjs.org/)에도 적용됨 )라고 부르는 준-표준(semi-standard) API를 구현하여 모듈화를 가능하게 한다. AMD를 사용하여 개발하면 서버측 _optimization_을 허용하면서 클라이언트측의 자바스크립트 모듈을 로드하고 해결할 수 있다. 서버측 모듈 최적화는 [UglifyJS 2](https://github.com/mishoo/UglifyJS2#uglifyjs-2)를 사용하여 결합되고 경량화(minified)된다.
 
-By convention RequireJS expects a main.js file to bootstrap its module loader.
+관례적으로 RequireJS는 모듈 로더로 부트스트랩을 위한 main.js 파일을 추가해주어야 한다.
 
-## Deployment
+## 개발하기
 
-The RequireJS optimizer shouldn't generally kick-in until it is time to perform a deployment i.e. by running the `start`, `stage` or `dist` tasks.
+RequireJS 옵티마이저는 일반적으로 `start`, `stage`나 `dist` 태스크처럼 배포가 수행되기 전까지 효과가 나타날 필요가 없다.
 
-If you're using WebJars with your build then the RequireJS optimizer plugin will also ensure that any JavaScript resources referenced from within a WebJar are automatically referenced from the [jsdelivr](http://www.jsdelivr.com) CDN. In addition if any `.min.js` file is found then that will be used in place of `.js`. An added bonus here is that there is no change required to your html!
+빌드에 WebJars을 사용하면 RequireJS 옵티마이저 플러그인은 WebJar에서 참조되는 자바스크립트 리소스가 자동으로 [jsdelivr (http://www.jsdelivr.com)CND에서 참조되어 있는지 확인한다. 또한 `.min.js`파일이 발견되면 `.js` 파일 대신 `.min.js` 파일이 사용된다. 추가적인 보너스는 HTML이 변경될 필요가 없다는 것이다!
 
-## Enablement and Configuration
+## 환경설정
 
-RequireJS optimization is enabled by simply adding the plugin to your plugins.sbt file when using the `PlayJava` or `PlayScala` plugins:
+RequireJS 옵티마이저는 `PlayJava`나 `PlayScala` 플러그인을 사용할 때 처럼 plugins.sbt 파일에 간단하게 플러그인을 추가해 활성화 할 수 있다.
 
 ```scala
 addSbtPlugin("com.typesafe.sbt" % "sbt-rjs" % "1.0.1")
 ```
 
-To add the plugin to the asset pipeline you can declare it as follows (assuming just the one plugin for the pipeline - add others into the sequence such as digest and gzip as required):
+다음과 같이 자산 파이프라인을 위한 플러그인을 추가해야한다.(파이프라인을 위한 플러그인이 하나라고 가정 했을 때이며, 필요에 따라 digest나 gzip처럼 다른것도 시퀀스에 추가할 수 있다)
 
 ```scala
 pipelineStages := Seq(rjs)
 ```
 
-A standard build profile for the RequireJS optimizer is provided and should suffice for most projects. However please refer to the [plugin's documentation](https://github.com/sbt/sbt-rjs#sbt-rjs) for information on how it may be configured.
+RequireJS 옵티마이저를 위한 표준 빌드 프로파일은 기본적으로 제공되며 대부분의 프로젝트에서 사용하기에 충분할 것이다. 그러나 설정에 대해서 정보가 필요하다면 [플러그인 문서 ](https://github.com/sbt/sbt-rjs#sbt-rjs)를 참조하기 바란다.
 
-Note that RequireJS performs a lot of work and while it works when executed in-JVM under Trireme, you will be best to use Node.js as the js-engine from a performance perspective. For convenience you can set the `sbt.jse.engineType` property in `SBT_OPTS`. For example on Unix:
+RequireJS는 많은 동작을 수행하며 Trireme 아래 JVM에서 실행되는 동안 잘 동작한다. 성능 측면에서 보면 js-engine으로 Node.js를 사용하는 것이 가장 좋다. 편의를 위해  `SBT_OPTS`에 `sbt.jse.engineType` 속성을 설정할 수 있다. 예를 들어 유닉스에서는 다음과 같이 설정할 수 있다.
+
 
 ```bash
 export SBT_OPTS="$SBT_OPTS -Dsbt.jse.engineType=Node"
 ```
 
-Please refer to the [plugin's documentation](https://github.com/sbt/sbt-rjs#sbt-rjs) for information on how it may be configured.
+설정에 대해서 정보가 필요하다면 [플러그인 문서 ](https://github.com/sbt/sbt-rjs#sbt-rjs)를 참조하기 바란다.

@@ -17,7 +17,7 @@ build.sbt                → 애플리케이션 빌드 스크립트
 conf                     → 환경설정 파일과 다른 컴파일이 필요없는 자원 (on classpath)
  └ application.conf      → 메인 환경설정 파일
  └ routes                → 라우트 정의
-public                   → 공용 자산
+public                   → 공통 자산
  └ stylesheets           → CSS 파일
  └ javascripts           → 자바스크립트 파일
  └ images                → 이미지 파일
@@ -133,7 +133,7 @@ src                        → 애플리케이션 소스
     └ assets               → 컴파일된 자산 소스
        └ css               → 대표적으로 LESS와 CSS 소스
        └ js                → 대표적으로 커피스크립트 소스
-    └ public               → 공용 자산
+    └ public               → 공통 자산
        └ css               → CSS 파일
        └ js                → 자바스크립트 파일
        └ images            → 이미지 파일

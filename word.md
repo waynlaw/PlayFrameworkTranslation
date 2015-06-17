@@ -17,11 +17,18 @@
 - factory method : 팩토리 메소드
 - instances : 인스턴스
 - layout : 레이아웃
+- libraries : 라이브러리
 - module : 모듈
 - predefined : 기선언
 - redirect : 리다이렉트
 - resource : 자원
+- reverse routing : 리버스 라우팅
 - routes : 라우트
 - source : 소스
 - third party : 써드파티
+- play : 플레이
+- stylesheet : 스타일시트
+- public : 공용, 표준 (;To match our sentence, up to you)
+- public assets: 공용 자산
+- Unix : 유닉스
 - trait : 트레이트
