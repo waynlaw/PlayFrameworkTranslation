@@ -12,7 +12,7 @@
 |:----|:---|:---|:---|
 | L | F | ./manual/about/Philosophy.md |  |
 | L | F | ./manual/about/PlayUserGroups.md |  |
-| L |  | ./manual/detailedTopics/assets/Assets.md |  |
+| L | F | ./manual/detailedTopics/assets/Assets.md |  |
 | L | F | ./manual/detailedTopics/assets/AssetsCoffeeScript.md |  |
 | L | F | ./manual/detailedTopics/assets/AssetsJSHint.md |  |
 | L | F | ./manual/detailedTopics/assets/AssetsLess.md |  |
