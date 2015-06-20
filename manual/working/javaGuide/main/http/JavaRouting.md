@@ -1,155 +1,155 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# HTTP routing
+# HTTP 라우팅
 
-## The built-in HTTP router
+## 내장형 HTTP 라우터
 
-The router is the component that translates each incoming HTTP request to an action call (a public method in a controller class).
+라우터는 incomming HTTP 요청을 각 action의 호출(컨트롤러 클래스의 각 public method)로 전달해주는 컴포넌트 이다.
 
-An HTTP request is seen as an event by the MVC framework. This event contains two major pieces of information:
+HTTP 요청은 MVC 프레임워크에서 볼 수 있는 일종의 이벤트이다. 이 이벤트는 2가지의 중요한 정보를 포함하고 있다:
 
-- the request path (such as `/clients/1542`, `/photos/list`), including the query string.
-- the HTTP method (GET, POST, ...).
+- 쿼리 스트링을 포함한 요청 경로 (예를 들어 `/clients/1542`, `/photos/list`).
+- HTTP 메소드 (GET, POST, ...).
 
-Routes are defined in the `conf/routes` file, which is compiled. This means that you’ll see route errors directly in your browser:
+라우터 경로는 `conf/routes` 파일에 컴파일 된 상태로 정의되어 있다. 즉 브라우저에서 라우트 에러를 직접 확인할 수 있다는 의미가 된다:
 
 [[images/routesError.png]]
 
-## Dependency Injection
+## 의존성 주입
 
-Play supports generating two types of routers, one is a dependency injected router, the other is a static router.  The default is the static router, but if you created a new Play application using the Play seed Activator templates, your project will include the following configuration in `build.sbt` telling it to use the injected router:
+플레이는 2가지 유형의 라우터 생성을 지원하다. 하나는 의존성 주입 라우터이고, 다른 하나는 static 라우터이다. 기본값은 static 라우터이지만, 플레이 seed 액티베이터 템플릿을 이용하여 새로운 플레이 애플리케이션을 생성한다면, 프로젝트에 포함된 `build.sbt` 설정에서 주입 라우터를 사용하고 있다는 것을 확인할 수 있다:
+
 
 ```scala
 routesGenerator := InjectedRoutesGenerator
 ```
+플레이 문서에 있는 코드 예시를 보면 주입 라우터 제너레이터 사용법을 예상할 수 있다. 이 것을 사용하지 않는다면, 라우터의 컨트롤러 호출 영역에 `@` 심볼을 붙이거나, 각 액션 메소드를 `static`으로 선언하여 사용한 static 라우터 제너레이트 코드를 응용해도 된다.
 
-The code samples in Play's documentation assumes that you are using the injected routes generator.  If you are not using this, you can trivially adapt the code samples for the static routes generator, either by prefixing the controller invocation part of the route with an `@` symbol, or by declaring each of your action methods as `static`.
+## 라우트 파일 문법
 
-## The routes file syntax
+`conf/routes`는 라우터에서 사용하는 설정 파일이다. 애플리케이션은 필요한 모든 라우트 경로를 파일에 나열해 놓는다. 각 라우트는 HTTP 메소드와 각 액션 메소드와 연관있는 URI 패턴으로 구성되어 있다.
 
-`conf/routes` is the configuration file used by the router. This file lists all of the routes needed by the application. Each route consists of an HTTP method and URI pattern associated with a call to an action method.
-
-Let’s see what a route definition looks like:
+라우트 정의가 어떻게 되어 있나 보자:
 
 @[clients-show](code/javaguide.http.routing.routes)
 
-> Note that in the action call, the parameter type comes after the parameter name, like in Scala.
+> 액션 호출 시, Scala와 같이 파라미터 이름 뒤에 파라미터 타입이 오는 것을 주의한다.
 
-Each route starts with the HTTP method, followed by the URI pattern. The last element of a route is the call definition.
+각 라우트는 HTTP 메소드로 사작하고, 그 뒤가 URI 패턴으로 이어지고 있다. 마지막으로 어디를 호출할 지를 적는다.
 
-You can also add comments to the route file, with the `#` character:
+`#`문자열을 이용해 라우트 파일에 코멘트를 달 수도 있다:
 
 @[clients-show-comment](code/javaguide.http.routing.routes)
 
-## The HTTP method
+## HTTP 메소드
 
-The HTTP method can be any of the valid methods supported by HTTP (`GET`, `PATCH`, `POST`, `PUT`, `DELETE`, `HEAD`).
+HTTP 메소드는 HTTP가 제공하는 메소드라면 어느것이 든 가능하다  (`GET`, `PATCH`, `POST`, `PUT`, `DELETE`, `HEAD`).
 
-## The URI pattern
+## URI 패턴
 
-The URI pattern defines the route’s request path. Some parts of the request path can be dynamic.
+URI 패턴은 라우트의 요청 경로를 정의한다. 요청 경로의 일부분은 다이나믹하게 만들어질 수 있다.
 
-### Static path
+### Static 경로
 
-For example, to exactly match `GET /clients/all` incoming requests, you can define this route:
+예를 들어 GET /clients/all`와 일치하는 incoming 요청을 라우터에 정의하기 위해서는:
 
 @[static-path](code/javaguide.http.routing.routes)
 
-### Dynamic parts 
+### Dynamic 파트 
 
-If you want to define a route that, say, retrieves a client by id, you need to add a dynamic part:
+id값을 이용해 클라이언트를 불러오는 라우터를 정의하기 위해서는 Dynamic 파트를 추가해야 한다:
 
 @[clients-show](code/javaguide.http.routing.routes)
 
-> Note that a URI pattern may have more than one dynamic part.
+> URI 패턴은 하나 이상의 Dynamic 파트를 가질 수 있다.
 
-The default matching strategy for a dynamic part is defined by the regular expression `[^/]+`, meaning that any dynamic part defined as `:id` will match exactly one URI path segment.
+Dynamic 파트의 기본 매칭 전략은 `[^/]+` 정규식으로 정의되어 있다. 이 정규식을 통해 `:id`로 정의 된 모든 Dynamic 파트는 하나의 URI 경로 세그먼트에 매칭되게 된다.
 
-### Dynamic parts spanning several /
+### 슬래시(/)가 연속된 영역에서 Dynamic 파트 사용하기
 
-If you want a dynamic part to capture more than one URI path segment, separated by forward slashes, you can define a dynamic part using the `*id` syntax, which uses the `.*` regular expression:
+슬래시로 구분된 여러개 URI 세그먼트를 매칭해야 하는 경우에도 Dynamic 파트를 사용할 수 있다. 이 경우 `.*` 정규식을 사용하는 `*id` 문법을 이용하여 Dynamic 파트를 정의 할 수 있다:
 
 @[spanning-path](code/javaguide.http.routing.routes)
 
-Here, for a request like `GET /files/images/logo.png`, the `name` dynamic part will capture the `images/logo.png` value.
+여기 `GET /files/images/logo.png` 요청같은 경우, `name` Dynamic 파트는 `images/logo.png` 값으로 매칭 될 것이다.
 
-### Dynamic parts with custom regular expressions
+### 커스텀 정슈식을 이용한 Dynamic 파트
 
-You can also define your own regular expression for a dynamic part, using the `$id<regex>` syntax:
+Dynamic 파트에서 정규식을 직접 정의할 수도 있다. `$id<regex>` 문법을 사용한다:
     
 @[regex-path](code/javaguide.http.routing.routes)
 
-## Call to action generator method
+## Action generator 메소드 호출하기
 
-The last part of a route definition is the call. This part must define a valid call to an action method.
+마지막으로, 라우트 호출 영역을 정의하게 된다. 이 영역은 반드시 유효한 액션 메소드로 지정되어야 한다.
 
-If the method does not define any parameters, just give the fully-qualified method name:
+메소드 파라미터가 정의되지 않았고, 유효한 메소드 이름만 주어진 경우:
 
 @[home-page](code/javaguide.http.routing.routes)
 
-If the action method defines parameters, the corresponding parameter values will be searched for in the request URI, either extracted from the URI path itself, or from the query string.
+액션 메소드에 파라미터를 정의하고, URI 경로나 쿼리스트링에서 매칭되는 파라미터 값을 찾을 수 있는 경우.
 
 @[page](code/javaguide.http.routing.routes)
 
-Or:
+혹은:
 
 @[page](code/javaguide.http.routing.query.routes)
 
-Here is the corresponding `show` method definition in the `controllers.Application` controller:
+여기서 `show`에 상응하는 메소드가 `controllers.Application` 컨트롤러에 정의 되어 있는 것을 볼 수 있다:
 
 @[show-page-action](code/javaguide/http/routing/controllers/Application.java)
 
-### Parameter types
+### Parameter 타입들
 
-For parameters of type `String`, the parameter type is optional. If you want Play to transform the incoming parameter into a specific Scala type, you can add an explicit type:
+`String` 타입 파라미터는 optional 파라미터 타입이다. 플레이가 incoming 파라미터를 특정 Scala으로 변환시키기를 원한다면, 명시적으로 타입을 추가할 수 있다:
 
 @[clients-show](code/javaguide.http.routing.routes)
 
-Then use the same type for the corresponding action method parameter in the controller:
+그 다음 컨트롤러에서 해당 액션 메소드 파라미터를 같은 타입으로 사용하면 된다:
 
 @[clients-show-action](code/javaguide/http/routing/controllers/Clients.java)
 
-> **Note:** The parameter types are specified using a suffix syntax. Also, the generic types are specified using the `[]` symbols instead of `<>`, as in Java. For example, `List[String]` is the same type as the Java `List<String>`.
+> **Note:** 파라미터 타입은 suffix(접미사) 문법을 사용하여 정의해야 한다. 제너릭 타입은 Java에서와 같이 `<>`를 사용하는 대신 `[]`을 사용한다. 예를 들어 `List[String]`는 Java의 `List<String>`와 동일한 타입이다.
 
-### Parameters with fixed values
+### 고정된 값으로 정의 된 파라미터
 
-Sometimes you’ll want to use a fixed value for a parameter:
+때로는 파라미터 값으로 고정값을 쓰고 싶을 것이다:
 
 @[page](code/javaguide.http.routing.fixed.routes)
 
-### Parameters with default values
+### 기본값을 이용한 파라미터
 
-You can also provide a default value that will be used if no value is found in the incoming request:
+incoming 요청에서 값이 없을 때, 사용하고 싶은 기본 값을 제공하고 싶을 때:
 
 @[clients](code/javaguide.http.routing.defaultvalue.routes)
 
-### Optional parameters
+### Optional 파라미터
 
-You can also specify an optional parameter that does not need to be present in all requests:
+모든 요청에서 쓰이지 않는 Optional 파라미터를 정의 할 수 있다:
 
 @[optional](code/javaguide.http.routing.routes)
 
-## Routing priority
+## Routing 우선순위
 
-Many routes can match the same request. If there is a conflict, the first route (in declaration order) is used.
+많은 라우터들인 같은 경로에 매칭될 수 있다. 충돌이 있을 경우, 정의 된 순서대로 첫번째 라우트가 사용된다.
 
-## Reverse routing
+## Reverse 라우팅
 
-The router can be used to generate a URL from within a Java call. This makes it possible to centralize all your URI patterns in a single configuration file, so you can be more confident when refactoring your application.
+라우터는 Java 호출 만으로 URL을 생성해 사용할 수 있게 해준다. 또한 URI 패턴을 단일 설정 파일 안에 모아서 관리가 가능하게 되며, 애플리케이션을 리팩토링 할 때, 더 확신을 가지고 임할 수 있게 해준다.
 
-For each controller used in the routes file, the router will generate a ‘reverse controller’ in the `routes` package, having the same action methods, with the same signature, but returning a `play.mvc.Call` instead of a `play.mvc.Result`. 
+라우트 파일에서 사용되는 각 컨트롤의 경우, 라우터가 `routes` 패키지에 자동으로‘reverse controller를 생성해 준다. 해당 컨트롤러와 같은 액션 메소드를 가지고 같은 시그니쳐를 가졌지만 `play.mvc.Result` 대신 `play.mvc.Call`을 리턴한다. 
 
-The `play.mvc.Call` defines an HTTP call, and provides both the HTTP method and the URI.
+`play.mvc.Call`은 HTTP 호출을 정의해 주고, HTTP 메소드와 URI 또한 모두 제공해 준다.
 
-For example, if you create a controller like:
+예를 들어, 아래의 컨트롤러를 생성하는 경우:
 
 @[controller](code/javaguide/http/routing/reverse/controllers/Application.java)
 
-And if you map it in the `conf/routes` file:
+그리고 `conf/routes` 파일에 해당 컨트롤러를 설정한다:
 
 @[hello](code/javaguide.http.routing.reverse.routes)
 
-You can then reverse the URL to the `hello` action method, by using the `controllers.routes.Application` reverse controller:
+`controllers.routes.Application`로 컨트롤러 요청을 우회해 `hello` 액션 메소드로 URL 우회 시킬 수 있다.
 
 @[reverse-redirect](code/javaguide/http/routing/controllers/Application.java)
 
-> **Note:** There is a `routes` subpackage for each controller package. So the action `controllers.admin.Application.hello` can be reversed via `controllers.admin.routes.Application.hello`.
+> **Note:** 각 컨트롤러 패키지에는 `routes`라는 서브 패키지가 있다. 따라서 `controllers.admin.Application.hello` 액션은 `controllers.admin.routes.Application.hello`를 통해 우회가 가능하다.

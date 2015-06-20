@@ -22,13 +22,13 @@ GET   /                     controllers.Application.homePage()
 # #home-page
 
 # #page
-# Extract the page parameter from the path.
+# 경로에서 페이지 파라미터를 추출한다.
 # i.e. http://myserver.com/index
 GET   /:page                controllers.Application.show(page)
 # #page
 
 # #optional
-# The version parameter is optional. E.g. /api/list-all?version=3.0
+# 버전 파라미터는 옵션값이다. 예) /api/list-all?version=3.0
 GET   /api/list-all         controllers.Api.list(version ?= null)
 # #optional
 

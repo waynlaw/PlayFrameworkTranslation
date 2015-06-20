@@ -26,9 +26,17 @@
 - routes : 라우트
 - source : 소스
 - third party : 써드파티
+- Appenders : Appenders
+- companion object : 짝 오브젝트 
+- factory method : 펙토리 메소드
+- built-in : 내장형
+- incoming : 들어오는 
+- static : 스테틱
 - play : 플레이
 - stylesheet : 스타일시트
 - public : 공용, 표준 (;To match our sentence, up to you)
 - public assets: 공용 자산
 - Unix : 유닉스
 - trait : 트레이트
+- out of the box : 별도 설치 없이
+- query string : 쿼리 스트링

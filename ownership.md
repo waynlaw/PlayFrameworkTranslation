@@ -88,7 +88,7 @@
 |  |  | ./manual/working/javaGuide/advanced/embedding/JavaEmbeddingPlay.md |  |
 |  |  | ./manual/working/javaGuide/advanced/extending/JavaPlugins.md |  |
 |  |  | ./manual/working/javaGuide/advanced/routing/JavaRoutingDsl.md |  |
-|  |  | ./manual/working/javaGuide/JavaHome.md |  |
+| S | F | ./manual/working/javaGuide/JavaHome.md |  |
 |  |  | ./manual/working/javaGuide/main/akka/JavaAkka.md |  |
 |  |  | ./manual/working/javaGuide/main/async/JavaAsync.md |  |
 |  |  | ./manual/working/javaGuide/main/async/JavaComet.md |  |
@@ -100,14 +100,14 @@
 |  |  | ./manual/working/javaGuide/main/forms/JavaForms.md |  |
 |  |  | ./manual/working/javaGuide/main/global/JavaGlobal.md |  |
 |  |  | ./manual/working/javaGuide/main/global/JavaInterceptors.md |  |
-|  |  | ./manual/working/javaGuide/main/http/JavaActions.md |  |
-|  |  | ./manual/working/javaGuide/main/http/JavaActionsComposition.md |  |
-|  |  | ./manual/working/javaGuide/main/http/JavaBodyParsers.md |  |
-|  |  | ./manual/working/javaGuide/main/http/JavaContentNegotiation.md |  |
-|  |  | ./manual/working/javaGuide/main/http/JavaErrorHandling.md |  |
-|  |  | ./manual/working/javaGuide/main/http/JavaResponse.md |  |
-|  |  | ./manual/working/javaGuide/main/http/JavaRouting.md |  |
-|  |  | ./manual/working/javaGuide/main/http/JavaSessionFlash.md |  |
+| S | F | ./manual/working/javaGuide/main/http/JavaActions.md |  |
+| S | F | ./manual/working/javaGuide/main/http/JavaActionsComposition.md |  |
+| S | F | ./manual/working/javaGuide/main/http/JavaBodyParsers.md |  |
+| S | F | ./manual/working/javaGuide/main/http/JavaContentNegotiation.md |  |
+| S | F | ./manual/working/javaGuide/main/http/JavaErrorHandling.md |  |
+| S | F | ./manual/working/javaGuide/main/http/JavaResponse.md |  |
+| S | F | ./manual/working/javaGuide/main/http/JavaRouting.md |  |
+| S | F | ./manual/working/javaGuide/main/http/JavaSessionFlash.md |  |
 |  |  | ./manual/working/javaGuide/main/i18n/JavaI18N.md |  |
 |  |  | ./manual/working/javaGuide/main/json/JavaJsonActions.md |  |
 |  |  | ./manual/working/javaGuide/main/logging/JavaLogging.md |  |
