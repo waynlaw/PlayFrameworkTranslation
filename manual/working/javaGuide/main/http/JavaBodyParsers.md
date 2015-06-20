@@ -19,7 +19,7 @@ Java API에서 모든 body 파서는 `play.mvc.Http.RequestBody`값을 반드시
 
 @[request-body](code/javaguide/http/JavaBodyParsers.java)
 
-`@BodyParser.Of` 애노테이션을 사용하는 특별한 action을 이용하기 위해 `BodyParser`를 명시할 수 있다:
+`@BodyParser.Of` 애노테이션을 사용하면 특별한 action을 파싱하기 위해 `BodyParser`를 명시할 수 있다:
 
 @[particular-body-parser](code/javaguide/http/JavaBodyParsers.java)
 
@@ -27,7 +27,7 @@ Java API에서 모든 body 파서는 `play.mvc.Http.RequestBody`값을 반드시
 
 Java API에서 제공하는 모든 body 파서들은 `play.mvc.Http.RequestBody` 값을 생성한다고 할 수 있다. 이 body 객체로부터 적절한 Java 타입으로 변환된 요청 body content를 불러올 수 있다.
 
-> **주의:** `asText()` 나 `asJson()` 같은 `RequestBody` 메소드는, 파서가 지원하지 않는 요청 body를 받는 경우 null을 리턴하게 된다. 예를 들어 `@BodyParser.Of(BodyParser.Json.class)` 애노테이션이 적용된 action 메소드가 생성한 body에서 `asXml()를 호출하는 경우 `null`을 리턴하게 될 것이다.
+> **주의:** `asText()` 나 `asJson()` 같은 `RequestBody` 메소드는, 파서가 지원하지 않는 요청 body를 받는 경우 null을 리턴하게 된다. 예를 들어 `@BodyParser.Of(BodyParser.Json.class)` 애노테이션이 적용된 action 메소드가 생성한 body에서 `asXml()`를 호출하는 경우 `null`을 리턴하게 될 것이다.
 
 ## 기본 body 파서: AnyContent
 
@@ -52,6 +52,6 @@ Java API에서 제공하는 모든 body 파서들은 `play.mvc.Http.RequestBody`
 
 row (데이터)나 `multipart/form-data` 파서와 같이 디스크에 content를 버퍼링 처리해야하는 파서를 위해, `play.http.parser.maxDiskBuffer` 프로퍼티에 최대 content 길이를 명시할 수 있다. 기본 값은 10MB이다. `multipart/form-data` 파서는 데이터 필드의 조합을 위해 텍스트 최대 길이 프로퍼티 값을 강제로 적용하게 만들 수도 있다.
 
-또한 `@BodyParser.Of` 애노테이션을 이용하면 주어진 action에 기본 최대 content 길이를 재정의 할 수도 있다: 
+또한 `@BodyParser.Of` 애노테이션을 사용하면 해당 action에 디폴트 최대 content 길이를 재정의 할 수도 있다: 
 
 @[max-length](code/javaguide/http/JavaBodyParsers.java)

@@ -1,5 +1,5 @@
 # #page
-# Extract the page parameter from the path, or fix the value for /
+# 경로에서 페이지 파라미터를 추출하거나, /(루트 경로)로 접근 시, 이동할 경로 값을 지정해 줄 수 있다
 GET   /                     controllers.Application.show(page = "home")
 GET   /:page                controllers.Application.show(page)
 # #page

@@ -1,7 +1,7 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
 # Content 전략
 
-Content 전략은 같은 자원(URI)을 다른 방법으로 표현할 수 있게 도와준다. 이것은  *예를 들어* 웹서비스에서 특정 아웃풋 형식을 지원(XML, JSON 등)할 때 유용하게 쓰인다. `Accept*` 요청 헤서를 이용하여 서버 기반 전략이 수행되게 된다.  [HTTP specification](http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html)에서 관련 content 전략 정보를 더 찾아볼 수 있다.
+Content 전략은 같은 자원(URI)을 다른 방법으로 표현할 수 있게 도와준다. 이것은  *예를 들어* 웹서비스에서 특정 아웃풋 형식을 지원(XML, JSON 등)할 때 유용하게 쓰인다. `Accept*` 요청 헤더를 이용하여 서버 기반 전략이 수행되게 된다.  [HTTP specification](http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html)에서 관련 content 전략 정보를 더 찾아볼 수 있다.
 
 
 ## 언어

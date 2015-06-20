@@ -3,13 +3,13 @@
 
 ## Actions은 무엇인가?
 
-플레이 애플리케이션 받은 대부분의 request는 `Action` 이 처리한다. 
+플레이 애플리케이션이 받은 대부분의 request는 `Action` 이 처리한다. 
 
 단일 action은 기본적으로 request 파라미터를 처리하는 Java 메소드이다. 그리고 클라이언트에게 전송될 결과를 생성한다.
 
 @[simple-action](code/javaguide/http/JavaActions.java)
 
-action은 web 클라이언트에게 전송할 HTTP response를 대표하는 `play.mvc.Result` 값을 리턴한다. 이 예시에서  `ok`는 **text/plain** response body를 포함한 **200 OK** response를 생성한다.
+action은 웹 클라이언트에게 전송할 HTTP response를 대표하는 `play.mvc.Result` 값을 리턴한다. 이 예시에서  `ok`는 **text/plain** response body를 포함한 **200 OK** response를 생성한다.
 
 ## Controllers 
 
@@ -27,7 +27,7 @@ action 메소드는 파라미터를 가질 수 있다:
 
 ## Results
 
-간단한 결과값을 만들어보자: web 클라이언트에게 전송한 상태 코드, HTTP header set, body와 status code를 가진 HTTP 결과물
+간단한 결과값을 만들어보자: web 클라이언트에게 전송할 상태 코드, HTTP header set, body와 status code를 가진 HTTP 결과물
 
 이 결과물은 `play.mvc.Result` 에 정의되어 있다. 그리고 `play.mvc.Results` 클래스는 표준 HTTP result를 생성하기 위한 몇가지 helper를 제공하고 있다. 예를 들어 이전 장에서 우리가 사용하던 `ok` 메소드가 그렇다:
 

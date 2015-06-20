@@ -21,13 +21,13 @@ public abstract class Action {
 
 @[verbose-action](code/javaguide/http/JavaActionsComposition.java)
 
-`play.mvc.Action`가 제공하는 action 메소드를 통해 code 조합을 할 수 있다. `@With` 애노테이션을 사용한다:
+`play.mvc.Action`가 제공하는 action 메소드를 통해 코드를 조합하여 사용할 수 있다. `@With` 애노테이션을 사용한다:
 
 @[verbose-index](code/javaguide/http/JavaActionsComposition.java)
 
 `delegate.call(...)`를 사용하여 wrapped(한번 감싸진) action에 위임을 해야 할 때가 있을 수도 있다.
 
-custom action 애노테이션을 이용하면 몇몇 action을 조합할 수도 있다:
+custom action 애노테이션을 이용하면 여러개 action을 조합할 수도 있다:
 
 @[authenticated-cached-index](code/javaguide/http/JavaActionsComposition.java)
 
@@ -35,11 +35,11 @@ custom action 애노테이션을 이용하면 몇몇 action을 조합할 수도 
 
 ## custom action annotation 정의하기
 
-자신의 애노테이션을 이용해 action 조합을 표기할 수도 있다. 이 경우 반드시 자기자신을 `@With` 애노테이션을 이용해 표기해야 한다:
+커스텀 애노테이션을 이용해 action 조합을 표기할 수도 있다. 이 경우 반드시 자기자신을 `@With` 애노테이션을 이용해 표기해야 한다:
 
 @[verbose-annotation](code/javaguide/http/JavaActionsComposition.java)
 
-`Action` definition 에서는 애노테이션을 설정으로 검색하게 된다:
+`Action` 정의 시, 애노테이션을 일종의 설정 값으로 불러온다:
 
 @[verbose-annotation-action](code/javaguide/http/JavaActionsComposition.java)
 
@@ -62,10 +62,10 @@ public class Admin extends Controller {
 
 ## action에서 controller로 object 전달하기
 
-ontext args map을 이용하여 action에서 controller로 object을 전달할 수 있다.
+context args map을 이용하여 action에서 controller로 object을 전달할 수 있다.
 
 @[pass-arg-action](code/javaguide/http/JavaActionsComposition.java)
 
-그리고 이 액션에서 아래와 같은 arge를 얻어올 수 있다:
+그리고 이 action에서 아래와 같은 arge를 얻어올 수 있다:
 
 @[pass-arg-action-index](code/javaguide/http/JavaActionsComposition.java)

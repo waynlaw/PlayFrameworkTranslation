@@ -39,3 +39,4 @@
 - Unix : 유닉스
 - trait : 트레이트
 - out of the box : 별도 설치 없이
+- query string : 쿼리 스트링

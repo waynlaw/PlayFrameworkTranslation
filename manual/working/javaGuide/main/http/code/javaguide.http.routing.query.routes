@@ -1,5 +1,5 @@
 # #page
-# Extract the page parameter from the query string.
-# i.e. http://myserver.com/?page=index
+# 쿼리 스트링에서 페이지 파라미터를 추출한다.
+# 예) http://myserver.com/?page=index
 GET   /                     controllers.Application.show(page)
 # #page
