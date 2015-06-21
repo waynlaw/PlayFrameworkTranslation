@@ -164,7 +164,7 @@
 |  |  | ./manual/working/scalaGuide/main/sql/ScalaDatabaseOthers.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaFunctionalTestingWithScalaTest.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaFunctionalTestingWithSpecs2.md |  |
-| W |  | ./manual/working/scalaGuide/main/tests/ScalaTestingWebServiceClients.md |  |
+| W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWebServiceClients.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWithDatabases.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWithGuice.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWithScalaTest.md |  |
