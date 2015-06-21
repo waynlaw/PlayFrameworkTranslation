@@ -135,7 +135,7 @@
 |  |  | ./manual/working/scalaGuide/advanced/iteratees/Iteratees.md |  |
 |  |  | ./manual/working/scalaGuide/advanced/routing/ScalaJavascriptRouting.md |  |
 |  |  | ./manual/working/scalaGuide/advanced/routing/ScalaSirdRouter.md |  |
-|  |  | ./manual/working/scalaGuide/main/akka/ScalaAkka.md |  |
+| W |  | ./manual/working/scalaGuide/main/akka/ScalaAkka.md |  |
 |  |  | ./manual/working/scalaGuide/main/async/ScalaAsync.md |  |
 |  |  | ./manual/working/scalaGuide/main/async/ScalaComet.md |  |
 |  |  | ./manual/working/scalaGuide/main/async/ScalaStream.md |  |
@@ -153,7 +153,7 @@
 |  |  | ./manual/working/scalaGuide/main/http/ScalaResults.md |  |
 |  |  | ./manual/working/scalaGuide/main/http/ScalaRouting.md |  |
 |  |  | ./manual/working/scalaGuide/main/http/ScalaSessionFlash.md |  |
-|  |  | ./manual/working/scalaGuide/main/i18n/ScalaI18N.md |  |
+| W | F | ./manual/working/scalaGuide/main/i18n/ScalaI18N.md |  |
 |  |  | ./manual/working/scalaGuide/main/json/ScalaJson.md |  |
 |  |  | ./manual/working/scalaGuide/main/json/ScalaJsonCombinators.md |  |
 |  |  | ./manual/working/scalaGuide/main/json/ScalaJsonHttp.md |  |
