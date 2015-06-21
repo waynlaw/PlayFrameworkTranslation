@@ -1,8 +1,8 @@
-Build:The Build System
-SBTSettings:About sbt settings
-SBTDependencies:Manage application dependencies
-SBTSubProjects:Working with sub-projects
-AggregatingReverseRouters:Aggregating reverse routers
-CompilationSpeed:Improving Compilation Times
-SBTCookbook:Cookbook
-SBTDebugging:Debugging your build
+Build:빌드 시스템
+SBTSettings:sbt 설정에 대해서
+SBTDependencies:애플리케이션 의존성 관리하기
+SBTSubProjects:서브프로젝트와 함께 실행하기
+AggregatingReverseRouters:리버스 라우팅 집합
+CompilationSpeed:컴파일 시간 향상시키기
+SBTCookbook:SBT 쿡북
+SBTDebugging:빌드 디버깅 하기

@@ -1,20 +1,20 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Improving Compilation Times
+# 컴파일 시간 향상시키기
 
-Compilation speed can be improved by following some guidelines that are also good engineering practice:
+우수한 엔지니어링 사례의 가이드라인을 따라하여 컴파일 속도를 향상시킬 수 있다.
 
-## Use subprojects/modularize
+## 하위프로젝트/모듈화 사용하기
 
-This is something like bulkheads for incremental compilation in addition to the other benefits of modularization. It minimizes the size of cycles, makes inter-dependencies explicit, and allows you to work with a subset of the code when desired. It also allows sbt to compile independent modules in parallel.
+이는 모듈화의 다른 이점을 더하여 추가적인 컴파일을 막는 칸막이 같은 것이다. 컴파일 주기를 감소시키고, 명시적인 내부 의존성을 만들고 필요할 때 코드의 일부와 함께 동작하도록 허용한다. 또한 sbt가 병렬로 독립 모듈로 컴파일 할 수 있도록 한다.
 
-## Annotate return types of public methods
+## public 메소드의 반환 타입에 애노태이션 사용하기
 
-This makes compilation faster as it reduces the need for type inference and for accuracy helps address corner cases in incremental compilation arising from inference across source file boundaries.
+이는 정확성을 위한 타입 추론을 감소시켜 컴파일을 더 빠르게 진행할 수 있고 소스 파일의 경계를 넘어 추론에서 발생하는 코너 케이스를 다루는데 도움이 된다.
 
-## Avoid large cycles between source files
+## 소스 파일의 큰 주기 회피하기
 
-Cycles tend to result in larger recompilations and/or more steps.  In sbt 0.13.0+ (Play 2.2+), this is less of a problem.
+여러가지 주기는 더 거대한 재 컴파일을 해야 하거나 더 많은 단계를 처리해 야하는 경향이 있다. sbt 0.13.0+ (Play 2.2+)에서는 문제가 되지 않는다.
 
-## Minimize inheritance
+## 상속 최소화하기
 
-A public API change in a source file typically requires recompiling all descendents.
+소스 파일의 공용 API는 실질적으로 모든 의존성에 대해서 다시 컴파일이 요구된다.
