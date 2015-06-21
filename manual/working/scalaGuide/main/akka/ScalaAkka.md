@@ -1,82 +1,82 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Integrating with Akka
+# Akka와 통합하기
 
-[Akka](http://akka.io/) uses the Actor Model to raise the abstraction level and provide a better platform to build correct concurrent and scalable applications. For fault-tolerance it adopts the ‘Let it crash’ model, which has been used with great success in the telecoms industry to build applications that self-heal - systems that never stop. Actors also provide the abstraction for transparent distribution and the basis for truly scalable and fault-tolerant applications.
+[Akka](http://akka.io/)는 추상화 단계를 높이고 확장성과 올바른 동시성을 갖는 애플리케이션을 만드는 더 좋은 플렛폼을 제공하기 위해서 Actor Model을 사용한다. ‘Let it crash’ 모델을 적용하여 실패에 안정적인 모델은, 통신 산업에서 자체 복구기능을 가지고 절대 멈추지 않는 애플리케이션으로 큰 성공을 이루어 왔다. 또한 액터들은 투명한 분배를 위한 추상화를 제공하며, 실제로 확장가능하고 실패에 안정적인 애플리케이션들의 기반이 된다.
 
-## The application actor system
+## 애플리케이션 액터 시스템
 
-Akka can work with several containers called actor systems. An actor system manages the resources it is configured to use in order to run the actors which it contains. 
+Akka는 액터 시스템이라고 불리는 몇몇의 컨테이너와 함께 동작할 수 있다. 엑터 시스템은 시스템이 가지고 있는 엑터들을 사용할 순서가 설정되어있는 자원을 관리한다.
 
-A Play application defines a special actor system to be used by the application. This actor system follows the application life-cycle and restarts automatically when the application restarts.
+플레이 애플리케이션은 애플리케이션이 사용할 특별한 엑터 시스템을 정의한다. 이 액터 시스템은 애플리케이션의 생명주기를 따르며, 애플리케이션이 재시작될때 자동으로 재시작된다.
 
-> **Note:** Nothing prevents you from using another actor system from within a Play application. The provided default is convenient if you only need to start a few actors without bothering to set-up your own actor system.
+> **주의:** 플레이 애플리케이션 내의 다른 액터 시스템을 사용해도 문제없다. 단지 기본으로 제공된 시스템은 자체적으로 엑터 시스템을 만들기 위한 수고 없이, 단지 몇개의 액터를 시작하고자 할때 편리하다.
 
-### Writing actors
+### 엑터들 작성하기
 
-To start using Akka, you need to write an actor.  Below is a simple actor that simply says hello to whoever asks it to.
+Akka를 사용하기 위해서는 엑터를 작성해야 한다. 아래에는 요청을 받았을 때, 인사를 하는 간단한 엑터가 나와있다.
 
 @[actor](code/ScalaAkka.scala)
 
-This actor follows a few Akka conventions:
+이 엑터는 몇가지 Akka 관습을 따른다.:
 
-* The messages it sends/receives, or its _protocol_, are defined on its companion object
-* It also defines a `props` method on its companion object that returns the props for creating it
+* 엑터가 보내거나 받는 메시지들, 또는 엑터의 _프로토콜_ 은 엑터의 컴페니온 오브젝트에 정의되어야 한다.
+* 엑터는 엑터를 만들기 위한 속성을 반환하는 `props`메소드를 자신의 컴페니온 오브젝트에 정의해야 한다.
 
-### Creating and using actors
+### 엑터를 생성하고 사용하기
 
-To create and/or use an actor, you need an `ActorSystem`.  This can be obtained by declaring a dependency on an ActorSystem.  , like so:
+엑터를 생성하고 사용하려면, `ActorSystem`이 필요하다. 이것은 다음과 같이 ActorSystem에 대한 의존성을 포함할 수 있다.:
 
 @[controller](code/ScalaAkka.scala)
 
-The `actorOf` method is used to create a new actor.  Notice that we've declared this controller to be a singleton.  This is necessary since we are creating the actor and storing a reference to it, if the controller was not scoped as singleton, this would mean a new actor would be created every time the controller was created, which would ultimate throw an exception because you can't have two actors in the same system with the same name.
+`actorOf`함수는 새 엑터를 생성하는데 사용된다. 이 컨트롤러를 싱글톤으로 정의한 것에 주의해야 한다. 우리가 엑터를 생성하고 참조를 보관하기 위해서 이것이 필수적이다. 만일 컨트롤러가 싱글톤의 범위를 가지지 않는다면 컨트롤러가 생성될 때마다 새로운 엑터가 생겨나게 될것이며, 엑터들이 같은 시스템에서 동일한 이름을 가질 수 없기 때문에 결국에는 예외를 발생시킬 것이다.
 
-### Asking things of actors
+### 엑터에게 요청하기
 
-The most basic thing that you can do with an actor is send it a message.  When you send a message to an actor, there is no response, it's fire and forget.  This is also known as the _tell_ pattern.
+엑터로 할수있는 가장 간단한 일은, 엑터에게 메시지를 보내는 것이다. 엑터에게 메시지를 보내게 되면, 아무런 응답이 없을 것이다. 그것이 보내고 잊는 것이다. 또한 이것은 _말하기_ 패턴으로 알려져 있다.
   
-In a web application however, the _tell_ pattern is often not useful, since HTTP is a protocol that has requests and responses.  In this case, it is much more likely that you will want to use the _ask_ pattern.  The ask pattern returns a `Future`, which you can then map to your own result type.
+그러나 웹 애플리케이션에서는 HTTP가 요청을 받고 보내는 프로토콜이기 때문에, _말하기_ 패턴은 그렇게 유용하지는 않다. 이런 경우에는 _요청_ 패턴을 사용하기를 더 원할 것이다. 요청 패턴은 원하는 결과 형식에 맞는 `Future`를 반환한다.
 
-Below is an example of using our `HelloActor` with the ask pattern:
+아래는 `HelloActor`에서 요청패턴을 사용하는 예제이다.:
 
 @[ask](code/ScalaAkka.scala)
 
-A few things to notice:
+몇 가지 주의해야 할 점들:
 
-* The ask pattern needs to be imported, and then this provides a `?` operator on the actor.
-* The return type of the ask is a `Future[Any]`, usually the first thing you will want to do after asking actor is map that to the type you are expecting, using the `mapTo` method.
-* An implicit timeout is needed in scope - the ask pattern must have a timeout.  If the actor takes longer than that to respond, the returned future will be completed with a timeout error.
+* 요청패턴은 포함되어야 하며, 요청패턴을 포함하는 것은 엑터에게 `?` 연산을 제공해 준다.
+* 요청의 반환 형식은 `Future[Any]`이다. 일반적으로 원하는 엑터에 요청한 다음 원하는 것은 결과에 다른 함수를 적용하는 것이므로, 이것을 `mapTo` 함수를 통해서 할 수 있다.
+* 범위 내에서 암시적인 제한 시간이 필요하다. - 요청 패턴은 반드시 제한 시간을 가져야 한다. 만일 엑터가 응답해야 할 시간보다 더 긴 시간동안 응답이 없다면, 반환된 Future는 시간 경과 오류로 완료될 것이다.
 
-## Configuration
+## 설정
 
-The default actor system configuration is read from the Play application configuration file. For example, to configure the default dispatcher of the application actor system, add these lines to the `conf/application.conf` file:
+플레이 애플리케이션 설정 파일을 읽어서 기본적인 엑터 시스템 설정을 한다. 예를 들면, 애플리케이션 엑터 시스템의 기본 디스패쳐를 설정하려고 하면 `conf/application.conf` 파일에 아래와 같은 줄을 추가해야 한다:
 
 ```
 akka.actor.default-dispatcher.fork-join-executor.parallelism-max = 64
 akka.actor.debug.receive = on
 ```
 
-> **Note:** You can also configure any other actor system from the same file; just provide a top configuration key.
+> **주의:** 같은 파일에서 다른 엑터 시스템에 대한 설정도 할 수 있다.; 상위 설정 키를 제공하면 된다.
 
-For Akka logging configuration, see [[configuring logging|SettingsLogger]].
+Akka에서 로그를 남기는 것을 설정하기 위해서는 다음을 보자.[[로그 설정하기|SettingsLogger]]
 
-By default the name of the `ActorSystem` is `application`. You can change this via an entry in the `conf/application.conf`:
+`ActorSystem`의 기본 이름은 `application`이다. `conf/application.conf`의 항목을 통해서 설정할 수 있다.:
 
 ```
 play.modules.akka.actor-system = "custom-name"
 ```
 
-> **Note:** This feature is useful if you want to put your play application ActorSystem in an akka cluster.
+> **주의:** 이 기능은 플레이 애플리케이션 엑터 시스템을 Akka의 클러스터에 넣는데에 유용하다.
 
-## Scheduling asynchronous tasks
+## 비동기 작업들의 일정 관리하기
 
-You can schedule sending messages to actors and executing tasks (functions or `Runnable`). You will get a `Cancellable` back that you can call `cancel` on to cancel the execution of the scheduled operation.
+작업들(함수나 `Runnable`)을 실행하기 위해 엑터에게 보내지는 메시지의 일정을 조절할 수 있다. 준비된 작업의 실행을 멈출 수 있는 `cancel`가 제공되는 `Cancellable`을 반환받기 때문이다.
 
-For example, to send a message to the `testActor` every 300 microseconds:
+예를 들어, 매 300 밀리초마다 `testActor`에게 메시지를 보내는 것은 아래와 같다.:
 
 @[schedule-actor](code/ScalaAkka.scala)
 
-> **Note:** This example uses implicit conversions defined in `scala.concurrent.duration` to convert numbers to `Duration` objects with various time units.
+> **주의:** 숫자를 다양한 형식의 시간 단위인 `Duration` 오브젝트로 변환하기 위해, 이 예제는 `scala.concurrent.duration`에 정의되어 있는 암시적 변환을 사용하고 있습니다.
 
-Similarly, to run a block of code 10 milliseconds from now:
+유사하게 코드의 구간을 10밀리초 후에 실행하는 코드는 다음과 같다.:
 
 @[schedule-callback](code/ScalaAkka.scala)
