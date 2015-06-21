@@ -135,7 +135,7 @@
 |  |  | ./manual/working/scalaGuide/advanced/iteratees/Iteratees.md |  |
 |  |  | ./manual/working/scalaGuide/advanced/routing/ScalaJavascriptRouting.md |  |
 |  |  | ./manual/working/scalaGuide/advanced/routing/ScalaSirdRouter.md |  |
-| W |  | ./manual/working/scalaGuide/main/akka/ScalaAkka.md |  |
+| W | F | ./manual/working/scalaGuide/main/akka/ScalaAkka.md |  |
 |  |  | ./manual/working/scalaGuide/main/async/ScalaAsync.md |  |
 |  |  | ./manual/working/scalaGuide/main/async/ScalaComet.md |  |
 |  |  | ./manual/working/scalaGuide/main/async/ScalaStream.md |  |
@@ -171,8 +171,8 @@
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWithSpecs2.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingYourApplication.md |  |
 |  |  | ./manual/working/scalaGuide/main/upload/ScalaFileUpload.md |  |
-|  |  | ./manual/working/scalaGuide/main/ws/ScalaOAuth.md |  |
-|  |  | ./manual/working/scalaGuide/main/ws/ScalaOpenID.md |  |
-|  |  | ./manual/working/scalaGuide/main/ws/ScalaWS.md |  |
+| W |  | ./manual/working/scalaGuide/main/ws/ScalaOAuth.md |  |
+| W |  | ./manual/working/scalaGuide/main/ws/ScalaOpenID.md |  |
+| W |  | ./manual/working/scalaGuide/main/ws/ScalaWS.md |  |
 |  |  | ./manual/working/scalaGuide/main/xml/ScalaXmlRequests.md |  |
 | L |  | ./manual/working/scalaGuide/ScalaHome.md |  |
