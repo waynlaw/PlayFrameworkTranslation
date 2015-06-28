@@ -3,11 +3,11 @@
 
 때로는 다른 HTTP 서비스들을 플레이 애플리케이션내에서 호출하려 할 수 있다. 플레이는 이러한 기능을 비동기 HTTP 호출을 제공하는 [WS library](api/scala/index.html#play.api.libs.ws.package)를 통해서 지원한다.
 
-WS API를 사용하는데 중요한 두가지 항목이 있다.: 요청을 만들고, 응답을 처리하는 것이다. 우리는 GET과 POST HTTP 요청 모두에 대해서 우선 알아보고, 이후에 WS에서 응답을 처리하는 방법에 대해 알아볼 것이다. 그리고 최종적으로는 일반적인 사용 방법에 대해 논의할 것이다.
+WS API를 사용하는데 중요한 두가지 항목이 있다. 요청을 만들고, 응답을 처리하는 것이다. 우리는 GET과 POST HTTP 요청 모두에 대해서 우선 알아보고, 이후에 WS에서 응답을 처리하는 방법에 대해 알아볼 것이다. 그리고 최종적으로는 일반적인 사용 방법에 대해 논의할 것이다.
 
 ## 요청 만들기
 
-WS를 사용하기 위해서는 `build.sbt` 파일에 `ws`를 추가해야 한다.:
+WS를 사용하기 위해서는 `build.sbt` 파일에 `ws`를 추가해야 한다.
 
 ```scala
 libraryDependencies ++= Seq(
@@ -15,7 +15,7 @@ libraryDependencies ++= Seq(
 )
 ```
 
-WS를 사용하려는 어떤 컨트롤러나 구성요소가 있다면, `WSClient`에 대한 의존성을 정의해야 한다.:
+WS를 사용하려는 어떤 컨트롤러나 구성요소가 있다면, `WSClient`에 대한 의존성을 정의해야 한다.
 
 @[의존성](code/ScalaWSSpec.scala)
 
@@ -99,11 +99,11 @@ XML 데이터를 전송하는 가장 쉬운 방법은 XML 리터럴들을 사용
 
 아래에 주어진 예제에서는 간결함을 위해서 일반적인 의존성을 한번만 보여줄 것이다.
 
-`Future`에서 작업이 끝나게 되면, 암묵적인 실행 문맥이 사용가능해진다. 이것은 콜백이 실행되도록 지정된 쓰레드풀에서 동작한다. 대부분은 기본적인 플레이 실행 문맥으로도 충분하다.:
+`Future`에서 작업이 끝나게 되면, 암묵적인 실행 문맥이 사용가능해진다. 이것은 콜백이 실행되도록 지정된 쓰레드풀에서 동작한다. 대부분은 기본적인 플레이 실행 문맥으로도 충분하다.
 
 @[scalaws-context](code/ScalaWSSpec.scala)
 
-아래의 예제는 케이스 클래스의 직렬화/역직렬화를 보여준다.:
+아래의 예제는 케이스 클래스의 직렬화/역직렬화를 보여준다.
 
 @[scalaws-person](code/ScalaWSSpec.scala)
 
@@ -113,7 +113,7 @@ XML 데이터를 전송하는 가장 쉬운 방법은 XML 리터럴들을 사용
 
 @[scalaws-process-json](code/ScalaWSSpec.scala)
 
-JSON 라이브러리는 암시적인 [`Reads[T]`](api/scala/index.html#play.api.libs.json.Reads)을 class로 변경해주는 [[유용한 기능|ScalaJsonCombinators]]을 가지고 있다.:
+JSON 라이브러리는 암시적인 [`Reads[T]`](api/scala/index.html#play.api.libs.json.Reads)을 class로 변경해주는 [[유용한 기능|ScalaJsonCombinators]]을 가지고 있다.
 
 @[scalaws-process-json-with-implicit](code/ScalaWSSpec.scala)
 
@@ -129,19 +129,19 @@ JSON 라이브러리는 암시적인 [`Reads[T]`](api/scala/index.html#play.api.
 
 `WS`는 [[iteratee|Iteratees]]를 사용하여 응답을 순회하며 차례대로 처리할 수 있게 해준다. `WSRequestHolder`의 `stream()`과 `getStream()`함수는 `Future[(WSResponseHeaders, Enumerator[Array[Byte]])]`을 반환한다. 이 Enumerator는 응답의 내용을 담고있다.
 
-여기에 반환된 응답의 바이트 수를 세는 예제가 있다.:
+여기에 반환된 응답의 바이트 수를 세는 예제가 있다.
 
 @[stream-count-bytes](code/ScalaWSSpec.scala)
 
-일반적으로는 이러한 방식으로 큰 데이터를 처리하기를 원하지는 않을 것이다. 더 일반적인 사용 방식은 응답의 내용을 다른 장소에 전달하는 것이다. 예를 들어, 데이터를 파일에 쓰려고 하는 경우를 보자.:
+일반적으로는 이러한 방식으로 큰 데이터를 처리하기를 원하지는 않을 것이다. 더 일반적인 사용 방식은 응답의 내용을 다른 장소에 전달하는 것이다. 예를 들어, 데이터를 파일에 쓰려고 하는 경우를 보자.
 
 @[stream-to-file](code/ScalaWSSpec.scala)
 
-다른 일반적인 사용은 응답의 내용을 다른 요청의 응답으로 제공해 주는 것이다.:
+다른 일반적인 사용은 응답의 내용을 다른 요청의 응답으로 제공해 주는 것이다.
 
 @[stream-to-result](code/ScalaWSSpec.scala)
 
-`POST`와 `PUT`은 수동으로 `withMethod`함수를 호출해 주어야 한다. 예:
+`POST`와 `PUT`은 수동으로 `withMethod`함수를 호출해 주어야 한다. 아래의 예를 참고하자.
 
 @[stream-put](code/ScalaWSSpec.scala)
 
@@ -163,21 +163,21 @@ JSON 라이브러리는 암시적인 [`Reads[T]`](api/scala/index.html#play.api.
 
 WSClient는 AsyncHttpClient를 감싸고 있다. 이것은 서로다른 프로파일이나 가상화와 함께 여러개의 클라이언트를 정의하는데 유용하다.
 
-WS를 이용한 주입 없이, 코드에서 바로 WSClient를 정의할 수 있다. 그리고 그것을 `WS.clientUrl()`와 함께 암시적으로 사용할 수 있다. 보안 TLS 설정을 위해 클라이언트를 설정할 때에는 항상 `NingAsyncHttpClientConfigBuilder`를 사용해야 하는것에 주의해야 한다.:
+WS를 이용한 주입 없이, 코드에서 바로 WSClient를 정의할 수 있다. 그리고 그것을 `WS.clientUrl()`와 함께 암시적으로 사용할 수 있다. 보안 TLS 설정을 위해 클라이언트를 설정할 때에는 항상 `NingAsyncHttpClientConfigBuilder`를 사용해야 하는것에 주의해야 한다.
 
 @[암시적-클라이언트](code/ScalaWSSpec.scala)
 
 > 주의: 만일 NingWSClient 오브젝트를 생성한다면, 그것은 WS 모듈의 생명주기를 사용하지 않을 것이며, `Application.onStop`에서 자동으로 닫지 않을 것이다. 대신 작업이 끝났을 때, 반드시 클라이언트는 수동으로 `client.close()`를 불러 종료해야 한다. 그러면 AsyncHttpClient에 의해 사용된 ThreadPoolExecutor를 해제할 것이다. 닫는것에 실패하게 되면 결국 메모리 부족 예외로 이어질 수 있다. (개발 환경에서 애플리케이션을 자주 재시동하는 경우에는 특히 그렇다.)
 
-또는 직접적으로:
+또는 직접적으로
 
 @[direct-client](code/ScalaWSSpec.scala)
 
-또는 특정한 클라이언트를 자동으로 결합하기 위해서, 마그넷 패턴을 사용할 수 있다.:
+또는 특정한 클라이언트를 자동으로 결합하기 위해서, 마그넷 패턴을 사용할 수 있다.
 
 @[pair-magnet](code/ScalaWSSpec.scala)
 
-기본적으로는 설정은 `application.conf`에서 이루어진다. 하지만 설정에서 빌더를 직접적으로 설정할 수 있다.:
+기본적으로는 설정은 `application.conf`에서 이루어진다. 하지만 설정에서 빌더를 직접적으로 설정할 수 있다.
 
 @[programmatic-config](code/ScalaWSSpec.scala)
 
@@ -185,14 +185,14 @@ WS를 이용한 주입 없이, 코드에서 바로 WSClient를 정의할 수 있
 
 @[underlying](code/ScalaWSSpec.scala)
 
-이것은 몇가지 경우에 중요하다.  WS는 클라이언트에 접근하는데 몇가지 제약을 가지고 있다.:
+이것은 몇가지 경우에 중요하다.  WS는 클라이언트에 접근하는데 몇가지 제약을 가지고 있다.
 
 * `WS`는 직접 업로드를 하는 멀티 파트 형식을 지원하지 않는다. [RequestBuilder.addBodyPart](http://asynchttpclient.github.io/async-http-client/apidocs/com/ning/http/client/RequestBuilder.html)를 활용하여 사용할 수 있다.
 * `WS` 스트리밍 내용 업로드를 지원하지 않는다. 이 경우에는 AsyncHttpClient에 의해 제공되는 `FeedableBodyGenerator`를 사용해야 한다.
 
 ## WS 설정하기
 
-WS클라이언트를 설정하기 위해서는 `application.conf`내의 아래와 같은 속성을 사용해야 한다:
+WS클라이언트를 설정하기 위해서는 `application.conf`내의 아래와 같은 속성을 사용해야 한다.
 
 * `play.ws.followRedirects`: 301과 302 우회를 따르도록 클라이언트를 설정한다. *(기본은 **true**)*.
 * `play.ws.useProxyProperties`: http 프록시 설정을 사용한다. (http.proxyHost, http.proxyPort) *(기본은 **true**)*.

@@ -14,7 +14,7 @@ OpenID는 사용자들이 하나의 계정으로 여러 서비스를 접속할 �
 
 ## 사용법
 
-OpenID를 사용하기 위해서는, 우선 `ws`를 `build.sbt`파일에 추가해야 한다.:
+OpenID를 사용하기 위해서는, 우선 `ws`를 `build.sbt`파일에 추가해야 한다.
 
 ```scala
 libraryDependencies ++= Seq(
@@ -22,7 +22,7 @@ libraryDependencies ++= Seq(
 )
 ```
 
-이제 어떤 OpenID를 사용하기를 원하는 컨트롤러나 구성요소에 [OpenIdClient](api/scala/index.html#play.api.libs.openid.OpenIdClient)에 대한 의존성을 선언해주어야 한다.:
+이제 어떤 OpenID를 사용하기를 원하는 컨트롤러나 구성요소에 [OpenIdClient](api/scala/index.html#play.api.libs.openid.OpenIdClient)에 대한 의존성을 선언해주어야 한다.
 
 @[의존성](code/ScalaOpenIdSpec.scala)
 
@@ -30,24 +30,24 @@ libraryDependencies ++= Seq(
 
 ## 플레이에서의 OpenID
 
-OpenID API는 두개의 중요한 함수를 가지고 있다.:
+OpenID API는 두개의 중요한 함수를 가지고 있다.
 
 * `OpenIdClient.redirectURL`는 사용자를 보내야할 URL 주소를 계산한다. 그것은 사용자의 OpenID 페이지를 비동기로 가져오는 과정에 연관이 있으므로, `Future[String]`를 반환한다. 만일 OpenID가 잘못되었다면, 반환된 `Future`는 실패할 것이다.
 * `OpenIdClient.verifiedId`는 `RequestHeader`를 필요로 하며, 검증된 OpenID와 사용자 정보를 확정하기 위한 조사를 필요로 한다. 정보의 신뢰성을 확인하기 위해서 OpenID 서버로 비동기 요청을 하고 [UserInfo](api/scala/index.html#play.api.libs.openid.UserInfo)의 Future를 반환할 것이다. 만일 정보가 올바르지 않거나, 서버의 확인이 자체가 거짓이라면(예를 들어 이동한 URL이 위조된 주소인 경우) 반한된 `Future`는 실패할 것이다.
 
 만일 `Future`가 실패하면, 사용자를 로그인 페이지로 다시 보내거나 `BadRequest`를 반환하는 것과 같은 대안을 정의할 수 있다.
 
-여기에 사용 예가 있다. (컨트롤러로 부터):
+여기에 사용 예가 있다. (컨트롤러로 부터)
 
 @[흐름](code/ScalaOpenIdSpec.scala)
 
 ## 추가 속성
 
-사용자의 OpenID는 그의 신원을 제공해 줍니다. 이 프로토콜은 또한 이메일 주소나, 성, 이름과 같은 [추가 속성](http://openid.net/specs/openid-attribute-exchange-1_0.html)을 제공해 줍니다.
+사용자의 OpenID는 그의 신원을 제공해 준다. 이 프로토콜은 또한 이메일 주소나, 성, 이름과 같은 [추가 속성](http://openid.net/specs/openid-attribute-exchange-1_0.html)을 제공해 준다.
 
 *선택적인* 속성과 *필수적인* 속성을 OpenID 서버에 요청할 수 있다. 필수적인 속성을 요청할 때 사용자가 그 정보들을 제공할 수 없다면 서비스에 로그인 할 수 없게된다.
 
-이동할 URL에서 추가적인 속성은 요청을 할 수 있다.:
+이동할 URL에서 추가적인 속성은 요청을 할 수 있다.
 
 @[추가 속성](code/ScalaOpenIdSpec.scala)
 
