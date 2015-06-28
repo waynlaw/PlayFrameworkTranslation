@@ -140,7 +140,7 @@
 |  |  | ./manual/working/scalaGuide/main/async/ScalaComet.md |  |
 |  |  | ./manual/working/scalaGuide/main/async/ScalaStream.md |  |
 |  |  | ./manual/working/scalaGuide/main/async/ScalaWebSockets.md |  |
-|  |  | ./manual/working/scalaGuide/main/cache/ScalaCache.md |  |
+| W | F | ./manual/working/scalaGuide/main/cache/ScalaCache.md |  |
 |  |  | ./manual/working/scalaGuide/main/forms/ScalaCsrf.md |  |
 |  |  | ./manual/working/scalaGuide/main/forms/ScalaCustomFieldConstructors.md |  |
 |  |  | ./manual/working/scalaGuide/main/forms/ScalaCustomValidations.md |  |
