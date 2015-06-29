@@ -160,7 +160,7 @@
 |  |  | ./manual/working/scalaGuide/main/json/ScalaJsonInception.md |  |
 |  |  | ./manual/working/scalaGuide/main/json/ScalaJsonTransformers.md |  |
 |  |  | ./manual/working/scalaGuide/main/logging/ScalaLogging.md |  |
-|  |  | ./manual/working/scalaGuide/main/sql/ScalaDatabase.md |  |
+| W | F | ./manual/working/scalaGuide/main/sql/ScalaDatabase.md |  |
 |  |  | ./manual/working/scalaGuide/main/sql/ScalaDatabaseOthers.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaFunctionalTestingWithScalaTest.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaFunctionalTestingWithSpecs2.md |  |
