@@ -1,7 +1,7 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Play 캐시 API
+# 플레이 캐시 API
 
-데이터를 캐시에 보관하는 것은 오늘날 애플리케이션 개발의 일반적인 최적화기법이므로, 플레이는 전역 캐시를 제공한다. 캐시의 중요한 점은 단지 바로 보관하고 바로 잊을 수 있는 것 처럼 동작해야 한다는 것이다. 
+데이터를 캐시에 보관하는 것은 오늘날 애플리케이션 개발의 일반적인 최적화 기법이므로, 플레이는 전역 캐시를 제공한다. 캐시의 중요한 점은 단지 바로 보관하고 바로 잊을 수 있는 것 처럼 동작해야 한다는 것이다. 
 
 캐시에 보관된 데이터는 데이터가 사라진 경우에 다시 채우기 위해서, 데이터를 생성하는 전략이 필요하다. 이 이론은 플레이의 근본적인 이념 중 한가지이며, 세션의 생명주기 동안 값을 유지하길 원하는 Java EE와의 차이점이다. 
 
@@ -20,7 +20,7 @@ libraryDependencies ++= Seq(
 
 ## 캐시 API 접근하기
 
-[CacheApi](api/scala/index.html#play.api.cache.CacheApi)가 캐시 API를 제공한다. 그리고 다른 의존성을 가지는 컴포넌트와 같이 의존성을 주입할 수 있다. 예를 들면:
+[CacheApi](api/scala/index.html#play.api.cache.CacheApi)가 캐시 API를 제공한다. 그리고 다른 의존성을 가지는 컴포넌트와 같이 의존성을 주입할 수 있다. 예를 들면
 
 @[inject](code/ScalaCache.scala)
 
@@ -50,11 +50,11 @@ libraryDependencies ++= Seq(
 
 다른 캐시에 접근하는 것 또한 가능하다. 기본 캐시는 `play`라고 불리며, `ehcache.xml` 파일을 생성하여 설정할 수 있다. 추가적인 캐시는 다른 설정이나 구현을 통해서 설정할 수 있다.
 
-만일 여러개의 다른 ehcache 캐시에 접근하고자 한다면, 다음과 같이 `application.conf` 파일에서, 그 정보들을 바인드해야한다고 알려주어야 한다.
+만일 여러개의 다른 ehcache 캐시에 접근하고자 한다면, 다음과 같이 `application.conf` 파일에서, 그 정보들을 바인딩 해야 한다고 알려주어야 한다.
 
     play.cache.bindCaches = ["db-cache", "user-cache", "session-cache"]
 
-이제 그것들을 주입했을 때, 이런 서로다른 캐시에 접근하기 위해서는, 의존성에 [NamedCache](api/java/play/cache/NamedCache.html) 적임자를 명시해야 한다. 예를 들면:
+이제 그것들을 주입했을 때, 이런 서로 다른 캐시에 접근하기 위해서는, 의존성에 [NamedCache](api/java/play/cache/NamedCache.html) 적임자를 명시해야 한다. 예를 들면
 
 @[qualified](code/ScalaCache.scala)
 
@@ -72,7 +72,7 @@ libraryDependencies ++= Seq(
 
 @[cached-action](code/ScalaCache.scala)
 
-만일 결과가 다양하면, 그 결과를 서로 다른 키들을 통해서 캐시할 수 있다. 예를 들어 각각의 사용자가 서로 다른 캐시 결과를 가지고 있다고 하자.
+만일 결과가 다양하면, 그 결과를 서로 다른 키를 통해서 캐시할 수 있다. 예를 들어 각각의 사용자가 서로 다른 캐시 결과를 가지고 있다고 하자.
 
 @[composition-cached-action](code/ScalaCache.scala)
 
