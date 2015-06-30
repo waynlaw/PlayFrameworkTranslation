@@ -1,20 +1,20 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# OpenID Support in Play
+# 플레이에서 OpenID 지원하기
 
-OpenID is a protocol for users to access several services with a single account. As a web developer, you can use OpenID to offer users a way to log in using an account they already have, such as their [Google account](https://developers.google.com/accounts/docs/OpenID). In the enterprise, you may be able to use OpenID to connect to a company’s SSO server.
+OpenID는 사용자들이 하나의 계정으로 여러 서비스를 접속할 수 있도록 하는 프로토콜이다. 웹 개발자로써, [Google account](https://developers.google.com/accounts/docs/OpenID)와 같이 사용자가 이미 가지고 있는 계정을 사용해서 로그인을 할 수 있도록 OpenID를 제공할 수 있다. 기업에서는 OpenID를 회사내의 SSO 서버에 연결하기위해 사용할 수 있다.
 
-## The OpenID flow in a nutshell
+## nutshell의 OpenID 흐름
 
-1. The user gives you his OpenID (a URL).
-2. Your server inspects the content behind the URL to produce a URL where you need to redirect the user.
-3. The user confirms the authorization on his OpenID provider, and gets redirected back to your server.
-4. Your server receives information from that redirect, and checks with the provider that the information is correct.
+1, 사용자가 자신의 OpenID(URL)를 제공한다.
+2. 서버가 사용자를 인증하기 위한 주소로 연결해주기 위해서, URL의 정보를 검사한다.
+3. 사용자가 OpenID 제공자로부터 인증을 받은 다음, 다시 서버로 돌아온다.
+4. 서버가 사용자를 다시 돌려보내준 곳으로부터 정보를 받고, 그 정보 제공자로부터 정보가 올바른지 확인한다.
 
-Step 1 may be omitted if all your users are using the same OpenID provider (for example if you decide to rely completely on Google accounts).
+만일 모든 사용자가 동일한 OpenID 제공자를 이용한다면, 첫번째 단계는 생략될 수 있다. (예를 들어, 완전히 구글 계정으로부터 정보를 받기로 결정하기로 한것과 같은 경우)
 
-## Usage
+## 사용법
 
-To use OpenID, first add `ws`  to your `build.sbt` file:
+OpenID를 사용하기 위해서는, 우선 `ws`를 `build.sbt`파일에 추가해야 한다.
 
 ```scala
 libraryDependencies ++= Seq(
@@ -22,33 +22,33 @@ libraryDependencies ++= Seq(
 )
 ```
 
-Now any controller or component that wants to use OpenID will have to declare a dependency on the [OpenIdClient](api/scala/index.html#play.api.libs.openid.OpenIdClient):
+이제 어떤 OpenID를 사용하기를 원하는 컨트롤러나 구성요소에 [OpenIdClient](api/scala/index.html#play.api.libs.openid.OpenIdClient)에 대한 의존성을 선언해주어야 한다.
 
-@[dependency](code/ScalaOpenIdSpec.scala)
+@[의존성](code/ScalaOpenIdSpec.scala)
 
-We've called the `OpenIdClient` instance `openIdClient`, all the following examples will assume this name.
+이후의 예제에서 생성한 `openIdClient`를 `OpenIdClient`라고 부를 것이다.
 
-## OpenID in Play
+## 플레이에서의 OpenID
 
-The OpenID API has two important functions:
+OpenID API는 두개의 중요한 함수를 가지고 있다.
 
-* `OpenIdClient.redirectURL` calculates the URL where you should redirect the user. It involves fetching the user's OpenID page asynchronously, this is why it returns a `Future[String]`. If the OpenID is invalid, the returned `Future` will fail.
-* `OpenIdClient.verifiedId` needs a `RequestHeader` and inspects it to establish the user information, including his verified OpenID. It will do a call to the OpenID server asynchronously to check the authenticity of the information, returning a future of [UserInfo](api/scala/index.html#play.api.libs.openid.UserInfo). If the information is not correct or if the server check is false (for example if the redirect URL has been forged), the returned `Future` will fail.
+* `OpenIdClient.redirectURL`는 사용자를 보내야할 URL 주소를 계산한다. 그것은 사용자의 OpenID 페이지를 비동기로 가져오는 과정에 연관이 있으므로, `Future[String]`를 반환한다. 만일 OpenID가 잘못되었다면, 반환된 `Future`는 실패할 것이다.
+* `OpenIdClient.verifiedId`는 `RequestHeader`를 필요로 하며, 검증된 OpenID와 사용자 정보를 확정하기 위한 조사를 필요로 한다. 정보의 신뢰성을 확인하기 위해서 OpenID 서버로 비동기 요청을 하고 [UserInfo](api/scala/index.html#play.api.libs.openid.UserInfo)의 Future를 반환할 것이다. 만일 정보가 올바르지 않거나, 서버의 확인이 자체가 거짓이라면(예를 들어 이동한 URL이 위조된 주소인 경우) 반한된 `Future`는 실패할 것이다.
 
-If the `Future` fails, you can define a fallback, which redirects back the user to the login page or return a `BadRequest`.
+만일 `Future`가 실패하면, 사용자를 로그인 페이지로 다시 보내거나 `BadRequest`를 반환하는 것과 같은 대안을 정의할 수 있다.
 
-Here is an example of usage (from a controller):
+여기에 사용 예가 있다. (컨트롤러로 부터)
 
-@[flow](code/ScalaOpenIdSpec.scala)
+@[흐름](code/ScalaOpenIdSpec.scala)
 
-## Extended Attributes
+## 추가 속성
 
-The OpenID of a user gives you his identity. The protocol also supports getting [extended attributes](http://openid.net/specs/openid-attribute-exchange-1_0.html) such as the e-mail address, the first name, or the last name.
+사용자의 OpenID는 그의 신원을 제공해 준다. 이 프로토콜은 또한 이메일 주소나, 성, 이름과 같은 [추가 속성](http://openid.net/specs/openid-attribute-exchange-1_0.html)을 제공해 준다.
 
-You may request *optional* attributes and/or *required* attributes from the OpenID server. Asking for required attributes means the user cannot login to your service if he doesn’t provides them.
+*선택적인* 속성과 *필수적인* 속성을 OpenID 서버에 요청할 수 있다. 필수적인 속성을 요청할 때 사용자가 그 정보들을 제공할 수 없다면 서비스에 로그인 할 수 없게된다.
 
-Extended attributes are requested in the redirect URL:
+이동할 URL에서 추가적인 속성은 요청을 할 수 있다.
 
-@[extended](code/ScalaOpenIdSpec.scala)
+@[추가 속성](code/ScalaOpenIdSpec.scala)
 
-Attributes will then be available in the `UserInfo` provided by the OpenID server.
+속성은 OpenID 서버가 제공한 `UserInfo` 에서 얻을 수 있을 것이다.
