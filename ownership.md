@@ -47,18 +47,18 @@
 |  |  | ./manual/detailedTopics/configuration/ws/TestingSSL.md |  |
 |  |  | ./manual/detailedTopics/configuration/ws/WSQuickStart.md |  |
 |  |  | ./manual/detailedTopics/configuration/ws/WsSSL.md |  |
-|  |  | ./manual/detailedTopics/database/Developing-with-the-H2-Database.md |  |
-|  |  | ./manual/detailedTopics/evolutions/Evolutions.md |  |
-|  |  | ./manual/detailedTopics/production/cloud/Deploying-CleverCloud.md |  |
-|  |  | ./manual/detailedTopics/production/cloud/Deploying-CloudFoundry.md |  |
-|  |  | ./manual/detailedTopics/production/cloud/DeployingCloud.md |  |
-|  |  | ./manual/detailedTopics/production/cloud/ProductionHeroku.md |  |
-|  |  | ./manual/detailedTopics/production/ConfiguringHttps.md |  |
-|  |  | ./manual/detailedTopics/production/HTTPServer.md |  |
-|  |  | ./manual/detailedTopics/production/Production.md |  |
-|  |  | ./manual/detailedTopics/production/ProductionConfiguration.md |  |
-|  |  | ./manual/experimental/AkkaHttpServer.md |  |
-|  |  | ./manual/experimental/ReactiveStreamsIntegration.md |  |
+| L |  | ./manual/detailedTopics/database/Developing-with-the-H2-Database.md |  |
+| L |  | ./manual/detailedTopics/evolutions/Evolutions.md |  |
+| L |  | ./manual/detailedTopics/production/cloud/Deploying-CleverCloud.md |  |
+| L |  | ./manual/detailedTopics/production/cloud/Deploying-CloudFoundry.md |  |
+| L |  | ./manual/detailedTopics/production/cloud/DeployingCloud.md |  |
+| L |  | ./manual/detailedTopics/production/cloud/ProductionHeroku.md |  |
+| L |  | ./manual/detailedTopics/production/ConfiguringHttps.md |  |
+| L |  | ./manual/detailedTopics/production/HTTPServer.md |  |
+| L |  | ./manual/detailedTopics/production/Production.md |  |
+| L |  | ./manual/detailedTopics/production/ProductionConfiguration.md |  |
+| L |  | ./manual/experimental/AkkaHttpServer.md |  |
+| L |  | ./manual/experimental/ReactiveStreamsIntegration.md |  |
 | L | F | ./manual/gettingStarted/Anatomy.md |  |
 | W | F | ./manual/gettingStarted/IDE.md |  |
 | L | F | ./manual/gettingStarted/Installing.md |  |
