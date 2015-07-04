@@ -1,21 +1,21 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Handling and serving XML requests
+# XML 요청들 제공하고 다루기
 
-## Handling an XML request
+## XML 요청 다루기
 
-An XML request is an HTTP request using a valid XML payload as the request body. It must specify the `application/xml` or `text/xml` MIME type in its `Content-Type` header.
+XML 요청은 올바른 XML내용을 요첨 내용으로 사용하는 HTTP 요청이다. 이것은 반드시 `Content-Type` 헤더안의 MIME 타입을 `application/xml` 또는 `text/xml`로 명시해야 한다.
 
-By default an `Action` uses a **any content** body parser, which lets you retrieve the body as XML (actually as a `NodeSeq`):
+기본적으로 `Action`은 내용을 XML 형식(실제로는 `NodeSeq`형식)으로 받을 수 있게 해주는 **any content** 내용 파서를 사용한다.
 
 @[xml-request-body-asXml](code/ScalaXmlRequests.scala)
 
-It’s way better (and simpler) to specify our own `BodyParser` to ask Play to parse the content body directly as XML:
+내용을 바로 XML로 파싱하도록 플레이에게 요청하기 위해서는, 고유한 `BodyParser`를 지정하는 것이 더 나은(더 간단한) 방법이다.
 
 @[xml-request-body-parser](code/ScalaXmlRequests.scala)
 
-> **Note:** When using an XML body parser, the `request.body` value is directly a valid `NodeSeq`. 
+> **주의:** XML 내용 파서를 사용할 때에는, `request.body` 값이 바로 올바른 `NodeSeq`가 된다. 
 
-You can test it with **cURL** from a command line:
+이것을 명령창에서 **cURL**을 통해서 테스트 할 수 있다.
 
 ```
 curl 
@@ -25,7 +25,7 @@ curl
   http://localhost:9000/sayHello
 ```
 
-It replies with:
+이 요청은 아래의 응답으로 변환된다.
 
 ```
 HTTP/1.1 200 OK
@@ -35,13 +35,13 @@ Content-Length: 15
 Hello Guillaume
 ```
 
-## Serving an XML response
+## XML 응답 제공하기
 
-In our previous example we handle an XML request, but we reply with a `text/plain` response. Let’s change that to send back a valid XML HTTP response:
+이전의 예제에서는 XML 요청을 다루었지만, `text/plain` 응답을 제공하였다. 이것을 올바른 XML HTTP 응답을 돌려주는 것으로 변경해보자.
 
 @[xml-request-body-parser-xml-response](code/ScalaXmlRequests.scala)
 
-Now it replies with:
+이제 아래와 같이 응답할 것이다.
 
 ```
 HTTP/1.1 200 OK
