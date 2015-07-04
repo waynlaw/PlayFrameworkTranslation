@@ -1,7 +1,7 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
 # 다른 데이터베이스 라이브러리들과 통합하기
 
-어떤 **SQL** 데이터베이스에 접근하는 라이브러리도 플레이와 함께 사용할 수 있고, `play.api.db.DB` 도우미를 통해 `Connection`과 `Datasource`로 변환할 수 있다.
+어떤 **SQL** 데이터베이스에 접근하는 라이브러리도 플레이와 함께 사용할 수 있고, `play.api.db.DB` 헬퍼를 통해 `Connection`과 `Datasource`로 변환할 수 있다.
 
 ## ScalaQuery와 통합하기
 
