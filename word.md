@@ -14,6 +14,7 @@
 - context : 컨텍스
 - controller : 컨트롤러
 - directory : 디렉터리
+- evolution : 이볼루션
 - factory method : 팩토리 메소드
 - instances : 인스턴스
 - layout : 레이아웃
@@ -24,6 +25,7 @@
 - resource : 자원
 - reverse routing : 리버스 라우팅
 - routes : 라우트
+- resolver : 리졸버
 - source : 소스
 - third party : 써드파티
 - Appenders : Appenders

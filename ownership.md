@@ -47,18 +47,18 @@
 |  |  | ./manual/detailedTopics/configuration/ws/TestingSSL.md |  |
 |  |  | ./manual/detailedTopics/configuration/ws/WSQuickStart.md |  |
 |  |  | ./manual/detailedTopics/configuration/ws/WsSSL.md |  |
-|  |  | ./manual/detailedTopics/database/Developing-with-the-H2-Database.md |  |
-|  |  | ./manual/detailedTopics/evolutions/Evolutions.md |  |
-|  |  | ./manual/detailedTopics/production/cloud/Deploying-CleverCloud.md |  |
-|  |  | ./manual/detailedTopics/production/cloud/Deploying-CloudFoundry.md |  |
-|  |  | ./manual/detailedTopics/production/cloud/DeployingCloud.md |  |
-|  |  | ./manual/detailedTopics/production/cloud/ProductionHeroku.md |  |
-|  |  | ./manual/detailedTopics/production/ConfiguringHttps.md |  |
-|  |  | ./manual/detailedTopics/production/HTTPServer.md |  |
-|  |  | ./manual/detailedTopics/production/Production.md |  |
-|  |  | ./manual/detailedTopics/production/ProductionConfiguration.md |  |
-|  |  | ./manual/experimental/AkkaHttpServer.md |  |
-|  |  | ./manual/experimental/ReactiveStreamsIntegration.md |  |
+| L |  | ./manual/detailedTopics/database/Developing-with-the-H2-Database.md |  |
+| L |  | ./manual/detailedTopics/evolutions/Evolutions.md |  |
+| L |  | ./manual/detailedTopics/production/cloud/Deploying-CleverCloud.md |  |
+| L |  | ./manual/detailedTopics/production/cloud/Deploying-CloudFoundry.md |  |
+| L |  | ./manual/detailedTopics/production/cloud/DeployingCloud.md |  |
+| L |  | ./manual/detailedTopics/production/cloud/ProductionHeroku.md |  |
+| L |  | ./manual/detailedTopics/production/ConfiguringHttps.md |  |
+| L |  | ./manual/detailedTopics/production/HTTPServer.md |  |
+| L |  | ./manual/detailedTopics/production/Production.md |  |
+| L |  | ./manual/detailedTopics/production/ProductionConfiguration.md |  |
+| L |  | ./manual/experimental/AkkaHttpServer.md |  |
+| L |  | ./manual/experimental/ReactiveStreamsIntegration.md |  |
 | L | F | ./manual/gettingStarted/Anatomy.md |  |
 | W | F | ./manual/gettingStarted/IDE.md |  |
 | L | F | ./manual/gettingStarted/Installing.md |  |
@@ -135,12 +135,12 @@
 |  |  | ./manual/working/scalaGuide/advanced/iteratees/Iteratees.md |  |
 |  |  | ./manual/working/scalaGuide/advanced/routing/ScalaJavascriptRouting.md |  |
 |  |  | ./manual/working/scalaGuide/advanced/routing/ScalaSirdRouter.md |  |
-|  |  | ./manual/working/scalaGuide/main/akka/ScalaAkka.md |  |
+| W | F | ./manual/working/scalaGuide/main/akka/ScalaAkka.md |  |
 |  |  | ./manual/working/scalaGuide/main/async/ScalaAsync.md |  |
 |  |  | ./manual/working/scalaGuide/main/async/ScalaComet.md |  |
 |  |  | ./manual/working/scalaGuide/main/async/ScalaStream.md |  |
 |  |  | ./manual/working/scalaGuide/main/async/ScalaWebSockets.md |  |
-|  |  | ./manual/working/scalaGuide/main/cache/ScalaCache.md |  |
+| W | F | ./manual/working/scalaGuide/main/cache/ScalaCache.md |  |
 |  |  | ./manual/working/scalaGuide/main/forms/ScalaCsrf.md |  |
 |  |  | ./manual/working/scalaGuide/main/forms/ScalaCustomFieldConstructors.md |  |
 |  |  | ./manual/working/scalaGuide/main/forms/ScalaCustomValidations.md |  |
@@ -153,26 +153,26 @@
 |  |  | ./manual/working/scalaGuide/main/http/ScalaResults.md |  |
 |  |  | ./manual/working/scalaGuide/main/http/ScalaRouting.md |  |
 |  |  | ./manual/working/scalaGuide/main/http/ScalaSessionFlash.md |  |
-|  |  | ./manual/working/scalaGuide/main/i18n/ScalaI18N.md |  |
+| W | F | ./manual/working/scalaGuide/main/i18n/ScalaI18N.md |  |
 |  |  | ./manual/working/scalaGuide/main/json/ScalaJson.md |  |
 |  |  | ./manual/working/scalaGuide/main/json/ScalaJsonCombinators.md |  |
 |  |  | ./manual/working/scalaGuide/main/json/ScalaJsonHttp.md |  |
 |  |  | ./manual/working/scalaGuide/main/json/ScalaJsonInception.md |  |
 |  |  | ./manual/working/scalaGuide/main/json/ScalaJsonTransformers.md |  |
 |  |  | ./manual/working/scalaGuide/main/logging/ScalaLogging.md |  |
-|  |  | ./manual/working/scalaGuide/main/sql/ScalaDatabase.md |  |
-|  |  | ./manual/working/scalaGuide/main/sql/ScalaDatabaseOthers.md |  |
+| W | F | ./manual/working/scalaGuide/main/sql/ScalaDatabase.md |  |
+| W | F | ./manual/working/scalaGuide/main/sql/ScalaDatabaseOthers.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaFunctionalTestingWithScalaTest.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaFunctionalTestingWithSpecs2.md |  |
-| W |  | ./manual/working/scalaGuide/main/tests/ScalaTestingWebServiceClients.md |  |
+| W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWebServiceClients.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWithDatabases.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWithGuice.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWithScalaTest.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWithSpecs2.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingYourApplication.md |  |
 |  |  | ./manual/working/scalaGuide/main/upload/ScalaFileUpload.md |  |
-|  |  | ./manual/working/scalaGuide/main/ws/ScalaOAuth.md |  |
-|  |  | ./manual/working/scalaGuide/main/ws/ScalaOpenID.md |  |
-|  |  | ./manual/working/scalaGuide/main/ws/ScalaWS.md |  |
+| W | F | ./manual/working/scalaGuide/main/ws/ScalaOAuth.md |  |
+| W | F | ./manual/working/scalaGuide/main/ws/ScalaOpenID.md |  |
+| W | F | ./manual/working/scalaGuide/main/ws/ScalaWS.md |  |
 |  |  | ./manual/working/scalaGuide/main/xml/ScalaXmlRequests.md |  |
 | L |  | ./manual/working/scalaGuide/ScalaHome.md |  |

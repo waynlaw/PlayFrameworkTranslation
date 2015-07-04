@@ -1,4 +1,4 @@
-Assets:공통 자산으로 작업하기
+Assets:공용 자산으로 작업하기
 AssetsCoffeeScript:커피스크립트 사용하기
 AssetsLess:LESS CSS 사용하기
 AssetsJSHint:JSHint 사용하기

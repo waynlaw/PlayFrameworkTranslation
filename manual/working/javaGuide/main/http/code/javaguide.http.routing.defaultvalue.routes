@@ -1,4 +1,0 @@
-# #clients
-# /clients?page=3와 같이 Pagination 값을 전달할 수 있다
-GET   /clients              controllers.Clients.list(page: Int ?= 1)
-# #clients
