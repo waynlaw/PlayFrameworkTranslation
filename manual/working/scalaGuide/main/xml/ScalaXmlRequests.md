@@ -1,7 +1,7 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# XML 요청들 제공하고 다루기
+# XML 요청을 제공하고 처리하기
 
-## XML 요청 다루기
+## XML 요청 처리하기
 
 XML 요청은 올바른 XML내용을 요첨 내용으로 사용하는 HTTP 요청이다. 이것은 반드시 `Content-Type` 헤더안의 MIME 타입을 `application/xml` 또는 `text/xml`로 명시해야 한다.
 
@@ -37,7 +37,7 @@ Hello Guillaume
 
 ## XML 응답 제공하기
 
-이전의 예제에서는 XML 요청을 다루었지만, `text/plain` 응답을 제공하였다. 이것을 올바른 XML HTTP 응답을 돌려주는 것으로 변경해보자.
+이전의 예제에서는 XML 요청에 대해서 살펴봤지만, `text/plain` 응답을 제공하였다. 이것을 올바른 XML HTTP 응답을 돌려주는 것으로 변경해보자.
 
 @[xml-request-body-parser-xml-response](code/ScalaXmlRequests.scala)
 
