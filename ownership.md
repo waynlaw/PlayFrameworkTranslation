@@ -170,7 +170,7 @@
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWithScalaTest.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWithSpecs2.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingYourApplication.md |  |
-|  |  | ./manual/working/scalaGuide/main/upload/ScalaFileUpload.md |  |
+| W | F | ./manual/working/scalaGuide/main/upload/ScalaFileUpload.md |  |
 | W | F | ./manual/working/scalaGuide/main/ws/ScalaOAuth.md |  |
 | W | F | ./manual/working/scalaGuide/main/ws/ScalaOpenID.md |  |
 | W | F | ./manual/working/scalaGuide/main/ws/ScalaWS.md |  |
