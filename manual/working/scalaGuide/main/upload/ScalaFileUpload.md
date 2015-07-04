@@ -1,5 +1,5 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# 파일 업로드 다루기
+# 파일 업로드 처리하기
 
 ## 폼에서 multipart/form-data를 사용하여 파일 업로드하기
 
@@ -34,6 +34,6 @@ HTML 폼을 작성해 보자.
 
 ## 고유의 내용 파서 작성하기
 
-만일 파일 업로드를 임시파일에 보관하지 않고 직접 다루기를 원하면, 고유한 `BodyParser`를 작성해야 한다. 이 경우에는, 원하는 곳으로 전달할 수 있는 데이터 묶음을 전달 받을 것이다.
+만일 파일 업로드를 임시파일에 보관하지 않고 직접 처리하고 싶다면, 고유한 `BodyParser`를 작성해야 한다. 이 경우에는, 원하는 곳으로 전달할 수 있는 데이터 묶음을 전달 받을 것이다.
 
 만일 `multipart/form-data` 인코딩 형식을 사용하기를 원하면, 고유한 `PartHandler[FilePart[A]]`를 작성하여 기본 `mutipartFormData` 파서에 전달하여 사용할 수 있다. 그러면 부분 헤더를 전달 받아서, 올바른 `FilerPart`를 만드는 `Iteratee[Array[Byte], FilePart[A]]`를 제공해야 할 것이다.
