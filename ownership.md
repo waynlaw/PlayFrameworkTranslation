@@ -155,7 +155,7 @@
 |  |  | ./manual/working/scalaGuide/main/http/ScalaSessionFlash.md |  |
 | W | F | ./manual/working/scalaGuide/main/i18n/ScalaI18N.md |  |
 | W | F | ./manual/working/scalaGuide/main/json/ScalaJson.md |  |
-| W |  | ./manual/working/scalaGuide/main/json/ScalaJsonCombinators.md |  |
+| W | F | ./manual/working/scalaGuide/main/json/ScalaJsonCombinators.md |  |
 | W | F | ./manual/working/scalaGuide/main/json/ScalaJsonHttp.md |  |
 | W |  | ./manual/working/scalaGuide/main/json/ScalaJsonInception.md |  |
 | W |  | ./manual/working/scalaGuide/main/json/ScalaJsonTransformers.md |  |
