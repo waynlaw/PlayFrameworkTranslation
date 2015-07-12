@@ -158,7 +158,7 @@
 | W | F | ./manual/working/scalaGuide/main/json/ScalaJsonCombinators.md |  |
 | W | F | ./manual/working/scalaGuide/main/json/ScalaJsonHttp.md |  |
 | W |  | ./manual/working/scalaGuide/main/json/ScalaJsonInception.md |  |
-| W |  | ./manual/working/scalaGuide/main/json/ScalaJsonTransformers.md |  |
+| W | F | ./manual/working/scalaGuide/main/json/ScalaJsonTransformers.md |  |
 | W | F | ./manual/working/scalaGuide/main/logging/ScalaLogging.md |  |
 | W | F | ./manual/working/scalaGuide/main/sql/ScalaDatabase.md |  |
 | W | F | ./manual/working/scalaGuide/main/sql/ScalaDatabaseOthers.md |  |
