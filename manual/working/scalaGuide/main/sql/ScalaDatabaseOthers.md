@@ -1,11 +1,11 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Integrating with other database libraries
+# 다른 데이터베이스 라이브러리들과 통합하기
 
-You can use any **SQL** database access library you like with Play, and easily retrieve either a `Connection` or a `Datasource` from the `play.api.db.DB` helper.
+어떤 **SQL** 데이터베이스에 접근하는 라이브러리도 플레이와 함께 사용할 수 있고, `play.api.db.DB` 헬퍼를 통해 `Connection`과 `Datasource`로 변환할 수 있다.
 
-## Integrating with ScalaQuery
+## ScalaQuery와 통합하기
 
-From here you can integrate any JDBC access layer that needs a JDBC data source. For example, to integrate with [ScalaQuery](https://github.com/szeiger/scala-query):
+어떤 JDBC 데이터 소스를 필요로 하는 어떤 JDBC 접근 계층과도 통합할 수 있다. [ScalaQuery](https://github.com/szeiger/scala-query)와 통합하는 예제는 아래와 같다.
 
 ```scala
 import play.api.db._
@@ -36,9 +36,9 @@ object Task extends Table[(Long, String, Date, Boolean)]("tasks") {
 }
 ```
 
-## Exposing the datasource through JNDI
+## JNDI를 통해 데이터 소스 노출하기
 
-Some libraries expect to retrieve the `Datasource` reference from JNDI. You can expose any Play managed datasource via JNDI by adding this configuration in `conf/application.conf`:
+어떤 라이브러리들은 `Datasource` 참조를 JNDI에서 가져오기를 원할 수 있다. `conf/application.conf`에 설정을 추가하면, 플레이의 어떤 데이터 소스라도 JNDI를 통해서 노출할 수 있다.
 
 ```
 db.default.driver=org.h2.Driver

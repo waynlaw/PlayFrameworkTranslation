@@ -154,14 +154,14 @@
 |  |  | ./manual/working/scalaGuide/main/http/ScalaRouting.md |  |
 |  |  | ./manual/working/scalaGuide/main/http/ScalaSessionFlash.md |  |
 | W | F | ./manual/working/scalaGuide/main/i18n/ScalaI18N.md |  |
-|  |  | ./manual/working/scalaGuide/main/json/ScalaJson.md |  |
-|  |  | ./manual/working/scalaGuide/main/json/ScalaJsonCombinators.md |  |
-|  |  | ./manual/working/scalaGuide/main/json/ScalaJsonHttp.md |  |
-|  |  | ./manual/working/scalaGuide/main/json/ScalaJsonInception.md |  |
-|  |  | ./manual/working/scalaGuide/main/json/ScalaJsonTransformers.md |  |
-|  |  | ./manual/working/scalaGuide/main/logging/ScalaLogging.md |  |
+| W | F | ./manual/working/scalaGuide/main/json/ScalaJson.md |  |
+| W | F | ./manual/working/scalaGuide/main/json/ScalaJsonCombinators.md |  |
+| W | F | ./manual/working/scalaGuide/main/json/ScalaJsonHttp.md |  |
+| W |  | ./manual/working/scalaGuide/main/json/ScalaJsonInception.md |  |
+| W | F | ./manual/working/scalaGuide/main/json/ScalaJsonTransformers.md |  |
+| W | F | ./manual/working/scalaGuide/main/logging/ScalaLogging.md |  |
 | W | F | ./manual/working/scalaGuide/main/sql/ScalaDatabase.md |  |
-|  |  | ./manual/working/scalaGuide/main/sql/ScalaDatabaseOthers.md |  |
+| W | F | ./manual/working/scalaGuide/main/sql/ScalaDatabaseOthers.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaFunctionalTestingWithScalaTest.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaFunctionalTestingWithSpecs2.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWebServiceClients.md |  |
@@ -170,9 +170,9 @@
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWithScalaTest.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingWithSpecs2.md |  |
 | W | F | ./manual/working/scalaGuide/main/tests/ScalaTestingYourApplication.md |  |
-|  |  | ./manual/working/scalaGuide/main/upload/ScalaFileUpload.md |  |
+| W | F | ./manual/working/scalaGuide/main/upload/ScalaFileUpload.md |  |
 | W | F | ./manual/working/scalaGuide/main/ws/ScalaOAuth.md |  |
 | W | F | ./manual/working/scalaGuide/main/ws/ScalaOpenID.md |  |
 | W | F | ./manual/working/scalaGuide/main/ws/ScalaWS.md |  |
-|  |  | ./manual/working/scalaGuide/main/xml/ScalaXmlRequests.md |  |
+| W | F | ./manual/working/scalaGuide/main/xml/ScalaXmlRequests.md |  |
 | L |  | ./manual/working/scalaGuide/ScalaHome.md |  |
