@@ -113,8 +113,8 @@
 |  |  | ./manual/working/javaGuide/main/logging/JavaLogging.md |  |
 |  |  | ./manual/working/javaGuide/main/sql/JavaDatabase.md |  |
 |  |  | ./manual/working/javaGuide/main/sql/JavaJPA.md |  |
-|  |  | ./manual/working/javaGuide/main/tests/JavaFunctionalTest.md |  |
-|  |  | ./manual/working/javaGuide/main/tests/JavaTest.md |  |
+| S | F | ./manual/working/javaGuide/main/tests/JavaFunctionalTest.md |  |
+| S | F | ./manual/working/javaGuide/main/tests/JavaTest.md |  |
 |  |  | ./manual/working/javaGuide/main/tests/JavaTestingWebServiceClients.md |  |
 |  |  | ./manual/working/javaGuide/main/tests/JavaTestingWithDatabases.md |  |
 |  |  | ./manual/working/javaGuide/main/tests/JavaTestingWithGuice.md |  |

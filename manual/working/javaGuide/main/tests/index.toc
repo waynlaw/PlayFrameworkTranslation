@@ -1,5 +1,5 @@
-JavaTest:Writing tests
-JavaFunctionalTest:Writing functional tests
-JavaTestingWithGuice:Testing with Guice
-JavaTestingWithDatabases:Testing with databases
-JavaTestingWebServiceClients:Testing web service clients
+JavaTest:test 작성하기
+JavaFunctionalTest:함수형 test 작성하기
+JavaTestingWithGuice:Guice를 이용하여 테스트 하기
+JavaTestingWithDatabases:데이터베이스를 이용하여 테스트 하기
+JavaTestingWebServiceClients:웹 서비스 클라이언트 테스트하기
