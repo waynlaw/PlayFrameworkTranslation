@@ -1,13 +1,13 @@
-# Aggregating reverse routers
+# 리버스 라우팅 결합하기
 
-In some situations you want to share reverse routers between sub projects that are not dependent on each other.
+서로 의존관계가 없는 서브 프로젝트 사이에 리버스 라우팅을 공유하고 싶은 경우가 있다.
 
-For example, you might have a `web` sub project, and an `api` sub project.  These sub projects may have no dependence on each other, except that the `web` project wants to render links to the `api` project (for making AJAX calls), while the `api` project wants to render links to the `web` (rendering the web link for a resource in JSON).  In this situation, it would be convenient to use the reverse router, but since these projects don't depend on each other, you can't.
+예를 들어 `web` 서브 프로젝트가 있고 `api` 서브 프로젝트가 있다고 가정하자. 이 서브 프로젝트들은 의존 관계는 없지만 `web`프로젝트는 `api` 프로젝트로 AJAX 호출을 위한 링크를 생성하거나 `api`프로젝트가 `web`프로젝트로 JSON에 자원을 위한 웹 링크를 렌더링 해야 하는 상황이다. 이런 경우 리버스 라우터를 사용하면 편리할 수 있지만 이들 프로젝트는 서로 의존관계가 없기 때문에 리버스 라우팅을 사용할 수 없다.
 
-Play's routes compiler offers a feature that allows a common dependency to generate the reverse routers for projects that depend on it so that the reverse routers can be shared between those projects.  This is configured using the `aggregateReverseRoutes` sbt configuration item, like this:
+플레이의 라우트 컴파일러는 의존성 프로젝트를 위해 리버스 라우터를 생성하도록 공통 의존성을 허용하는 기능을 제공한다. 그래서 리버스 라우터는 이들 프로젝트 간에 리버스 라우터를 공유할 수 있다. 아래와 같이 `aggregateReverseRoutes` sbt 환경설정 아이템을 사용한다. 
 
 @[content](code/aggregate.sbt)
 
-In this setup, the reverse routers for `api` and `web` will be generated as part of the `common` project.  Meanwhile, the forwards routers for `api` and `web` will still generate forwards routers, but not reverse routers, because their reverse routers have already been generated in the `common` project which they depend on, so they don't need to generate them.
+이렇게 설정하면 `api`와 `web`을 위한 리버스 라우터는 `common` 프로젝트의 한 부분을 생성할 것이다. 한편 `api`와 `web`을 위한 앞단의 라우터는 여전히 앞단 라우터를 생성할 것이지만 리버스 라우터는 아니다. 리버스 라우터는 의존성이 있는 `common` 프로젝트로 이미 생성되었을 것이기 때문에 리버스 라우터는 생성할 필요가 없다.
 
-> Note that the `common` project has a type of `Project` explicitly declared.  This is because there is a recursive reference between it and the `api` and `web` projects, through the `dependsOn` method and `aggregateReverseRoutes` setting, so the Scala type checker needs an explicit type somewhere in the chain of recursion.
+> `common` 프로젝트는 명시적으로 선언된 `Project`라는 타입을 갖는다는 것을 명심하라. 왜나하면 `api`와 `web`프로젝트 사이에서나 `dependsOn`나 `aggregateReverseRoutes` 설정 사이에서 서로 재귀적으로 참조가 일어날 수 있고, 그래서 스칼라 타입 확인은 재귀의 연결들에서 명시적인 타입이 필요하다.

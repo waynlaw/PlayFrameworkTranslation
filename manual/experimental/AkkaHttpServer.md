@@ -1,27 +1,27 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Akka HTTP server backend (experimental)
+# 아카 HTTP 서버 백엔드(실험중)
 
-> **Play experimental libraries are not ready for production use**. APIs may change. Features may not work properly.
+> **플레이의 실험적인 라이브러리는 아직 실환경에서 사용할 준비가 되진 않았다.** API는 변경될 수 있고, 기능은 적절하게 동작하지 않을 수 있다.
 
-The Play 2 APIs are built on top of an HTTP server backend. The default HTTP server backend uses the [Netty](http://netty.io/) library. In Play 2.4 another **experimental** backend, based on [Akka HTTP](http://doc.akka.io/docs/akka-stream-and-http-experimental/current/), is also available. The Akka HTTP backend aims to provide the same Play API as the Netty HTTP backend. At the moment the Akka HTTP backend is missing quite a few features.
+플레이 2 API는 HTTP 서버 백엔드의 최상위에 놓여져 있다. 기본적인 API 서버 백엔드는 [Netty](http://netty.io/) 라이브러리를 사용한다. 플레이 2.4에서는 다른 **실험적인** 백엔드 [Akka HTTP](http://doc.akka.io/docs/akka-stream-and-http-experimental/current/)기반의 백엔드도 또한 사용할 수 있다. Akka HTTP 백엔드는 Netty HTTP 백엔드와 동일한 플레이 API를 제공하는걸 목적으로 한다. 지금 Akka HTTP 백엔드는 약간의 기능들이 빠져있다.
 
-The experimental Akka HTTP backend is a technical proof of concept. It is not intended for production use and it doesn't implement the full Play API. The purpose of the new backend is to trial Akka HTTP as a possible backend for a future version of Play. The backend also serves as a valuable test case for our friends on the Akka project.
+실험적인 Akka HTTP 백엔드는 개념의 기술적인 증거이다. 실환경에서 사용할 수 없고 플레이 API를 모두 구현하지도 않았다. 새로운 백엔드의 목적은 Akka HTTP가 플레이의 미래 버전을 위한 백엔드로 사용가능한지 실험하는 것이다. 백엔드는 또한 우리의 친구인 Akka 프로젝트의 가치있는 테스트 케이스를 제공하는 것도 있다.
 
-## Known issues
+## 알려진 이슈
 
-* WebSockets are not supported. This will be fixed once Akka HTTP gains WebSocket support.
-* No HTTPS support.
-* If a `Content-Length` header is not supplied, the Akka HTTP server always uses chunked encoding. This is different from the Netty backend which will automatically buffer some requests to get a `Content-Length`.
-* No `X-Forwarded-For` support.
-* No `RequestHeader.username` support.
-* Server shutdown is a bit rough now. HTTP server actors are just killed.
-* No attempt has been made to tune performance. Performance will to be slower than Netty. For example, currently there is a lot of extra copying between Play's `Array[Byte]` and Akka's `ByteString`. This could be optimized.
-* The implementation contains a lot of code duplicated from Netty.
-* There are no proper documentation tests for the code written on this page.
+* WebSockets을 지원하지 않는다. 이는 앞으로 Akka HTTP가 웹소켓 지원 이후에 수정될 예정이다.
+* HTTPS를 지원하지 않는다.
+* `Content-Length`헤더가 없으면 Akka HTTP 서버는 항상 청크 인코딩을 사용한다. Netty 백엔드는 `Content-Length`을 얻기 위해 요청을 자동으로 버퍼시키는 것과는 차이가 있다.
+* `X-Forwarded-For`을 지원하지 않는다.
+* `RequestHeader.username`을 지원하지 않는다.
+* 서버의 셧다운이 조금 무자비 하다. HTTP 서버 액터를 그냥 죽인다.
+* 성능을 조정하기 위한 시도가 없었다. 성능은 Netty보다 더 느릴 것이다. 예를들어, 현재 플레이의 `Array[Byte]`와 Akka의 `ByteString` 사이에서 아주 많은 복사가 일어난다. 이는 최적화 될 예정이다.
+* 구현체는 Netty로부터 많은 중복 코드를 담고 있다.
+* 이 페이지에 씌여진 코드에 대한 더 적절한 문서가 없다.
 
-## Usage
+## 사용하기
 
-To use the Akka HTTP server backend you first need to disable the Netty server and add the Akka HTTP server plugin to your project:
+Akka HTTP 서버 백엔드를 사용하기 위해 먼저 Netty 서버를 사용하지 않도록 하고, Akka HTTP 서버 플러그인을 프로젝트에 추가하자. 
 
 ```scala
 lazy val root = (project in file("."))
@@ -29,19 +29,19 @@ lazy val root = (project in file("."))
   .disablePlugins(PlayNettyServer)
 ```
 
-Now Play should automatically select the Akka HTTP server for running in dev mode, prod and in tests.
+이제 플레이는 자동으로 prod와 dev 모드, 테스트를 실행하기 위해 Akka HTTP 서버를 선택할 것이다.
 
-### Manually selecting the Akka HTTP server
+### 직접 Akka HTTP 서버 선택하기
 
-If for some reason you have both the Akka HTTP server and the Netty HTTP server on your classpath, you'll need to manually select it.  This can be done using the `play.server.provider` system property, for example, in dev mode:
+만약에 어떤 이유에서 클래스패스에 Akka HTTP서버와 Netty서버를 둘다 가져야 한다면, 이에 대해서 직접 선택해야할 필요가 있다. 예를 들어 dev모드에서 `play.server.provider` 시스템 프로퍼티를 사용해서 할 수 있다.
 
 ```
 run -Dplay.server.provider=play.core.server.akkahttp.AkkaHttpServerProvider
 ```
 
-### Verifying that the Akka HTTP server is running
+### Akka HTTP 서버가 동작하는지 검증하기
 
-When the Akka HTTP server is running it will tag all requests with a tag called `HTTP_SERVER` with a value of `akka-http`. The Netty backend will not have a value for this tag.
+Akka HTTP 서버가 동작할 때 모든 요청에 `HTTP_SERVER`태그에 `akka-http`의 값이 붙는다. Netty 백엔드는 이 태그에 값이 없다.
 
 ```scala
 Action { request =>
@@ -50,9 +50,9 @@ Action { request =>
 }
 ```
 
-### Configuring the Akka HTTP server
+### Akka HTTP 서버 환경설정하기
 
-The Akka HTTP server is configured with Typesafe Config, like the rest of Play. Note: when running Play in development mode, the current project's resources may not be available on the server's classpath. Configuration may need to be provided in system properties or via resources in a JAR file.
+Akka HTTP 서버는 Play처럼 Typesafe Config로 환경설정을 할 수 있다. Note: 플레이가 개발 모드로 실행 중일 때, 현재 프로젝트의 리소스는 서버의 클래스패스에서 사용할 수 없다. 환경설정은 시스템의 프로퍼티나 JAR 파일의 리소스로 제공되어야 할 것이다.
 
 ```
 play {
