@@ -1,8 +1,8 @@
 BuildingFromSource:소스로 플레이 만들기
 ThirdPartyTools:서드파티(3rd party) 도구
-Repositories:리포지토리
+Repositories:저장소
 Issues:이슈 트래커
 Guidelines:컨트리뷰터 가이드라인
 Documentation:문서 가이드라인
 Translations:문서 번역하기
-WorkingWithGit:git으로 작업하기
+WorkingWithGit:Git으로 작업하기
