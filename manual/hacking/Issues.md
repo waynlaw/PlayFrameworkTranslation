@@ -1,14 +1,14 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Issues tracker
+# 이슈 트래커
 
-We use GitHub as our issue tracker, at:
+우리는 이슈 트래커로 GitHub를 사용한다.
 
 <https://github.com/playframework/playframework/issues>.
 
-## Reporting bugs
+## 버그 알려주기
 
-Bug reports are incredibly helpful, so take time to report bugs and request features in our ticket tracker. We’re always grateful for patches to Play’s code. Indeed, bug reports with attached patches will get fixed far quickly than those without any.
+버그 리포트는 엄청나게 도움이 된다. 그래서 우리의 티켓 추적기에 기능을 요청하고 버그를 알려주면 좋겠다. 우리는 플레이의 코드를 패치하는 것에 대해서 항상 감사한다. 실제로 패치를 첨부한 버그 리포트는 아무것도 없는 것보다 더 빠르게 수정될 것이다. 
 
-Please include as much relevant information as possible including the exact framework version you’re using and a code snippet that reproduces the problem.
+문제를 재현할 수 있는 코드의 조각과 사용하고 있는 프레임워크의 명확한 버전을 포함하여 가능한 관련있는 많은 정보를 포함시켜 주길 바란다.
 
-Don’t have too many expectations. Unless the bug is really a serious ‘everything is broken’ thing, you’re creating a ticket to start a discussion. Having a patch (or a branch on Github we can pull from) is better, but then again we’ll only pull high-quality branches that make sense to be in the core of Play.
+너무 많은 기대를 하지 않길 바라며, 버그가 정말 심각하게 '모든 것을 파괴'하지 않는 한, 토론을 시작하는 티켓을 만들 수 있다. 패치를 가지면 좋다.(또는 Github에서 가져올 수 있는 브랜치가 있거나)우리는 플레이의 코어가 될 수 있는 고품질의 브랜치만 당겨 올 수 있을 것이다.
