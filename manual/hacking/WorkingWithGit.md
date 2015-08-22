@@ -1,83 +1,86 @@
-# Working with Git
+# Git으로 작업하기
 
-This guide is designed to help new contributors get started with Play.  Some of the things mentioned here are conventions that we think are good and make contributing to Play easier, but they are certainly not prescriptive, you should use what works best for you.
+이 가이드는 플레이의 새로운 컨트리뷰터를 도와주기 위해 작성되었다. 여기에서 알려주는 것들은 우리가 생각하기에 플레이에 쉽게 컨트리뷰션할 수 있는 좋은 규약들이다. 그러나 우리는 절대 강요하는 것은 아니고, 최상의 작업을 위해 사용해주었으면 한다.
 
-## Git remotes
+## Git 리모트
 
-We recommend the convention of calling the remote for the official Play repository `origin`, and the remote for your fork your username.  This convention works well when sharing code between multiple forks, and is the convention we'll use for all the remaining git commands in this guide.  It is also the convention that works best out of the box with the [GitHub command line tool](https://github.com/github/hub).
+우리는 공식 플레이 저장소가 있는 리모트를 부르는 규약으로 `origin`을 추천하며, 포크를 위한 리모트로 사용자이름을 추천한다. 이 규약은 여러 포크들 사이에서 코드를 공유할 때 유용하며 또한 이 가이드에서 모든 Git 명령어를 위해 사용할 것이다. 또한 [GitHub 명령어 라인 도구](https://github.com/github/hub)에서 최고의 규약이다.
 
-## Branches
+## 브랜치
 
-Typically all work should be done in branches.  If you do work directly on master, then you can only submit one pull request at a time, since if you try to submit a second from master, the second will contain commits from both your first and your second.  Working in branches allows you to isolate pull requests from each other.
+일반적으로 모든 작업은 브랜치에서 이루어져야 한다. 만약 마스터에 직접 작업하면, 한번에 오직 하나의 풀 리퀘스트를 보낼 수 있으므로 마스터에서 두 번째 커밋을 보내려고 하면, 두 번째는 첫 번째 커밋과 두 번째 커밋을 모두 포함할 것이다.
 
-It's up to you what you call your branches, some people like to include issue numbers in their branch name, others like to use a hierarchical structure.
+브랜치에 어떤 이름을 붙일 것 인지는 여러분의 몫이며, 몇몇 사람들은 브랜치 이름에 이슈 번호를 넣는 것을 좋아하기도 하고 계층적인 구조를 사용하기도 한다.
 
-## Squashing commits
+## 커밋 뭉개뜨리기
 
-We prefer that all pull requests be a single commit.  There are a few reasons for this:
+우리는 모든 풀 리퀘스트가 하나의 커밋이기를 선호한다. 다음과 같은 몇 가지 이유가 있다.
 
-* It's much easier and less error prone to backport single commits to stable branches than backport groups of commits.  If the change is just in one commit, then there is no opportunity for error, either the whole change is cherry picked, or it isn't.
-* We aim to have our master branch to always be releasable, not just now, but also for all points in history.  If we need to back something out, we want to be confident that the commit before that is stable.
-* It's much easier to get a complete picture of what happened in history when changes are self contained in one commit.
+* 이것이 더 쉬우며 여러개의 커밋보다 안정된 브랜치의 단일 커밋이 더 적은 에러를 보이는 경향이 있다. 만약 변경사항이 하나의 커밋이라면 전체 변경사항을 체리 피킹한 것이든 아니든 에러가 발생할 확률이 적다.
+* 우리는 마스터 브랜치는 히스토리상 모든 시점 뿐 아니라 언제든지 공개할 수 있도록 하는 것이 목표이다. 만약에 어떤 시점으로 돌아가고 싶을 때 우리는 이전 커밋이 안전하다는 확신을 갖을 수 있다.
+* 변경이 스스로 하나의 커밋을 가지면 히스토리에서 무슨일이 벌어졌는지 명확하게 알 수 있다.
 
-Of course, there are some situations where it's not appropriate to squash commits, this will be decided on a case by case basis, but examples of when we won't require commits to be squashed include:
+물론 적절하지 않게 뭉개진 커밋이 있을 수 있다. 기본적으로 경우에 따라 결정되어야 하겠지만, 예를 들어 뭉개지지 않기를 원하는 상황은 아래와 같다.
 
-* When the pull request contains commits by more than one person.  In this case, we'd prefer, where it makes sense, to squash contiguous commits by the same person.
-* When the pull request is coming from a fork or branch that has been shared among the community, where rewriting history will cause issues for people that have pull changes from that fork or branch.
-* Where the pull request is a very large amount of work, and the commit log is useful in understanding the evolution of that work.
+* 한명 이상이 작업한 커밋을 포함한 풀 리퀘스트를 받을 때. 이 경우는 동일한 작업자로 의미있는 단위를 묶어 뭉개진 지속적인 커밋을 더 선호한다.
+* 포크나 브랜치로부터 변경사항을 당겨받은 사람이 새로 작성된 이력으로 이슈를 발생한 경우, 커뮤니티 사이에서 이미 공유된 브랜치나 포크로부터 풀 리퀘스트를 보낼 때.
+* 풀 리퀘스트가 아주 큰 작업을 가지거나 커밋 로그가 작업의 진화과정을 이해하는데 유용할 경우.
 
-However, for the general case, if your pull request contains more than one commit, then you will need to squash it.  To do this, or if you already have submitted a pull request and we ask you to squash it, then you should follow these steps:
+그러나 일반적인 경우, 풀 리퀘스트가 하나 이상의 커밋을 가진다면 커밋을 뭉개줄 필요가 있다. 이를 수행하거나 이미 풀 리퀘스트를 보내서 우리가 커밋을 뭉개달라고 요청했다면 다음 과정을 따라주길 바란다.
 
-1. Ensure that you have all the changes from the core master branch in your repo:
+1. 여러분의 저장소에 핵심 마스터 브랜치로부터 모든 변경사항을 받아왔는지 확인한다.
 
         git fetch origin
 
-2. Start an interactive rebase
+2. 대화형 리베이스를 시작한다.
 
         git rebase -i origin/master
 
-3. This will open up a screen in your editor, allowing you to say what should be done with each commit.  If the commit message for the first commit is suitable for describing all of the commits, then leave it as is, otherwise, change the command for it from `pick` to `reword`.
-4. For each remaining commit, change the command from `pick` to `fixup`.  This tells git to merge that commit into the previous commit, using the commit message from the previous commit.
-5. Save the file and exit your editor.  Git will now start the rebase.  If you told it to reword the first commit, it will prompt you in a new editor for the wording for that commit.  If all goes well, then you're done, but it may be the case that there were conflicts when applying your changes to the most recent master branch.  If that's the case, fix the conflicts, stage the fixes, and then run:
+3. 스크린에 에디터가 열리고 각 커밋에 대해서 어떤 작업을 수행할지 결정할 수 있다. 첫 번째 커밋 메시지가 모든 커밋을 묘사하기에 충분한 커밋 메시지라면 이를 남겨두면 되며 반면에 `pick`이나 `reword`로 이를 변경하기 위한 명령을 줄 수 있다.
+
+4. 남아있는 커밋을 위해 `pick`나 `fixup`의 명령어로 변경하자. 이는 이전 커밋의 커밋 메시지를 사용하여 이 커밋을 이전 커밋으로 머지하라는 명령이다.
+
+5. 파일을 저장하고 에디터를 종료하자. Git은 리베이스를 시작할 것이다. 첫 번째 커밋을 변경하도록 이야기 했다면 커밋을 작성하기 위한 새로운 에디터가 나타날 것이다. 모든게 잘 되었고 모두 마쳤지만 최근 마스터 브랜치에 변경사항을 적용할 때 충돌이 발생하는 경우도 있다. 이런 경우라면 충돌을 해결하고 수정사항을 스테이징 영역에 넣고 다음을 수행하라.
 
         git rebase --continue
 
-    This may need to be repeated if there are more changes that have conflicts.
-6. Now that you've rebased you can push your changes.  If you've already pushed this branch before (including if you've already created the pull request), then you will have to do a force push.  This can be done like so:
+충돌사항에 더 많은 변경이 있다면 여러번 반볼 될 필요도 있을 것이다.
+
+6. 이제 리베이스를 했고 변경사항을 푸쉬할 수 있다. 이미 이전에 브랜치를 푸쉬하였다면(이미 풀 리퀘스트를 생성했을 때도 포함하여), force 푸쉬를 해야할 수도 있다. 다음과 같이 할 수 있다.
 
         git push yourremote yourbranch --force
 
-### Responding to reviews/build breakages
+### 리뷰/빌드가 깨진것에 대답하기
 
-If your pull request doesn't pass the CI build, if we review it and ask you to update your pull request, or if for any other reason you want to update your pull request, then rather than creating a new commit, amend the existing one.  This can be done by supplying the `--amend` flag when committing:
+풀 리퀘스트가 CI 빌드를 통과하지 못하거나, 우리가 리뷰하고 풀 리퀘스트에 대해 변경을 요청하거나 어떤 이유에서든 여러분의 풀 리퀘스트를 수정하고 싶다면 새로운 커밋을 만들기 보다 이미 존재하는 것에 amend를 하는 것이 좋다. 이는 커밋을 수행할 때 `--amend` 플래그를 사용하여 수행할 수 있다.
 
     git commit --amend
 
-After doing an amend, you'll need to do a force push using the `--force` flag:
+amend를 수행한 후에 `--force` 플래그를 사용하여 force 푸쉬를 수행할 필요가 있을 것이다.
 
     git push yourremote yourbranch --force
 
-## Starting over
+## 다시 시작하기
 
-Sometimes people find that they get their pull request completely wrong and want to start over.  This is fine, however there is no need to close the original pull request and open a new one.  You can use a force push to push a completely new branch into the pull request.
+몇몇 사람들은 그들의 풀 리퀘스트가 완전히 틀렸음을 알게 되면 다시 시작하길 원한다. 이런 경우도 물론 괜찮으며 본래 풀 리 퀘스트를 닫을 필요는 없고, 새로운 것을 열면 된다. force push를 사용하여 풀 리퀘스트에 완벽하게 새로운 브랜치를 푸쉬할 수 있다.
 
-To start over, make sure you've got the latest changes from Play core, and create a new branch from that point:
+다시 시작하기 위해, 플레이 코어로 부터 최신 변경사항을 내려 받고 이 시점으로 새로운 브랜치를 생성하라.
 
     git fetch origin
     git checkout -b mynewbranch origin/master
 
-Now make your changes, and then when you're ready to submit a pull request, assuming your old branch was called `myoldbranch`, push your new branch into that old branch in your repository:
+이제 변경사항을 만든 후에 풀 리퀘스트를 보낼 준비가 되면 여러분의 옛날 브랜치가 `myoldbranch`라고 가정하면 저장소의 옛날 브랜치로 새로운 브랜치를 밀어 넣자.
 
     git push yourremote mynewbranch:myoldbranch --force
 
-Now the pull request should be updated with your new branch.
+이제 풀 리퀘스트는 새로운 브랜치로 수정되었을 것이다.
 
-## A word on changing history
+## 변경 이력에 대한 문구
 
-You may have heard it said that you shouldn't change git history once you publish it.  Using `rebase` and `commit --amend` both change history, and using `push --force` will publish your changed history.
+한번 발행한 Git의 이력은 변경하면 안된다는 것을 들어본적이 있을 것이다. `rebase`나 `commit --amend`를 사용하여 이력을 변경하면 `push --force`를 사용하여 변경된 이력을 발행할 수 있다.
 
-There are definitely times when git history shouldn't be changed after being published.  The main times are when it's likely that other people have forked your repository, or pulled changes from your repository.  Changing history in those cases will make it impossible for them to safely merge changes from your repo into their repository.  For this reason, we never change history in the official Play Framework repository.
+Git 이력이 이미 발행된 이후에 변경되면 안된다는 것을 명확하게 할 시간이다. 가장 중요한 점은 다른 사람이 여러분의 저장소를 포크했거나 저장소로부터 변경사항을 내려 받았을 때이다. 이런 경우 변경한 이력은 여러분의 저장소에서 그들의 저장소로 변경사항을 안전하게 머지하는 것이 불가능할 것이다. 이러한 이유로 공식 플레이 프레임워크 저장소에 이력을 절대 변경하지 않는다.
 
-However, when it comes to your personal fork, for branches that are just intended to be pull requests, then it's a different matter - the intent of the workflow is that your changes get "published" once they get merged into the master branch.  Before that, the history can be considered a work in progress.
+그러나 개인적인 포크에서 브랜치를 위해 풀 리퀘스트를 의도한 것이라면 다르다. 작업의 의도는 여러분의 변경사항이 그들이 마스터 브랜치로부터 머지를 얻었을때 단 한번만 "발행되었다"는 것을 갖는 것이다. 이전에 이력은 작업하는 중에 고려될 수 있다.
 
-If however your branch is a collaboration of many people, and you believe that other people have pull from your branch for good reasons, please let us know, we won't force squashing commits where it doesn't make sense.
+그러나 여러분의 브랜치가 여러명의 합작품이고 여러분이 다른 사람이 좋은 의도를 위해 여러분의 브랜치로부터 풀을 받았다면, 우리가 이해하지 못하여 커밋을 뭉개기를 강요하지 않도록 알려주길 바란다.
