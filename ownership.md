@@ -17,14 +17,14 @@
 | L | F | ./manual/detailedTopics/assets/AssetsJSHint.md |  |
 | L | F | ./manual/detailedTopics/assets/AssetsLess.md |  |
 | L | F | ./manual/detailedTopics/assets/RequireJS-support.md |  |
-| L |  | ./manual/detailedTopics/build/AggregatingReverseRouters.md |  |
+| L | F | ./manual/detailedTopics/build/AggregatingReverseRouters.md |  |
 | L |  | ./manual/detailedTopics/build/Build.md |  |
 | L | F | ./manual/detailedTopics/build/CompilationSpeed.md |  |
 | L |  | ./manual/detailedTopics/build/SBTCookbook.md |  |
 | L |  | ./manual/detailedTopics/build/SBTDebugging.md |  |
-| L |  | ./manual/detailedTopics/build/SBTDependencies.md |  |
-| L |  | ./manual/detailedTopics/build/SBTSettings.md |  |
-| L |  | ./manual/detailedTopics/build/SBTSubProjects.md |  |
+| L | F | ./manual/detailedTopics/build/SBTDependencies.md |  |
+| L | F | ./manual/detailedTopics/build/SBTSettings.md |  |
+| L | F | ./manual/detailedTopics/build/SBTSubProjects.md |  |
 |  |  | ./manual/detailedTopics/configuration/ApplicationSecret.md |  |
 |  |  | ./manual/detailedTopics/configuration/Configuration.md |  |
 |  |  | ./manual/detailedTopics/configuration/filters/CorsFilter.md |  |
