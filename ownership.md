@@ -66,14 +66,14 @@
 | L | F | ./manual/gettingStarted/NewApplication.md |  |
 | W | F | ./manual/gettingStarted/PlayConsole.md |  |
 | L | F | ./manual/gettingStarted/Tutorials.md |  |
-|  |  | ./manual/hacking/BuildingFromSource.md |  |
-|  |  | ./manual/hacking/Documentation.md |  |
-|  |  | ./manual/hacking/Guidelines.md |  |
-|  |  | ./manual/hacking/Issues.md |  |
-|  |  | ./manual/hacking/Repositories.md |  |
-|  |  | ./manual/hacking/ThirdPartyTools.md |  |
-|  |  | ./manual/hacking/Translations.md |  |
-|  |  | ./manual/hacking/WorkingWithGit.md |  |
+| L | F | ./manual/hacking/BuildingFromSource.md |  |
+| L | F | ./manual/hacking/Documentation.md |  |
+| L | F | ./manual/hacking/Guidelines.md |  |
+| L | F | ./manual/hacking/Issues.md |  |
+| L | F | ./manual/hacking/Repositories.md |  |
+| L | F | ./manual/hacking/ThirdPartyTools.md |  |
+| L |  | ./manual/hacking/Translations.md |  |
+| L | F | ./manual/hacking/WorkingWithGit.md |  |
 |  |  | ./manual/Home.md |  |
 |  |  | ./manual/ModuleDirectory.md |  |
 |  |  | ./manual/releases/Highlights21.md |  |
