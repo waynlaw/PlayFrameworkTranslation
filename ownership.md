@@ -145,7 +145,7 @@
 |  |  | ./manual/working/scalaGuide/main/forms/ScalaCustomFieldConstructors.md |  |
 |  |  | ./manual/working/scalaGuide/main/forms/ScalaCustomValidations.md |  |
 |  |  | ./manual/working/scalaGuide/main/forms/ScalaForms.md |  |
-|  |  | ./manual/working/scalaGuide/main/http/ScalaActions.md |  |
+| W | F | ./manual/working/scalaGuide/main/http/ScalaActions.md |  |
 |  |  | ./manual/working/scalaGuide/main/http/ScalaActionsComposition.md |  |
 |  |  | ./manual/working/scalaGuide/main/http/ScalaBodyParsers.md |  |
 |  |  | ./manual/working/scalaGuide/main/http/ScalaContentNegotiation.md |  |
@@ -157,7 +157,7 @@
 | W | F | ./manual/working/scalaGuide/main/json/ScalaJson.md |  |
 | W | F | ./manual/working/scalaGuide/main/json/ScalaJsonCombinators.md |  |
 | W | F | ./manual/working/scalaGuide/main/json/ScalaJsonHttp.md |  |
-| W |  | ./manual/working/scalaGuide/main/json/ScalaJsonInception.md |  |
+| W | F | ./manual/working/scalaGuide/main/json/ScalaJsonInception.md |  |
 | W | F | ./manual/working/scalaGuide/main/json/ScalaJsonTransformers.md |  |
 | W | F | ./manual/working/scalaGuide/main/logging/ScalaLogging.md |  |
 | W | F | ./manual/working/scalaGuide/main/sql/ScalaDatabase.md |  |
