@@ -57,8 +57,8 @@
 | L |  | ./manual/detailedTopics/production/HTTPServer.md |  |
 | L |  | ./manual/detailedTopics/production/Production.md |  |
 | L |  | ./manual/detailedTopics/production/ProductionConfiguration.md |  |
-| L |  | ./manual/experimental/AkkaHttpServer.md |  |
-| L |  | ./manual/experimental/ReactiveStreamsIntegration.md |  |
+| L | F | ./manual/experimental/AkkaHttpServer.md |  |
+| L | F | ./manual/experimental/ReactiveStreamsIntegration.md |  |
 | L | F | ./manual/gettingStarted/Anatomy.md |  |
 | W | F | ./manual/gettingStarted/IDE.md |  |
 | L | F | ./manual/gettingStarted/Installing.md |  |
