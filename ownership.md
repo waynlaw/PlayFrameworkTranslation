@@ -175,4 +175,4 @@
 | W | F | ./manual/working/scalaGuide/main/ws/ScalaOpenID.md |  |
 | W | F | ./manual/working/scalaGuide/main/ws/ScalaWS.md |  |
 | W | F | ./manual/working/scalaGuide/main/xml/ScalaXmlRequests.md |  |
-| L |  | ./manual/working/scalaGuide/ScalaHome.md |  |
+| L | F | ./manual/working/scalaGuide/ScalaHome.md |  |
