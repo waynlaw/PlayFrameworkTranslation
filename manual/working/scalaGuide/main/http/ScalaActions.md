@@ -1,86 +1,86 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Actions, Controllers and Results
+# Actions, Controllers 그리고 결과들
 
-## What is an Action?
+## 무엇이 Action인가?
 
-Most of the requests received by a Play application are handled by an `Action`. 
+플레이 애플리케이션이 받는 대부분의 요청은 `Action`으로 다룬다. 
 
-A `play.api.mvc.Action` is basically a `(play.api.mvc.Request => play.api.mvc.Result)` function that handles a request and generates a result to be sent to the client.
+`play.api.mvc.Action`는 기본적으로 요청을 처리하고, 클라이언트로 전달할 결과를 만드는 `(play.api.mvc.Request => play.api.mvc.Result)` 함수이다.
 
 @[echo-action](code/ScalaActions.scala)
 
-An action returns a `play.api.mvc.Result` value, representing the HTTP response to send to the web client. In this example `Ok` constructs a **200 OK** response containing a **text/plain** response body.
+action은 웹 클라이언트로 전송할 HTTP 응답을 나타내는 `play.api.mvc.Result` 값을 반환한다. 이 예제에서는 `Ok`가 **text/plain**를 응답 내용으로 담고있는 **200 OK** 응답을 생성한다.
 
-## Building an Action
+## Action 구성하기
 
-The `play.api.mvc.Action` companion object offers several helper methods to construct an Action value. 
+`play.api.mvc.Action` 컴페니언 오브젝트는 Action 값을 생성하기 위한 몇가지 도움 함수를 제공한다.
 
-The first simplest one just takes as argument an expression block returning a `Result`:
+가장 간단한 것은 단지 `Result`를 반환하는 표현식 블럭을 전달인자로 받는 것이다.
 
 @[zero-arg-action](code/ScalaActions.scala)
 
-This is the simplest way to create an Action, but we don't get a reference to the incoming request. It is often useful to access the HTTP request calling this Action. 
+이것은 Action을 생성하는 가장 간단한 방법이지만, 오는 요청을 참조할 수는 없다. Action을 호출하는 HTTP요청에 접근하는 것은 때때로 유용하다.
 
-So there is another Action builder that takes as an argument a function `Request => Result`:
+그러므로 `Request => Result`함수를 인자로 받는 Action 생성자가 있다.
 
 @[request-action](code/ScalaActions.scala)
 
-It is often useful to mark the `request` parameter as `implicit` so it can be implicitly used by other APIs that need it:
+`request`를 `implicit`으로 하는 것은 요청을 필요로 하는 다른 API에 암시적으로 전달할 때 유용하다.
 
 @[implicit-request-action](code/ScalaActions.scala)
 
-The last way of creating an Action value is to specify an additional `BodyParser` argument:
+Action값을 생성하는 마지막 방법은 추가적인 `BodyParser`를 전달인자로 지정하는 것이다.
 
 @[json-parser-action](code/ScalaActions.scala)
 
-Body parsers will be covered later in this manual.  For now you just need to know that the other methods of creating Action values use a default **Any content body parser**.
+Body parser는 이 메뉴얼의 마지막에서 다룰 것이다. 우선 지금 알아두어야 할 것은 Action값을 생성하는 다른 함수가 기본 값으로 **임의의 내용 body parser**를 기본으로 사용한다는 것이다.
 
-## Controllers are action generators
+## Controllers는 Action 생성자이다.
 
-A `Controller` is nothing more than a singleton object that generates `Action` values. 
+`Controller`는 단지 `Action`을 생성하는 싱글톤 오브젝트이다.
 
-The simplest use case for defining an action generator is a method with no parameters that returns an `Action` value	:
+가장 간단한 Action 생성기를 정의 하는 방법은 전달인자가 없이 `Action`값을 리턴하는 함수를 만드는 것이다.
 
 @[full-controller](code/ScalaActions.scala)
 
-Of course, the action generator method can have parameters, and these parameters can be captured by the `Action` closure:
+당연히 Action을 생성하는 함수는 파라메터를 가질 수 있으며, 이 파라메터는 `Action` 클로져에 의해 참조될 수 있다.
 
 @[parameter-action](code/ScalaActions.scala)
 
-## Simple results
+## 간단한 결과들
 
-For now we are just interested in simple results: An HTTP result with a status code, a set of HTTP headers and a body to be sent to the web client.
+현재는 간단한 결과에만 주목하자. 상태코드를 포함하여 웹 클라이언트로 전달할 HTTP헤더와 몸체를 포함한 HTTP 결과이다.
 
-These results are defined by `play.api.mvc.Result`:
+`play.api.mvc.Result`로 이 결과들을 정의한다.
 
 @[simple-result-action](code/ScalaActions.scala)
 
-Of course there are several helpers available to create common results such as the `Ok` result in the sample above:
+몇가지 도움 함수들을 통해서 위의 예제에서의 `Ok`과 같은 기본적인 결과들을 생성할 수 있다.
 
 @[ok-result-action](code/ScalaActions.scala)
 
-This produces exactly the same result as before.
+이것인 위와 동일한 결과를 생성한다.
 
-Here are several examples to create various results:
+아래에 다양한 결과들을 만드는 예제가 있다.
 
 @[other-results](code/ScalaActions.scala)
 
-All of these helpers can be found in the `play.api.mvc.Results` trait and companion object.
+모든 이런 도와주는 기능들은 `play.api.mvc.Results` 트레잇과 컴페니언 오브젝트에서 찾을 수 있다.
 
-## Redirects are simple results too
+## 리다이렉션 또한 간단한 결과이다.
 
-Redirecting the browser to a new URL is just another kind of simple result. However, these result types don't take a response body.
+브라우져를 새로운 URL로 보내는 것 또한 간단한 결과의 한 종류이다. 그러나, 이런 결과 종류는 응답 몸체를 가지지 않는다.
 
-There are several helpers available to create redirect results:
+리다이렉션 결과를 생성하는 몇 가지 도움 기능들은 아래와 같다.
 
 @[redirect-action](code/ScalaActions.scala)
 
-The default is to use a `303 SEE_OTHER` response type, but you can also set a more specific status code if you need one:
+기본은 `303 SEE_OTHER` 응답 형식을 사용한다. 하지만 더 상세한 상태코드를 사용하길 원한다면 설정할 수 있다.
 
 @[moved-permanently-action](code/ScalaActions.scala)
 
-## "TODO" dummy page
+## "TODO" 더미 페이지
 
-You can use an empty `Action` implementation defined as `TODO`: the result is a standard ‘Not implemented yet’ result page:
+`TODO`에서 정의한 것과 같이 처럼 빈 `Action`을 사용할 수 있다. 결과는 '아직 구현되지 않음' 표준 결과 페이지 이다.
 
 @[todo-action](code/ScalaActions.scala)
