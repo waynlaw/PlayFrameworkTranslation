@@ -2,8 +2,6 @@
 
 플레이 2.3 이상에서는 플레이 문서를 번역하고 최신으로 유지하기 위해 문서 번역가를 돕은 인프라를 제공하다.
 
-As described in the [[Documentation Guidelines|Documentation]], Play's documentation is written in markdown format with code samples extracted to external files.  Play allows the markdown components of the documentation to be translated, while allowing the original code samples from the English documentation to be included in the translated documentation.  This assists translators in maintaining translation quality - the code samples are kept up to date as part of the core Play project, while the translated descriptions have to be maintained manually.
-
 [[Documentation Guidelines|Documentation]]에서 설명한 것 처럼 플레이의 문서는 마크다운 형식으로 작성되며 코드 샘플은 외부 파일로 추출되어 있다. 플레이는 영어 문서의 원본 코드 샘플을 번역된 문서에 포함될 수 있도록 하면서 문서의 마크다운 컴포넌트가 번역될 수 있도록 한다. 이렇게 해서 번역가가 번역 문서의 품질을 유지할 수 있도록 지원한다. - 번역된 문서는 직접 유지보수할 수 있도록 하면서 코드 샘플은 핵심 플레이 프로젝트의 일부로 최신으로 유지된다.
 
 이에 더하여 플레이는 또한 번역된 문서의 무결성을 검증하기 위한 도구를 제공한다. 이는 번역 문서에서 모든 내부 링크나 코드 조각으로의 링크에 대한 검증도 포함한다.
@@ -88,8 +86,6 @@ Documentation server started, you can now view the docs by going to http://0:0:0
 
 일반적으로 문서 번역에서 이들 조각을 남겨두고 싶을 것이며, 플레이가 여러분의 번역 문서에 최신의 코드 조각으로 유지되도록 할 것이다. 
 
-In some situations, it may make sense to override them.  You can either do this by putting the code directly in the documentation, using a fenced block, or by extracting them into your projects own compile code samples.  If you do that, checkout the Play documentation sbt build files for how you might setup SBT to compile them.
-
 어떤 경우에는 오버라이드를 원할 수도 있다. 문서에서 펜스 블록으로 코드를 직접 넣을 수도 있고 스스로 컴파일한 코드 샘플을 여러분의 프로젝트로 추출해 낼 수도 있다. 이렇게 하길 원한다면 컴파일을 위해 어떻게 SBT를 설정하여야 하는지 플레이 문서의 sbt 필드 파일을 확인하자.
 
 ## 문서 유효성 확인하기
@@ -108,11 +104,7 @@ sbt validateExternalLinks
 
 ## 번역문서 리포트
 
-Another very helpful tool provided by Play is a translation report, which shows which files have not been translated, and also tries to detect issues, for example, if the translation introduces new files, or if the translation is missing code samples.  This can particularly help when translating a new version of the documentation, since the addition or removal of code samples will often be a good signal that something has changed.
-
 플레이가 제공하는 아주 도움이 되는 다른 도구는 어떤 파일이 번역되지 않았는지를 보여주고, 또한 번역 문서에 새로운 파일이 나타나거나 번역 문서에 코드 샘플이 없는 등의 이슈를 찾아내길 시도하는 번역문서 리포트이다. 특히 코드 샘플의 추가나 삭제가 어떤것이 변경되었다는 좋은 신호일 수 있으므로 문서의 새로운 버전을 번역할 때 많은 도움이 될 것이다.
-
-To view the translation report, run the documentation server (like normal), and then visit <http://localhost:9000/@report> in your browser.  By default it will serve a cached version of the report if it has been generated in the past, you can rerun the report by clicking the rerun report link.
 
 번역문서 리포트를 살펴보기 위해 일반적으로 번역 문서를 위한 서버를 실행시키고, 브라우저에서 <http://localhost:9000/@report>를 살펴보자. 기본적으로 리포트의 캐시된 버전을 제공하며 과거에 생성된 것이라면 리포트 링크 새로수행을 클릭하여 새로 수행할 수 있다.
 
@@ -122,7 +114,6 @@ To view the translation report, run the documentation server (like normal), and 
 
 Git 저장소는 매우 특별한 형식일 필요가 있다. 현재 마스터 프랜치는 플레이의 최신 개발 버전의 문서를 위한 것이다. 플레이의 안정된 버전의 문서는 2.3.x 처럼 브랜치가 있어야 한다. 플레이의 특정 릴리즈를 명시한 번역 문서는 2.3.1처럼 이름과 함께 저장소의 태그로 제공되어야 한다.
 
-Once the Play team has configured playframework.com to serve your translation, any changes pushed to your GitHub repository will be picked up within about 10 minutes, as playframework.com does a `git fetch` on all repos it uses once every 10 minutes.
 이전에 플레이 팀이 playframework.com에 여러분의 문서를 제공하기 위해 설정했다면, GitHub 저장소로 어떤 변경사항이 푸쉬되면 매 10분마다 모든 저장소에 `git fetch`를 수행하여 약 10분 이내에 반영될 것이다.
 
 ## 번역 문서 버전 명시하기
