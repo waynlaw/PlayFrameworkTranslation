@@ -72,7 +72,7 @@
 | L | F | ./manual/hacking/Issues.md |  |
 | L | F | ./manual/hacking/Repositories.md |  |
 | L | F | ./manual/hacking/ThirdPartyTools.md |  |
-| L |  | ./manual/hacking/Translations.md |  |
+| L | F | ./manual/hacking/Translations.md |  |
 | L | F | ./manual/hacking/WorkingWithGit.md |  |
 |  |  | ./manual/Home.md |  |
 |  |  | ./manual/ModuleDirectory.md |  |
