@@ -1,16 +1,18 @@
 # Cross-Origin Resource Sharing
 
-Play provides a filter that implements Cross-Origin Resource Sharing (CORS).
+플레이는 CORS로 구현한 필터를 제공한다.
 
 CORS is a protocol that allows web applications to make requests from the browser across different domains.  A full specification can be found [here|http://www.w3.org/TR/cors/].
 
-## Enabling the CORS filter
+CORS는 브라우저의 다른 도메인으로 요청을 만들 수 있는 웹 애플리케이션 프로토콜이다. 전체 명세는 [여기서|http://www.w3.org/TR/cors/] 찾을 수 있다.
 
-To enable the CORS filter, add the Play filters project to your `libraryDependencies` in `build.sbt`:
+## CORS 필터 활성화 하기
+
+CORS 필터를 활성화 하기 위해 `build.sbt`에 `libraryDependencies`에 플레이 필터 프로젝트를 추가하자.
 
 @[content](code/filters.sbt)
 
-Now add the CORS filter to your filters, which is typically done by creating a `Filters` class in the root of your project:
+이제 여러분의 필터에 실제로 여러분의 프로젝트의 최상단에 `Filters` 클래스를 생성할 CORS 필터를 추가했다.
 
 Scala
 : @[filters](code/CorsFilter.scala)
@@ -18,11 +20,11 @@ Scala
 Java
 : @[filters](code/detailedtopics/configuration/cors/Filters.java)
 
-## Configuring the CORS filter
+## CORS 필터 환경설정하기
 
-The filter can be configured from `application.conf`.  For a full listing of configuration options, see the Play filters [`reference.conf`](resources/confs/filters-helpers/reference.conf).
+필터는 `application.conf`에서 환경설정 할 수 있다. 환경설정 옵션을 위한 전체 리스트는 플레이 필터 [`reference.conf`](resources/confs/filters-helpers/reference.conf)를 살펴보자.
 
-The available options include:
+가능한 옵션은 다음과 같다.
 
 * `play.filters.cors.pathPrefixes` - filter paths by a whitelist of path prefixes
 * `play.filters.cors.allowOrigins` - allow only requests with origins from a whitelist (by default all origins are allowed)
@@ -32,7 +34,7 @@ The available options include:
 * `play.filters.cors.supportsCredentials` - disable/enable support for credentials (by default credentials support is enabled)
 * `play.filters.cors.preflightMaxAge` - set how long the results of a preflight request can be cached in a preflight result cache (by default 1 hour)
 
-For example:
+예를 들어 다음과 같이 할 수 있다.
 
 ```
 play.filters.cors {
