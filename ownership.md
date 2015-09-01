@@ -146,7 +146,7 @@
 |  |  | ./manual/working/scalaGuide/main/forms/ScalaCustomValidations.md |  |
 |  |  | ./manual/working/scalaGuide/main/forms/ScalaForms.md |  |
 | W | F | ./manual/working/scalaGuide/main/http/ScalaActions.md |  |
-|  |  | ./manual/working/scalaGuide/main/http/ScalaActionsComposition.md |  |
+| W | F | ./manual/working/scalaGuide/main/http/ScalaActionsComposition.md |  |
 |  |  | ./manual/working/scalaGuide/main/http/ScalaBodyParsers.md |  |
 |  |  | ./manual/working/scalaGuide/main/http/ScalaContentNegotiation.md |  |
 |  |  | ./manual/working/scalaGuide/main/http/ScalaErrorHandling.md |  |
