@@ -1,117 +1,118 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Action composition
+# Action 결합
 
-This chapter introduces several ways of defining generic action functionality.
+이 항목에서는 일반적인 Action을 함수형으로 정의하는 몇가지 방법에 대해 알아보겠다.
 
-## Custom action builders
+## 맞춤 Action 생성기들
 
-We saw [[previously|ScalaActions]] that there are multiple ways to declare an action - with a request parameter, without a request parameter, with a body parser etc.  In fact there are more than this, as we'll see in the chapter on [[asynchronous programming|ScalaAsync]].
+우리는 요청 인자나, 요청 인자 없이 또는 내용 분석기와 함께 Action을 선언하는 다양한 방법들을 [[이전 장|ScalaActions]]에서 보았다. 실제로는 그 이상의 것들이 있으며, [[비동기 프로그래밍|ScalaAsync]]에서 알아볼 것이다.
 
-These methods for building actions are actually all defined by a trait called [`ActionBuilder`](api/scala/index.html#play.api.mvc.ActionBuilder), and the [`Action`](api/scala/index.html#play.api.mvc.Action$) object that we use to declare our actions is just an instance of this trait.  By implementing your own `ActionBuilder`, you can declare reusable action stacks, that can then be used to build actions.
+이러한 Action을 생성하는 방법들을 실제로는 [`ActionBuilder`](api/scala/index.html#play.api.mvc.ActionBuilder) 트레잇에 정의되어 있다. 그리고 우리가 우리만의 Action을 정의하기 위해서 사용하는 [`Action`](api/scala/index.html#play.api.mvc.Action$) 오브젝트는 이 트레잇을 실체화한 것이다. 재사용 가능한 Action 스택을 선언할 수 있는, 고유한 `ActionBuilder`를 만들어서 Action 생성에 사용할 수 있다.
 
-Let’s start with the simple example of a logging decorator, we want to log each call to this action.
+Action이 호출될 때마다 로그를 기록하고자 할 때, 로그를 꾸미는 간단한 예를 시작해 보자.
 
-The first way is to implement this functionality in the `invokeBlock` method, which is called for every action built by the `ActionBuilder`:
+`invokeBlock`함수에 이 기능을 구현하는 첫번째 방법은, `ActionBuilder`가 Action을 생성할 때마다 호출하는 것이다.
 
 @[basic-logging](code/ScalaActionsComposition.scala)
 
-Now we can use it the same way we use `Action`:
+이제 `Action`을 사용하는 것과 동일하게 사용할 수 있다.
 
 @[basic-logging-index](code/ScalaActionsComposition.scala)
  
-Since `ActionBuilder` provides all the different methods of building actions, this also works with, for example, declaring a custom body parser:
+ `ActionBuilder`가 Action을 만드는 다른 모든 방법을 제공하는 방식으로, 임의의 몸체 분석기를 선언하는 것과 같은 것도 가능하다.
 
 @[basic-logging-parse](code/ScalaActionsComposition.scala)
 
 
-### Composing actions
+### Action들 조합하기
 
-In most applications, we will want to have multiple action builders, some that do different types of authentication, some that provide different types of generic functionality, etc.  In which case, we won't want to rewrite our logging action code for each type of action builder, we will want to define it in a reuseable way.
+대부분의 애플리케이션에서, 여러개의 Action 생성자를 만들기를 원하며, 그 중의 일부는 서로 다른 형식의 인증을 사용하거나, 서로 다른 제네릭 형식을 지원하기도 한다. 이런 경우, 각 형식의 Action 생성자에서 로그를 기록하는 Action의 코드를 변경하기를 원하지는 않으며, 재사용 가능한 형식으로 정의하기를 원한다.
 
-Reusable action code can be implemented by wrapping actions:
+기존 Action을 감싸서, 재 사용가능한 Action 코드를 만들 수 있다.
 
 @[actions-class-wrapping](code/ScalaActionsComposition.scala)
 
-We can also use the `Action` action builder to build actions without defining our own action class:
+Action들을 고유의 클래스를 정의하지 않고 생성하기 위해서, `Action`을 Action 생성자로 사용할 수 있다.
 
 @[actions-def-wrapping](code/ScalaActionsComposition.scala)
 
-Actions can be mixed in to action builders using the `composeAction` method:
+Action은 `composeAction` 함수를 이용하여 Action생성자에 섞어 넣을 수 있다.
 
 @[actions-wrapping-builder](code/ScalaActionsComposition.scala)
 
-Now the builder can be used in the same way as before:
+이제 이전과 동일한 방법으로 생성자를 사용할 수 있다.
 
 @[actions-wrapping-index](code/ScalaActionsComposition.scala)
 
-We can also mix in wrapping actions without the action builder:
+또한 Action 생성자를 사용하지 않고 Action을 감싸 넣을 수 있다.
 
 @[actions-wrapping-direct](code/ScalaActionsComposition.scala)
 
-### More complicated actions
+### 더 복잡한 Action들
 
-So far we've only shown actions that don't impact the request at all.  Of course, we can also read and modify the incoming request object:
+지금까지는 요청에 대해 전혀 신경쓰지 않고 Action만을 사용했었다. 물런, 전달된 요청 오브젝트를 읽고 수정할 수도 있다.
 
 @[modify-request](code/ScalaActionsComposition.scala)
 
-> **Note:** Play already has built in support for X-Forwarded-For headers.
+> **주의:** 플레이는 이미 X-Forwarded-For 헤더에 대한 지원을 내장하고 있다.
 
-We could block the request:
+요청을 막을 수도 있다.
 
 @[block-request](code/ScalaActionsComposition.scala)
 
-And finally we can also modify the returned result:
+그리고 마지막으로 반환된 결과를 수정할 수도 있다.
 
 @[modify-result](code/ScalaActionsComposition.scala)
 
-## Different request types
+## 다른 요청 형식들
 
-While action composition allows you to perform additional processing at the HTTP request and response level, often you want to build pipelines of data transformations that add context to or perform validation on the request itself.  `ActionFunction` can be thought of as a function on the request, parameterized over both the input request type and the output type passed on to the next layer.  Each action function may represent modular processing such as authentication, database lookups for objects, permission checks, or other operations that you wish to compose and reuse across actions.
+Action을 합성하는 것은 HTTP 요청과 응답을 처리하는 단계에서 추가적인 작업을 수행할 수 있게 해준다.
+이를 통해 종종 문맥을 추가하거나 요청을 자체적으로 검증하는 등의 데이터를 처리를 위한 파이프 라인을 만들고 싶어할 수 있다. `ActionFunction`는 요청에 함수가 될 수 있고 입력 형식과 다음 계층으로 전달할 출력 형식 모두에 파라메터화 될 수 있다. 각각의 Action 함수는 인증이나 객체를 위한 데이터베이스 접근, 권한 확인, 그 이외의 Action들을 조합하고 재사용 하기를 원하는 여러가지 모듈화된 처리등을 나타낸다.
 
-There are a few pre-defined traits implementing `ActionFunction` that are useful for different types of processing:
+`ActionFunction`을 몇가지 처리에 유용하도록 구현한, 미리 정의된 트레잇이 있다.
 
-* [`ActionTransformer`](api/scala/index.html#play.api.mvc.ActionTransformer) can change the request, for example by adding additional information.
-* [`ActionFilter`](api/scala/index.html#play.api.mvc.ActionFilter) can selectively intercept requests, for example to produce errors, without changing the request value.
-* [`ActionRefiner`](api/scala/index.html#play.api.mvc.ActionRefiner) is the general case of both of the above.
-* [`ActionBuilder`](api/scala/index.html#play.api.mvc.ActionBuilder) is the special case of functions that take `Request` as input, and thus can build actions.
+* [`ActionTransformer`](api/scala/index.html#play.api.mvc.ActionTransformer) 예를 들면 추가적인 정보를 더하는 것 처럼, 요청을 변경할 수 있다.
+* [`ActionFilter`](api/scala/index.html#play.api.mvc.ActionFilter) 예를 들어 요청을 변경하지 않고 에러를 만들기 위해 요청을 선택하는 것 처럼, 선택적으로 요청을 가로챌 수 있다.
+* [`ActionRefiner`](api/scala/index.html#play.api.mvc.ActionRefiner) 위의 두가지 기능을 모두 수행할 수 있다.
+* [`ActionBuilder`](api/scala/index.html#play.api.mvc.ActionBuilder) 는 특별한 함수로, `Request`를 입력으로 받아 Action을 만들 수 있다.
 
-You can also define your own arbitrary `ActionFunction` by implementing the `invokeBlock` method.  Often it is convenient to make the input and output types instances of `Request` (using `WrappedRequest`), but this is not strictly necessary.
+또한 `invokeBlock` 함수를 정의하여, 고유한 임의의 `ActionFunction`을 정의할 수 있다. 종종 이 방법은 (`WrappedRequest`를 사용하는) `Request`의 입/출력 형식을 만들기 위해 편하게 사용될 수 있다. 하지만 이것이 반드시 필요한 것은 아니다.
 
-### Authentication
+### 인증
 
-One of the most common use cases for action functions is authentication.  We can easily implement our own authentication action transformer that determines the user from the original request and adds it to a new `UserRequest`.  Note that this is also an `ActionBuilder` because it takes a simple `Request` as input:
+Action 함수의 일반적인 사용 용도 중 한가지는 인증이다. 쉽게 원래의 요청을 보낸 사용자인지를 결정하고, 새 `UserRequest`를 추가하는 고유한 인증 Action 변환자를 구현할 수 있다. 주의할 것은 그 또한 간단한 `Request`를 입력으로 받기 때문에, 일종의 `ActionBuilder`이라는 점이다.
 
 @[authenticated-action-builder](code/ScalaActionsComposition.scala)
 
-Play also provides a built in authentication action builder.  Information on this and how to use it can be found [here](api/scala/index.html#play.api.mvc.Security$$AuthenticatedBuilder$).
+Play는 또한 내장된 인증 Action 생성자를 제공한다. 이에 대한 정보는 [여기](api/scala/index.html#play.api.mvc.Security$$AuthenticatedBuilder$)에서 더 찾을 수 있다.
 
-> **Note:** The built in authentication action builder is just a convenience helper to minimise the code necessary to implement authentication for simple cases, its implementation is very similar to the example above.
->
-> If you have more complex requirements than can be met by the built in authentication action, then implementing your own is not only simple, it is recommended.
+> **주의:** 내장된 인증 Action 생성자는 단지 간단한 인증이 필요한 경우에 대해 코드 작성을 줄이기 위해 편리한 도움을 주는 것일 뿐이다. 그렇기 때문에 그 구현은 위의 예제와 거의 동일하다.
 
-### Adding information to requests
+> 만일 기본으로 제공되는 인증 Action이 제공하는 인증 보다 보다 복잡한 인증이 필요하다면, 고유한 인증 Action을 만드는 것이 보다 간단할 뿐 아니라 권장되는 사항이다.
 
-Now let's consider a REST API that works with objects of type `Item`.  There may be many routes under the `/item/:itemId` path, and each of these need to look up the item.  In this case, it may be useful to put this logic into an action function.
+### 요청을 위한 정보 추가하기
 
-First of all, we'll create a request object that adds an `Item` to our `UserRequest`:
+`Item` 형식의 개체와 동작하는 REST API를 생각해 보자.  `/item/:itemId` 경로에 많은 라우트가 있고, 각각의 것은 item의 내용을 참조한다고 하자. 이러한 경우에, 이 로직을 Action함수에 넣는것이 더 유용할 수 있다.
+
+우선, `Item`이 추가된 `UserRequest`를 만들자.
 
 @[request-with-item](code/ScalaActionsComposition.scala)
 
-Now we'll create an action refiner that looks up that item and returns `Either` an error (`Left`) or a new `ItemRequest` (`Right`).  Note that this action refiner is defined inside a method that takes the id of the item:
+이제는 항목을 확인하고 오류 (`Left`) 또는 `ItemRequest` (`Right`)을 가지는 `Either`를 반환하는 Action을 생성해보자. 이 Action은 항목의 id를 받는 함수 내에 정의되어야 한다는데 주의하자.
 
 @[item-action-builder](code/ScalaActionsComposition.scala)
 
-### Validating requests
+### 요청 검증하기
 
-Finally, we may want an action function that validates whether a request should continue.  For example, perhaps we want to check whether the user from `UserAction` has permission to access the item from `ItemAction`, and if not return an error:
+마지막으로, 요청이 계속되어야 하는지를 검증하는 Action함수를 알아보자. 예를 들면, `ItemAction`에 대한 권한을 `UserAction`에 가지고 있는 사용자인지를 판단하고, 그렇지 않는 경우에는 오류를 반환해야 하는 경우와 같다.
 
 @[permission-check-action](code/ScalaActionsComposition.scala)
 
-### Putting it all together
+### 모든걸 함께 사용하기
 
-Now we can chain these action functions together (starting with an `ActionBuilder`) using `andThen` to create an action:
+이제 Action을 생성할 때 (`ActionBuilder` 부터 시작해서) `andThen`를 사용하여 이러한 Action 함수들을 함께 사용할 수 있다.
 
 @[item-action-use](code/ScalaActionsComposition.scala)
 
 
-Play also provides a [[global filter API | ScalaHttpFilters]], which is useful for global cross cutting concerns.
+플레이는 전역으로 사용되는 관심사를 위한 [[전역 필터 API | ScalaHttpFilters]]를 제공한다.
