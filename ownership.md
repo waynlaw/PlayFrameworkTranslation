@@ -115,7 +115,7 @@
 |  |  | ./manual/working/javaGuide/main/sql/JavaJPA.md |  |
 | S | F | ./manual/working/javaGuide/main/tests/JavaFunctionalTest.md |  |
 | S | F | ./manual/working/javaGuide/main/tests/JavaTest.md |  |
-|  |  | ./manual/working/javaGuide/main/tests/JavaTestingWebServiceClients.md |  |
+| S | F | ./manual/working/javaGuide/main/tests/JavaTestingWebServiceClients.md |  |
 | S | F | ./manual/working/javaGuide/main/tests/JavaTestingWithDatabases.md |  |
 | S | F | ./manual/working/javaGuide/main/tests/JavaTestingWithGuice.md |  |
 |  |  | ./manual/working/javaGuide/main/upload/JavaFileUpload.md |  |
