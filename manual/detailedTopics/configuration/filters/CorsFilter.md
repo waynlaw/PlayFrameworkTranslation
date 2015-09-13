@@ -2,8 +2,6 @@
 
 플레이는 CORS로 구현한 필터를 제공한다.
 
-CORS is a protocol that allows web applications to make requests from the browser across different domains.  A full specification can be found [here|http://www.w3.org/TR/cors/].
-
 CORS는 브라우저의 다른 도메인으로 요청을 만들 수 있는 웹 애플리케이션 프로토콜이다. 전체 명세는 [여기서|http://www.w3.org/TR/cors/] 찾을 수 있다.
 
 ## CORS 필터 활성화 하기
