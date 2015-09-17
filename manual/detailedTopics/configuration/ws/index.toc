@@ -3,7 +3,7 @@ WSQuickStart:WS SSL를 위한 빠른 시작
 CertificateGeneration:X.509 증명서 생성하기
 KeyStores:트러스트 스토어와 키 스토어 환경설정하기
 Protocols:프로토콜 환경설정하기
-CipherSuites:Configuring Cipher Suites
+CipherSuites:Cipher Suites 환경설정하기
 CertificateValidation:증명서 유효성 검증 환경설정하기
 CertificateRevocation:증명서 폐기 환경설정하기
 HostnameVerification:호스트이름 확인 환경설정하기
