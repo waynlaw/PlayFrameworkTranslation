@@ -1,4 +1,4 @@
-# Example Configurations
+# 환경설정 예제
 
 TLS can be very confusing.  Here are some settings that can help.
 
