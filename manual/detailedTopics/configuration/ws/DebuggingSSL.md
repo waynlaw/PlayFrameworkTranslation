@@ -66,7 +66,7 @@ logger.play.api.libs.ws.ssl=DEBUG
 val debugConfig = SSLDebugConfig().withKeyManager().withHandshake(data = true, verbose = true)
 ```
 
-## 더 읽어보면 좋은 것
+## 참고자료
 
 오라클은 디버깅 JSSE 이슈에 대해 많은 글을 가지고 있다.
 
