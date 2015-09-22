@@ -1,7 +1,5 @@
 # SSL 테스트하기
 
-Testing an SSL client not only involves unit and integration testing, but also involves adversarial testing, which tests that an attacker cannot break or subvert a secure connection.
-
 SSL 클라이언트를 테스트하는 것은 유닛 테스트 및 통합 테스트만 포함되는 것 뿐만아니라 공격자가 안전한 연결을 끊거나 파멸시킬수 없도록 하는 테스트(adversarial testing)도 포함한다.
 
 ## 유닛 테스트
