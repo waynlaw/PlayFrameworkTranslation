@@ -1,33 +1,33 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Guidelines for writing Play documentation
+# 플레이 문서 작성을 위한 가이드라인
 
-The Play documentation is written in Markdown format, with code samples extracted from compiled, run and tested source files.
+플레이 문서는 마크다운 형식으로 작성되었고 코드 샘플은 소스 파일을 컴파일하고 실행하고 테스트하도록 추출되어있다.
 
-There are a few guidelines that must be adhered to when writing Play documentation.
+다음은 플레이 문서를 작성할 때 참고해야 하는 가이드라인이다.
 
-## Markdown
+## 마크다운
 
-All markdown files must have unique names across the entire documentation, regardless of what folders they are in.  Play uses a wiki style of linking and rendering documentation.
+모든 마크다운 파일은 어떤 폴더에 있는지와 관계없이 전체 문서에서 유니크한 이름을 가져야 한다. 플레이는 문서를 렌더링하고 연결하는데 위키 스타일을 사용한다.
 
-Newline characters in the middle of paragraphs are considered hard wraps, similar to GitHub flavored markdown, and are rendered as line breaks.  Paragraphs should therefore be contained on a single line.
+단락의 중간에 있는 줄바꿈 문자열은 GitHub 형식의 마크다운과 유사하게 하드 랩으로 간주되어 라인 브레이크로 렌더링 된다. 따라서 단락은 한줄에 포함되어야 한다.
 
-### Links
+### 링크
 
-Links to other pages in the documentation should be created using wiki markup syntax, for example:
+문서에서 다른 페이지로의 링크는 위키 마크업 문법을 사용하여 생성해야 한다.
 
     [[Optional description|ScalaRouting]]
 
-Images should also use the above syntax.
+이미지 또한 위의 문법을 사용해야 한다.
 
-> External links should not use the above syntax, but rather, should use the standard Markdown link syntax.
+> 외부 링크는 위의 문법을 사용할 수 없다. 그러나 대신 표준 마크다운 링크 문법을 사용해야 한다.
 
-## Code samples
+## 코드 샘플
 
-All supported code samples should be imported from external compiled files.  The syntax for doing this is:
+모든 지원되는 코드 샘플은 외부 컴파일된 파일으로 부터 이입되어야 한다. 다음과 같은 문법을 사용한다.
 
     @[some-label](code/SomeFeature.scala)
 
-The file should then delimit the lines that need to be extracted using `#some-label`, for example:
+파일은 추출될 필요가 있는 라인의 범위를 정하기 위해 `#some-label`를 사용할 수 있다.
 
 ```scala
 object SomeFeatureSpec extends Specification {
@@ -42,18 +42,18 @@ object SomeFeatureSpec extends Specification {
 }
 ```
 
-In the above case, the ``val msg = ...`` line will be extracted and rendered as code in the page.  All code samples should be checked to ensure they compile, run, and if it makes sense, ensure that it does what the documentation says it does.  It should not try to test the features themselves.
+위의 경우 ``val msg = ...``는 추출되어질 것이며 페이지의 코드로 렌더링 될 것이다. 모든 코드 샘플은 확실하게 컴파일이 되고, 실행되는지 확인되어야 하며, 만약 의미가 있는 경우 문서에서 말하고자 하는 것이 무엇인지 확실히 해야 하며, 이 기능 자체를 테스트하려고 해서는 안된다.
 
-All code samples get run on the same classloader.  Consequently they must all be well namespaced, within a package that corresponds to the part of the documentation they are associated with.
+모든 코드 샘플은 동일한 클래스로더에서 실행하자. 결과적으로 그것과 관계가 있는 문서의 일부에 부합하는 패키지 내에 적절한 네임스페이스를 가져야 한다.
 
-In some cases, it may not be possible for the code that should appear in the documentation to exactly match the code that you can write given the above guidelines.  In particular, some code samples require the use of package names like `controllers`.  As a last resort if there are no other ways around this, there are a number of directives you can put in the code to instruct the code samples extractor to modify the sample.  These are:
+몇몇의 경우 위의 가이드라인에서 알려준대로 여러분이 작성할 수 있는 코드가 문서와 정확하게 매치되어 나타나지 않을 수도 있다. 특히 일부 코드 샘플은 `controllers`라는 패키지 이름의 사용을 필요로 한다. 최후의 수단으로 이를 위한 다른 방법이 없으면 다음의 명시된 지시자를 코드에 넣어서 코드 샘플 추출자에게 샘플에 대한 수정사항을 지시할 수 있다.
 
-* `###replace: foo` - Replace the next line with `foo`.  You may optionally terminate this command with `###`
-* `###insert: foo` - Insert `foo` before the next line.  You may optionally terminate this command with `###`
-* `###skip` - Skip the current line
-* `###skip: n` - Skip the next n lines
+* `###replace: foo` - 다음 라인을 `foo`로 수정한다. 이 명령어를 `###`로 종료할 수도 있다.
+* `###insert: foo` - 다름 라인 전에 `foo`를 삽입한다. 이 명령어를 `###`로 종료할 수도 있다.
+* `###skip` - 현재 라인을 건너 뛴다.
+* `###skip: n` - 다음 n개의 라인을 건너 뛴다.
 
-For example:
+예를 들면 다음과 같다.
 
 ```scala
 //#controller
@@ -68,53 +68,54 @@ object Application extends Controller {
 //#controller
 ```
 
-> These directives must only be used as a last resort, since the point of pulling code samples out into external files is that the very code that is in the documentation is also compiled and tested.  Directives break this.
+> 이 지시자는 오직 최후의 수단으로 사용해야 한다. 왜냐하면 외부의 파일으로 내려받은 코드 샘플은 문서의 코드와 동일하게 컴파일되고 테스트될 것이기 때문이다. 지시자를 사용하면 이는 실패한다. 
 
-It's also important to be aware of the current context of the code samples, to ensure that the appropriate import statements are documented.  However it doesn't make sense to necessarily include all import statements in every code sample, so discretion must be shown here.
+물론 코드 샘플의 현재 컨텍스트를 알고 있는 것도 중요하다. 적절한 import 구문도 문서화 되어야 함을 명심하자. 그러나 모든 코드 샘플에서 모든 import 구문이 포함될 필요가 있음을 의미하는 것은 아니며 재량에 의해서 여기에 표시되어야 한다.
 
-Guidelines for specific types of code samples are below.
+특정 타입의 코드 샘플에 대한 가이드라인은 아래와 같다.
 
-### Scala
+### 스칼라
 
-All scala code samples should be tested using specs, and the code sample, if possible, should be inside the spec.  Local classes and method definitions are encouraged where appropriate.  Scoping import statements within blocks are also encouraged.
+모든 스칼라 코드 샘플은 specs를 사용하여 테스트되고 코드 샘플은 가능하면 spec 안에 있어야 한다. 로컬 클래스나 메소드 정의는 적절하게 위치시키기를 권장한다. 블록 내에 import 문의 범위를 정하는 것도 또한 권장된다.
 
-### Java
+### 자바
 
-All Java code samples should be tested using JUnit.  Simple code samples are usually simple to include inside the JUnit test, but when the code sample is a method or a class, it gets harder.  Preference should be shown to use local and inner classes, but this may not be possible, for example, a static method can only appear on a static inner class, but that means adding the static modifier to the class, which would not appear if it was an outer class.  Consequently it may be necessary in some cases to pull Java code samples out into their own files.
+모든 자바 코드 샘플은 JUnit 을 사용하여 테스트되어야 한다. 간단한 코드 샘플은 보통 JUnit 테스트 내에 포함될 정도로 간단하며 코드 샘플이 메소드나 클래스일 경우엔 어려울 수 있다. 선호하는 것은 로컬이나 내부 클래스를 사용하여 보여주는 것이며 예를들어 static 메서드가 static 내부 클래스에 있는 것 처럼 이 방법이 불가능할 수 있다. 그러나 외부 클래스인 경우에는 나타나지 않는 클래스에 static 수정자를 추가하는 것을 의미한다. 따라서 몇몇의 경우 자바 코드 샘플을 그들 파일의 외부로 빼낼 필요가 있을 수도 있다.
 
-### Scala Templates
+### 스칼라 템플릿
 
-Scala template code samples should be tested either with Specs in Scala or JUnit in Java.  Note that templates are compiled with different default imports, depending on whether they live in the Scala documentation or the Java documentation.  It is therefore also important to test them in the right context, if a template is relying on Java thread locals, they should be tested from a Java action.
+스칼라 템플릿 코드 샘플은 자바의 JUnit이나 스칼라의 Specs처럼 테스트되어야 한다. 템플릿은 기본 imports와 다르게 컴파일되며 자바 문서나 스칼라 문서가 무엇인지에 따라 의존성이 있음을 명심하자. 그러므로 또한 적절한 형식으로 테스트되는 것이 중요하며 만약 템플릿이 자바 스레드 로컬에 의지한다면 자바 액션으로부터 테스트되어야 한다.
 
-Where possible, template code samples should be consoloditated in a single file, but this may not always be possible, for example if the code sample contains a parameter declaration.
+가능하다면 템플릿 코드 샘플은 한 파일로 통합되어야 한다. 그러나 예를들어 코드 샘플이 파라미터 정의를 포함한다면 항상 가능하지는 않을 것이다.
 
-### Routes files
+### 라우트 파일
 
-Routes files should be tested either with Specs in Scala or JUnit in Java.  Routes files should be named with the full package name, for example, `scalaguide.http.routing.routes`, to ensure that they are isolated from other routes code samples.
+스칼라 템플릿 코드 샘플은 자바의 JUnit이나 스칼라의 Specs처럼 테스트되어야 한다. 라우트 파일은 예를들어 `scalaguide.http.routing.routes`처럼 모든 패키지 이름으로 명명되어야 하며 다른 라우트 코드 샘플으로 부터 분리되어야 함을 보장해야 한다.
 
-The routes compiler used by the documentation runs in a special mode that generates the reverse router inside the namespace declared by that file.  This means that although a routes code sample may appear to use absolute references to classes, it is actually relative to the namespace of the router.  Thus in the above routes file, if you have a route called `controllers.Application`, it will actually refer to a controller called `scalaguide.http.routing.controllers.Application`.
+문서에서 사용하는 라우트 컴파일러는 해당 파일에 의해 선언 된 네임 스페이스 내부의 리버스 라우터를 생성하는 특수 모드에서 실행됩니다.
+이는 라우트 코드 샘플일지라도 클래스로 절대적인 참조값을 사용하여 나타낼수도 있으며, 이 라우터의 네임스페이스는 실제로 상대적인 것이 된다. 따라서 위의 라우트 파일은 만약 `controllers.Application`라는 라우트를 가지고 있다면 실제로는 `scalaguide.http.routing.controllers.Application`라는 컨트롤러를 가리키게된다.
 
-### SBT code
+### SBT 코드
 
-At current, SBT code samples cannot be pulled out of the documentation, since compiling and running them will require a very custom SBT setup involving using completely different classloaders and classpaths.
+현재 SBT 코드 샘플은 문서의 외부로 뽑아낼 수 없다. 왜냐하면 컴파일하고 이를 수행하기 위해 완전 다른 클래스로더나 클래스 패스를 사용하는 별도의 SBT 설정이 요구되기 때문이다.
 
-### Other code
+### 다른 코드
 
-Other code may or may not be testable.  It may make sense to test Javascript code by running an integration test using HTMLUnit.  It may make sense to test configuration by loading it.  Common sense should be used here.
+다른 코드는 테스트가 되거나 되지 않을 수 있다. HTMLUnit을 사용하여 통합테스트를 수행하여 자바스크립트 코드를 테스트할 수 있을 수도 있고. 이를 로딩하여 테스트 환경설정을 할 수도 있다.
 
-## Testing the docs
+## 문서 테스트하기
 
-To build the docs, you'll first need to build and publish Play locally. You can do this by running `./build publishLocal` from within the `framework` directory of the playframework repository.
+문서를 빌드하기 위해 먼서 플레이를 로컬에 빌드하고 발행할 필요가 있다. 플레이 프레임워크 저장소의 `framework` 디렉터리 내에서 `./build publishLocal`을 사용하여 할 수 있다.
 
-To ensure that the docs render correctly, run `./build run` from within the `documentation` directory.  This will start a small Play server that does nothing but serve the documentation.
+문서가 적절하게 렌더링 되는 것을 확인하기 위해 `documentation` 디렉터리 내에서 `./build run`을 수행하자. 작은 플레이 서버가 실행되어 문서를 제공해 줄 것이다.
 
-To ensure that the code samples compile, run and tests pass, run `./build test`.
+코드 샘플이 컴파일되고 실행되고 테스트를 통과하는 것을 확인하기 위해 `./build test`를 수행하자.
 
-To validate that the documentation is structurely sound, run `./build validateDocs`.  This checks that there are no broken wiki links, code references or resource links, ensures that all documentation markdown filenames are unique, and ensures that there are no orphaned pages.
+문서가 구조적으로 잘 되었는지 검증하기 위해 `./build validateDocs`를 수행하자. 이는 잘못된 위키 링크나 잘못된 코드 참조나 리소스 링크가 없는지 모든 문서 마크다운 파일이 유니크한지 부모를 잃은 페이지가 없는지 확인한다.
 
-## Code samples from external Play modules
+## 외부 플레이 모듈의 코드 샘플
 
-To avoid circular dependencies, any documentation that documents a Play module that is not a core part of Play can't include its code samples along with the rest of the Play documentation.  To address this, the documentation for that module can place an entry into the `externalPlayModules` map in `project/Build.scala`, including all the extra settings (namely library dependencies) required to build the code snippets for that module.  For example:
+선형 의존성을 회피하기 위해 플레이의 핵심 부분이 아닌 플레이 모듈에서 문서화된 문서는 플레이 문서의 나머지 부분과 함께 코드 샘플을 포함할 수 없다. 이를 참조하기 위해 모듈을 위한 문서는 `project/Build.scala`에 `externalPlayModules` 맵으로 위치할 수 있고, 모든 추가적인 설정을 포함하는 것은 모듈을 위한 코드 조각으로 빌드될 필요가 있다.
 
 ```scala
 val externalPlayModules: Map[String, Seq[Setting[_]]] = Map(
@@ -125,4 +126,5 @@ val externalPlayModules: Map[String, Seq[Setting[_]]] = Map(
 )
 ```
 
-Now place all code snippets that use that module in `code-some-module`.  Now to run any SBT commands, ensuring that that module is included, run `./build -Dexternal.modules=some-module test`, or to run the tests for all modules, run `./build -Dexternal-modules=all test`.
+이제 `code-some-module`에서 모듈을 사용할 모든 코드 조각을 위치시켰다. 이제 모듈이 포함되는 것을 보장하여 SBT 명령어를 수행하기 위해 `./build -Dexternal.modules=some-module test`를 수행하거나 모든 모듈을 위한 테스트를 수행하기 위해 `./build -Dexternal-modules=all test`를 수행하자.
+

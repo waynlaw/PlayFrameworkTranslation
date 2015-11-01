@@ -1,1 +1,1 @@
-Developing-with-the-H2-Database:Using an in memory H2 database
+Developing-with-the-H2-Database:인 메모리 H2 데이터베이스 사용하기

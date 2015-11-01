@@ -1,14 +1,14 @@
-WsSSL:Configuring WS SSL
-WSQuickStart:Quick Start to WS SSL
-CertificateGeneration:Generating X.509 Certificates
-KeyStores:Configuring Trust Stores and Key Stores
-Protocols:Configuring Protocols
-CipherSuites:Configuring Cipher Suites
-CertificateValidation:Configuring Certificate Validation
-CertificateRevocation:Configuring Certificate Revocation
-HostnameVerification:Configuring Hostname Verification
-ExampleSSLConfig:Example Configurations
-DefaultContext:Using the Default SSLContext
-DebuggingSSL:Debugging SSL
+WsSSL:WS SSL 환경설정하기
+WSQuickStart:WS SSL를 위한 빠른 시작
+CertificateGeneration:X.509 증명서 생성하기
+KeyStores:트러스트 스토어와 키 스토어 환경설정하기
+Protocols:프로토콜 환경설정하기
+CipherSuites:Cipher Suites 환경설정하기
+CertificateValidation:증명서 유효성 검증 환경설정하기
+CertificateRevocation:증명서 폐기 환경설정하기
+HostnameVerification:호스트이름 확인 환경설정하기
+ExampleSSLConfig:환경설정 예제
+DefaultContext:기본 SSLContext 사용하기
+DebuggingSSL:SSL 디버깅하기
 LooseSSL:Loose Options
-TestingSSL:Testing SSL
+TestingSSL:SSL 테스팅

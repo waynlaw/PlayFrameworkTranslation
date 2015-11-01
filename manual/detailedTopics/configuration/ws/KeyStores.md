@@ -1,17 +1,17 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
-# Configuring Trust Stores and Key Stores
+# 트러스트 스토어와 키 스토어 환경설정하기
 
-Trust stores and key stores contain X.509 certificates.  Those certificates contain public (or private) keys, and are organized and managed under either a TrustManager or a KeyManager, respectively.
+트러스트 스토어와 키 스토어는 X.509 증명서를 포함한다. 이들 증명서는 공개(혹은 비공개)키를 포함하며, 각기 저마다 트러스트관리자나 키관리자에 의해 조직화되고 관리되어야 한다.
 
-If you need to generate X.509 certificates, please see [[Certificate Generation|CertificateGeneration]] for more information.
+만약에 X.509 증명서를 생성할 필요가 있다면 더 많은 정보를 위해 [[Certificate Generation|CertificateGeneration]]를 살펴보기 바란다.
 
-## Configuring a Trust Manager
+## 트러스트 관리자 환경설정하기
 
-A [trust manager](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/JSSERefGuide.html#TrustManager) is used to keep trust anchors: these are root certificates which have been issued by certificate authorities.   It determines whether the remote authentication credentials (and thus the connection) should be trusted.  As an HTTPS client, the vast majority of requests will use only a trust manager.  
+[트러스트 관리자](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/JSSERefGuide.html#TrustManager)는 신뢰있는 앵커를 유지하기위해 사용된다. 이들은 최상위 증명서로 인증기관에서 발행된 것이다. 이는 원격 인증 증명서(및 연결)이 신뢰되어야 하는지를 결정한다. HTTPS 클라이언트로서  요청의 대부분은 트러스트 관리자를 사용한다.
 
-If you do not configure it at all, WS uses the default trust manager, which points to the `cacerts` key store in `${java.home}/lib/security/cacerts`.  If you configure a trust manager explicitly, it will override the default settings and the `cacerts` store will not be included.
+만약에 모든 환경설정을 하지 않으면 WS가 기본 트러스트 관리자를 사용한다. 이는 `${java.home}/lib/security/cacerts`에 있는 `cacerts` 키 스토어를 가리킨다. 만약에 명시적으로 트러스트 관리자를 환경설정하면 기본 설정을 오버라이드 할 것이고 `cacerts` 스토어는 포함되지 않을 것이다.
 
-If you wish to use the default trust store and add another store containing certificates, you can define multiple stores in your trust manager.  The [CompositeX509TrustManager](api/scala/index.html#play.api.libs.ws.ssl.CompositeX509TrustManager) will try each in order until it finds a match:
+만약에 기본 트러스트 스토어를 사용하고 증명서를 포함한 다른 스토어를 추가하고 싶다면 트러스트 관리자에 정의해야 한다. [CompositeX509TrustManager](api/scala/index.html#play.api.libs.ws.ssl.CompositeX509TrustManager)는 적절한 것을 찾을 때까지 각각을 찾아 시도한다. 
 
 ```
 play.ws.ssl {
@@ -24,14 +24,13 @@ play.ws.ssl {
 }
 ```
 
+> **주의**: 트러스트 스토어는 오직 보통은 JKS나 PEM 공개 키로 CA 증명서만 포함해야 한다. PKCS12 형식은 지원하지만 PKCS12는 트러스트 스토어에 비공개 키를 포함하지 않아야 하며, [참고 문서](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/JSSERefGuide.html#SunJSSE)에 설명되어있다.
 
-> **NOTE**: Trust stores should only contain CA certificates with public keys, usually JKS or PEM.  PKCS12 format is supported, but PKCS12 should not contain private keys in a trust store, as noted in the [reference guide](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/JSSERefGuide.html#SunJSSE).
+## 키 관리자 환경설정하기
 
-## Configuring a Key Manager
+[키 관리자](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/JSSERefGuide.html#KeyManager)는 원격 호스트를 위해 현재 키를 사용한다. 키 관리자는 일반적으로 오직 클라이언트 인증을 위해 사용된다(또한 상호간의 TLS로 알려져 있다). 
 
-A [key manager](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/JSSERefGuide.html#KeyManager) is used to present keys for a remote host.  Key managers are typically only used for client authentication (also known as mutual TLS).
-
-The [CompositeX509KeyManager](api/scala/index.html#play.api.libs.ws.ssl.CompositeX509KeyManager) may contain multiple stores in the same manner as the trust manager.
+[CompositeX509KeyManager](api/scala/index.html#play.api.libs.ws.ssl.CompositeX509KeyManager)는 트러스트 관리자와 동일한 방법으로 여러 스토어를 포함할 수 있다.
 
 ```
 play.ws.ssl {
@@ -49,17 +48,19 @@ play.ws.ssl {
 
 > **NOTE**: A key store that holds private keys should use PKCS12 format, as indicated in the [reference guide](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/JSSERefGuide.html#SunJSSE).
 
-## Configuring a Store
+> **주의**: 비밀 키를 고정하는 키 스토어는 반드시 PKCS12 형식을 사용해야 하며, [참고 문서](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/JSSERefGuide.html#SunJSSE)에 설명되어있다.
 
-A store corresponds to a [KeyStore](http://docs.oracle.com/javase/7/docs/api/java/security/KeyStore.html) object, which is used for both trust stores and key stores.  Stores may have a [type](http://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyStore) -- `PKCS12`, [`JKS`](http://docs.oracle.com/javase/7/docs/technotes/guides/security/crypto/CryptoSpec.html#KeystoreImplementation) or `PEM` (aka Base64 encoded DER certificate) -- and may have an associated password.
+## 스토어 환경설정하기
 
-Stores must have either a `path` or a `data` attribute.  The `path` attribute must be a file system path.
+스토어는 [KeyStore](http://docs.oracle.com/javase/7/docs/api/java/security/KeyStore.html) 객체에 해당하며, 이는 트러스트 스토어와 키 스토어를 위해 사용된다. 스토어는 [타입](http://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyStore)을 가져야 하며, `PKCS12`, [`JKS`](http://docs.oracle.com/javase/7/docs/technotes/guides/security/crypto/CryptoSpec.html#KeystoreImplementation), `PEM` (aka DER 증명서로 인코딩된 Base64)이 그 종류가 될 수 있고 관련된 비밀번호를 가질 수 있다.
+
+스토어는 `path`나 `data` 속성을 가져야한다. `path` 속성은 파일 시스템의 경로이어야 한다.
 
 ```
 { type: "PKCS12", path: "/private/keystore.p12" }
 ```
 
-The `data` attribute must contain a string of PEM encoded certificates.
+`data` 속성은 PEM 인코딩된 증명서의 문자열을 포함해야 한다.
 
 ```
 {
@@ -77,9 +78,9 @@ The `data` attribute must contain a string of PEM encoded certificates.
 }
 ```
 
-## Debugging
+## 디버깅
 
-To debug the key manager / trust manager, set the following flags:
+키 관리자와 신뢰 관리자를 디버깅하기 위해 다음 플래그를 설정하자.
 
 ```
 play.ws.ssl.debug = {
@@ -89,9 +90,9 @@ play.ws.ssl.debug = {
 }
 ```
 
-## Further Reading
+## 참고자료
 
-In most cases, you will not need to do extensive configuration once the certificates are installed.  If you are having difficulty with configuration, the following blog posts may be useful:
+대부분의 경우 증명서를 한번 설치하고 나면 광범위환 환경설정을 하는 것은 필요하지 않을 것이다. 만약에 환경설정에 어려움이 있다면 다음 블로그 포스트가 아주 유용할 것이다.
 
 * [Key Management](http://docs.oracle.com/javase/7/docs/technotes/guides/security/crypto/CryptoSpec.html#KeyManagement)
 * [Java 2-way TLS/SSL (Client Certificates) and PKCS12 vs JKS KeyStores](http://blog.palominolabs.com/2011/10/18/java-2-way-tlsssl-client-certificates-and-pkcs12-vs-jks-keystores/)

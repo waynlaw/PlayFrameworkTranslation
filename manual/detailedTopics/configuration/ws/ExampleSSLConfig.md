@@ -1,12 +1,12 @@
-# Example Configurations
+# 환경설정 예제
 
-TLS can be very confusing.  Here are some settings that can help.
+TLS는 매우 혼란스러울 수 있다. 여기 이를 도와줄 수 있는 몇가지 설정이 있다.
 
-## Connecting to an internal web service
+## 내부의 웹 서비스로 연결하기
 
-If you are using WS to communicate with a single internal web service which is configured with an up to date TLS implementation, then you have no need to use an external CA.  Internal certificates will work fine, and are arguably [more secure](http://www.thoughtcrime.org/blog/authenticity-is-broken-in-ssl-but-your-app-ha/) than the CA system.
+최신 TLS 구현체로 설정되어있는 단일 내부 웹 서비스와 대화하기 위해 WS를 사용한다면 외부의 CA를 사용할 필요는 없다. 내부 인증서는 잘 동작할 것이며, 아마 틀림없이 CA 시스템보다 [더 안전](http://www.thoughtcrime.org/blog/authenticity-is-broken-in-ssl-but-your-app-ha/)할 것이다.
 
-Generate a self signed certificate from the [[generating certificates|CertificateGeneration]] section, and tell the client to trust the CA's public certificate.
+[[인증서 생성하기|CertificateGeneration]]섹션으로부터 스스로 서명된 인증서를 생성하고, 클라이언트에게 CA의 공개 인증서를 신뢰할 수 있는지 물어보자.
 
 ```
 play.ws.ssl {
@@ -18,9 +18,9 @@ play.ws.ssl {
 }
 ```
 
-## Connecting to an internal web service with client authentication
+## 클라이언트 인증과 내부 웹 서비스 연결하기
 
-If you are using client authentication, then you need to include a keyStore to the key manager that contains a PrivateKeyEntry, which consists of a private key and the X.509 certificate containing the corresponding public key.  See the "Configure Client Authentication" section in [[generating certificates|CertificateGeneration]].
+클라이언트 인증을 사용한다면 비킬키와 적절한 공개 키를 포함하고 있는 X.509 인증서로 구성된 PrivateKeyEntry를 포함한 키 관리자를 키 스토어에 포함시킬 필요가 있다. [[인증서 생성하기|CertificateGeneration]] 섹션에 있는 "클라이언트 인증 설정하기"를 살펴보자.
 
 ```
 play.ws.ssl {
@@ -37,9 +37,9 @@ play.ws.ssl {
 }
 ```
 
-## Connecting to several external web services
+## 몇몇의 외부 웹 서비스 연결하기
 
-If you are communicating with several external web services, then you may find it more convenient to configure one client with several stores:
+몇몇의 외부 웹 서비스와 대화한다면, 여러 스토어를 하나의 클라이언트로 설정하면 더 편리할 수 있다.
 
 ```
 play.ws.ssl {
@@ -53,7 +53,7 @@ play.ws.ssl {
 }
 ```
 
-If client authentication is required, then you can also set up the key manager with several stores:
+클라이언트 인증이 필요하다면, 여러 스토어에 키 관리자를 설정할 수 있다.
 
 ```
 play.ws.ssl {
@@ -67,9 +67,9 @@ play.ws.ssl {
 }
 ```
 
-## Both Private and Public Servers
+## 비밀과 공개 서버
 
-If you are using WS to access both private and public servers on the same profile, then you will want to include the default JSSE trust store as well:
+만약에 동일한 프로파일로 비공개와 공개 서버에 접근하기 위해 WS를 사용한다면 적절한 기본 JSSE 트러스트 스토어를 포함하시키는 것을 원할지도 모르겠다.
 
 ```
 play.ws.ssl {

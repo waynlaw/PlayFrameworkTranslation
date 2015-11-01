@@ -1,1 +1,1 @@
-Evolutions:Managing database evolutions
+Evolutions:데이터베이스 이볼루션 관리하기

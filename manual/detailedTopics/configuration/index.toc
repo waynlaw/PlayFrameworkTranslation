@@ -1,7 +1,7 @@
-Configuration:Configuration file syntax and features
-ApplicationSecret:Configuring the application secret
-SettingsJDBC:Configuring the JDBC connection pool
-ThreadPools:Configuring Play's thread pools
-SettingsLogger:Configuring logging
-filters:Configuring Play filters
-ws:Configuring WS SSL
+Configuration:파일 문법과 기능 환경설정하기
+ApplicationSecret:애플리케이션의 비밀 환경설정하기
+SettingsJDBC:JDBC 커넥션 풀 환경설정하기
+ThreadPools:플레이의 스레드 풀 환경설정하기
+SettingsLogger:로깅 환경설정하기
+filters:플레이의 필터 환경설정하기
+ws:WS SSL 환경설정하기
